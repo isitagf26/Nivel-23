@@ -11534,3 +11534,125 @@ strong {
   .portada-info-personaje strong { font-size:13px !important; }
   #pantalla-personajes .personaje-marco-rpg { width:92px !important; flex-basis:92px !important; }
 }
+/* =====================================================
+   NIVEL 23
+   MENÚ MÓVIL DESLIZABLE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    /* Ocultamos completamente el botón MÁS */
+    .nav-movil-mas,
+    .menu-movil-extra {
+        display: none !important;
+    }
+
+
+    /* MENÚ PRINCIPAL */
+    .dashboard-nav {
+        position: fixed !important;
+
+        left: 10px !important;
+        right: 10px !important;
+        bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+
+        width: auto !important;
+        max-width: none !important;
+
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+
+        gap: 8px !important;
+
+        padding: 8px !important;
+        margin: 0 !important;
+
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        scroll-snap-type: x proximity;
+
+        scrollbar-width: none;
+
+        transform: none !important;
+
+        background: rgba(8, 8, 25, 0.96) !important;
+
+        border: 1px solid rgba(150, 110, 255, 0.45) !important;
+        border-radius: 20px !important;
+
+        z-index: 9999 !important;
+    }
+
+
+    /* Quitar barra de desplazamiento */
+    .dashboard-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    /* MOSTRAR TODOS LOS BOTONES */
+    .dashboard-nav button {
+        display: flex !important;
+
+        flex: 0 0 105px !important;
+
+        width: 105px !important;
+        min-width: 105px !important;
+
+        height: 72px !important;
+        min-height: 72px !important;
+
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        gap: 5px !important;
+
+        padding: 7px 5px !important;
+        margin: 0 !important;
+
+        border-radius: 15px !important;
+
+        scroll-snap-align: start;
+
+        white-space: nowrap !important;
+    }
+
+
+    /* ICONOS */
+    .dashboard-nav button span {
+        display: block !important;
+
+        font-size: 22px !important;
+        line-height: 1 !important;
+
+        margin: 0 !important;
+    }
+
+
+    /* TEXTO */
+    .dashboard-nav button small {
+        display: block !important;
+
+        font-size: 9px !important;
+        line-height: 1.1 !important;
+
+        letter-spacing: 0.5px !important;
+
+        margin: 2px 0 0 !important;
+
+        white-space: nowrap !important;
+    }
+
+
+    /* Evitar que el contenido quede debajo del menú */
+    .dashboard-contenido {
+        padding-bottom: 115px !important;
+    }
+
+}
