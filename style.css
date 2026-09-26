@@ -11404,3 +11404,133 @@ strong {
   .resumen-final-rpg { grid-template-columns:1fr !important; }
   .libro-rpg-cabecera { align-items:flex-start !important; }
 }
+
+/* =========================================================
+   NIVEL 23 — CORRECCIÓN MÓVIL FINAL · iPhone / Android
+   ========================================================= */
+@media (max-width: 700px) {
+  html { background:#0d0d18; }
+  body {
+    background:#0d0d18;
+    padding-top:env(safe-area-inset-top);
+    padding-left:env(safe-area-inset-left);
+    padding-right:env(safe-area-inset-right);
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+
+  /* PORTADA: dos fichas proporcionadas y sin texto aplastado */
+  .portada-personajes { width:100%; gap:8px !important; align-items:center; }
+  .portada-personaje {
+    min-width:0 !important;
+    flex:1 1 0 !important;
+    padding:8px 6px !important;
+    gap:7px !important;
+  }
+  .portada-avatar { width:48px !important; height:48px !important; flex:0 0 48px !important; }
+  .portada-info-personaje { min-width:0 !important; text-align:left; }
+  .portada-info-personaje small { font-size:7px !important; letter-spacing:1px !important; }
+  .portada-info-personaje strong { font-size:15px !important; letter-spacing:1px !important; white-space:nowrap; }
+  .portada-info-personaje span { font-size:7px !important; letter-spacing:.5px !important; white-space:normal !important; }
+  .portada-corazon { flex:0 0 20px !important; font-size:20px !important; }
+
+  /* DASHBOARD: 4 accesos + MÁS, sin superposición */
+  .dashboard-nav {
+    left:8px !important;
+    right:68px !important;
+    bottom:calc(8px + env(safe-area-inset-bottom)) !important;
+    width:auto !important;
+    padding:5px !important;
+    gap:3px !important;
+  }
+  .dashboard-nav button {
+    min-width:0 !important;
+    padding:6px 2px !important;
+    font-size:11px !important;
+  }
+  .dashboard-nav button span { font-size:18px !important; }
+  .dashboard-nav button small { font-size:8px !important; letter-spacing:.3px !important; }
+  .nav-movil-mas {
+    right:8px !important;
+    bottom:calc(8px + env(safe-area-inset-bottom)) !important;
+    width:54px !important;
+    height:54px !important;
+    min-height:54px !important;
+  }
+
+  /* RETOS: cada misión muestra nombre + descripción completa */
+  #pantalla-retos .pagina-retos-lista .lista-retos-rpg {
+    max-height:none !important;
+    height:auto !important;
+    overflow:visible !important;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:10px !important;
+  }
+  #pantalla-retos .reto-rpg-lista {
+    width:100% !important;
+    height:auto !important;
+    min-height:92px !important;
+    grid-template-columns:48px minmax(0,1fr) 18px !important;
+    padding:12px 10px !important;
+    align-items:center !important;
+    overflow:visible !important;
+  }
+  #pantalla-retos .reto-lista-icono { width:44px !important; height:44px !important; }
+  #pantalla-retos .reto-lista-info { min-width:0 !important; overflow:visible !important; }
+  #pantalla-retos .reto-lista-info strong,
+  #pantalla-retos .reto-lista-info p { white-space:normal !important; overflow:visible !important; text-overflow:clip !important; }
+  #pantalla-retos .reto-lista-info p { line-height:1.4 !important; margin-top:5px !important; }
+
+  /* TIENDA: tarjetas compactas; sin panel con scroll interno */
+  #pantalla-tienda .catalogo-tienda-libro,
+  #pantalla-tienda .tienda-grid-definitiva,
+  #pantalla-tienda .grid-tienda-rpg {
+    height:auto !important;
+    max-height:none !important;
+    overflow:visible !important;
+  }
+  #pantalla-tienda .tienda-grid-definitiva,
+  #pantalla-tienda .grid-tienda-rpg { grid-template-columns:1fr !important; gap:12px !important; padding:0 !important; }
+  #pantalla-tienda .producto-rpg,
+  #pantalla-tienda .producto-rasca {
+    min-height:0 !important;
+    height:auto !important;
+    padding:16px 14px !important;
+    display:grid !important;
+    grid-template-columns:72px minmax(0,1fr) !important;
+    column-gap:14px !important;
+    align-items:center !important;
+  }
+  #pantalla-tienda .icono-producto-rpg { grid-column:1; grid-row:1 / span 4; width:64px !important; height:64px !important; margin:0 !important; }
+  #pantalla-tienda .tipo-producto-rpg,
+  #pantalla-tienda .producto-rpg h3,
+  #pantalla-tienda .producto-rpg > p,
+  #pantalla-tienda .intentos-rasca-tienda { grid-column:2; text-align:left !important; }
+  #pantalla-tienda .producto-rpg h3 { margin:3px 0 !important; font-size:15px !important; }
+  #pantalla-tienda .producto-rpg > p { margin:4px 0 !important; font-size:11px !important; line-height:1.45 !important; }
+  #pantalla-tienda .producto-rpg-inferior {
+    grid-column:1 / -1 !important;
+    margin-top:12px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:12px !important;
+  }
+  #pantalla-tienda .producto-rpg-inferior button { width:auto !important; min-width:125px !important; margin:0 !important; }
+
+  /* PERSONAJES: conserva la estética pero ocupa menos alto */
+  #pantalla-personajes .personaje-seleccion-rpg {
+    padding:14px 12px !important;
+    gap:14px !important;
+    height:auto !important;
+  }
+  #pantalla-personajes .personaje-marco-rpg { width:105px !important; flex:0 0 105px !important; }
+  #pantalla-personajes .personaje-info-rpg h2 { font-size:22px !important; }
+  #pantalla-personajes .personaje-mini-stats-rpg { gap:6px !important; }
+}
+
+@media (max-width: 390px) {
+  .portada-avatar { width:43px !important; height:43px !important; flex-basis:43px !important; }
+  .portada-info-personaje strong { font-size:13px !important; }
+  #pantalla-personajes .personaje-marco-rpg { width:92px !important; flex-basis:92px !important; }
+}
