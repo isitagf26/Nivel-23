@@ -1,4 +1,4 @@
-const CACHE = 'nivel23-v1';
+const CACHE = 'nivel23-v2-mobile';
 const APP_SHELL = [
   './', './index.html', './style.css', './script.js', './manifest.json',
   './assets/iconos/icon-192.png', './assets/iconos/icon-512.png'
@@ -13,11 +13,18 @@ self.addEventListener('activate', event => {
 });
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
+  const important = event.request.mode === 'navigate' || /\.(?:css|js)$/.test(new URL(event.request.url).pathname);
+  if (important) {
+    event.respondWith(fetch(event.request).then(response => {
       const copy = response.clone();
       caches.open(CACHE).then(cache => cache.put(event.request, copy));
       return response;
-    }).catch(() => caches.match('./index.html')))
-  );
+    }).catch(() => caches.match(event.request).then(r => r || caches.match('./index.html'))));
+    return;
+  }
+  event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
+    const copy = response.clone();
+    caches.open(CACHE).then(cache => cache.put(event.request, copy));
+    return response;
+  })));
 });
