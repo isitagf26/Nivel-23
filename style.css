@@ -11319,285 +11319,360 @@ strong {
     }
 
 }
-/* =========================================================
-   NIVEL 23 — AJUSTE MÓVIL GITHUB/PWA (2026-09)
-   Mantiene escritorio y reorganiza pantallas <= 700px
-   ========================================================= */
-@media (max-width: 700px) {
-  html, body { width:100%; max-width:100%; overflow-x:hidden; }
-  body { min-height:100dvh; }
-  .pantalla { width:100%; min-height:100dvh; overflow-x:hidden; }
+/* ==========================================================
+   NIVEL 23 · UI RPG UNIFICADA
+   Override visual final: todas las pantallas comparten el
+   lenguaje visual del mapa/dashboard de referencia.
+   ========================================================== */
+:root{
+  --rpg-bg:#060817;--rpg-panel:#0b0d26;--rpg-panel2:#11133a;
+  --rpg-purple:#8c5cff;--rpg-purple2:#c365ff;--rpg-cyan:#66f5ff;
+  --rpg-pink:#ff63c3;--rpg-gold:#ffc85a;--rpg-line:#7454bd;
+  --rpg-text:#f7f3ff;--rpg-muted:#b9afd0;
+}
+html,body{min-height:100%;background:var(--rpg-bg);}
+body{margin:0;background:#060817;color:var(--rpg-text);}
+.pantalla{min-height:100vh;box-sizing:border-box;background:
+ linear-gradient(rgba(5,7,23,.74),rgba(5,7,23,.9)),
+ url("assets/fondos/fondo-dashboard.png") center/cover fixed no-repeat!important;
+ color:var(--rpg-text);overflow-x:hidden;}
+.pantalla:not(.pantalla-activa){display:none!important}
+.pantalla-activa{display:block!important}
 
-  /* Libros: dejan de forzar el gran lienzo de escritorio */
-  .pantalla-libro-rpg { padding:8px !important; align-items:flex-start !important; overflow-y:auto !important; }
-  .libro-rpg,
-  .libro-retos-rpg,
-  .libro-tienda-rpg,
-  .libro-progreso-rpg,
-  .libro-personajes-rpg,
-  .libro-archivos-rpg {
-    width:100% !important; max-width:none !important; min-width:0 !important;
-    height:auto !important; min-height:calc(100dvh - 16px) !important;
-    margin:0 !important; padding:14px 12px !important; box-sizing:border-box;
+/* Marcos principales */
+.pantalla>.contenedor,.pantalla>.libro-rpg,.pantalla>.panel-final-rpg,
+.pantalla>.contenedor-seccion-rpg,.pantalla>.cena-panel-rpg{
+ width:min(1180px,calc(100% - 36px));margin:22px auto;box-sizing:border-box;
+ border:2px solid rgba(140,92,255,.7);border-radius:18px;
+ background:linear-gradient(145deg,rgba(17,19,58,.96),rgba(6,8,27,.97));
+ box-shadow:0 0 0 4px rgba(104,69,185,.18),0 20px 60px rgba(0,0,0,.45),inset 0 0 40px rgba(100,64,190,.08);
+ padding:28px;
+}
+/* Los diseños que ya tienen un contenedor propio no reciben doble marco */
+.portada-juego,.dashboard-rpg{background:
+ linear-gradient(rgba(5,7,23,.28),rgba(5,7,23,.68)),
+ url("assets/fondos/fondo-dashboard.png") center/cover fixed no-repeat!important;}
+.portada-juego>.portada-fondo,.dashboard-rpg>.dashboard-fondo{opacity:.18}
+
+h1,h2,h3,strong,button{font-family:"Courier New",monospace;letter-spacing:.06em}
+h1,h2,h3{text-shadow:0 0 14px rgba(183,119,255,.22)}
+.mensaje-sistema,small,.subtitulo,[class*="etiqueta"],[class*="tipo-"]{color:var(--rpg-cyan)!important;letter-spacing:.18em}
+
+/* Botones RPG */
+button,.boton-volver,.boton-rpg-secundario,.boton-final-volver,
+[class*="boton-"]{box-sizing:border-box;border:1px solid rgba(176,136,255,.72);border-radius:8px;
+ background:linear-gradient(180deg,#8959ee,#6737c8);color:#fff;font-weight:700;
+ box-shadow:inset 0 1px rgba(255,255,255,.18),0 5px 16px rgba(73,35,145,.2);cursor:pointer;}
+button:hover,[class*="boton-"]:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.boton-volver,.boton-rpg-secundario,.boton-atras-rpg{background:rgba(12,13,40,.88)!important}
+
+/* Tarjetas, misiones, retos, tienda, personajes, logros y progreso */
+.panel,.panel-final,.reto,.producto-rpg,.personaje-seleccion-rpg,.estadistica-progreso-rpg,
+[class*="tarjeta-"],[class*="panel-"]:not(.panel-final-rpg){
+ border-color:rgba(125,91,205,.7)!important;background:linear-gradient(145deg,rgba(18,20,61,.94),rgba(8,10,35,.96))!important;
+ box-shadow:inset 0 0 22px rgba(98,64,183,.07);}
+.reto,.producto-rpg,.personaje-seleccion-rpg,[class*="tarjeta-"]{border-radius:12px!important}
+
+/* Cabeceras tipo videojuego */
+.libro-rpg-cabecera,.cabecera-seccion-rpg{border-bottom:1px solid rgba(139,96,221,.42);padding-bottom:18px!important}
+.libro-rpg-cabecera h1,.cabecera-seccion-rpg h1{color:#fff}
+.libro-rpg-cabecera:before{content:"✦";color:var(--rpg-purple2);font-size:1.35rem;margin-right:10px}
+
+/* Barras */
+.barra-xp-rpg-fondo,.barra-logros-rpg,.barra-progreso-rpg,[class*="barra-"][class*="fondo"]{
+ background:#07091c!important;border:1px solid rgba(123,87,199,.65)!important;border-radius:999px!important;overflow:hidden}
+.barra-xp-rpg,#barra-xp-progreso{background:linear-gradient(90deg,var(--rpg-cyan),var(--rpg-purple2))!important;box-shadow:0 0 12px rgba(102,245,255,.45)}
+
+/* Mapa: protagonista visual */
+#pantalla-mapa>.contenedor{background:rgba(6,8,25,.93);}
+#pantalla-mapa img{max-width:100%;}
+
+/* Scroll en pantallas largas: no volver a cortar tienda/retos */
+#pantalla-tienda,#pantalla-retos,#pantalla-logros,#pantalla-progreso,#pantalla-personajes,
+#pantalla-final,#pantalla-archivos{height:100vh;overflow-y:auto!important;overflow-x:hidden!important;padding-bottom:30px}
+#pantalla-tienda .libro-rpg,#pantalla-retos .libro-rpg,#pantalla-logros .libro-rpg,
+#pantalla-progreso .libro-rpg,#pantalla-personajes .libro-rpg{height:auto!important;min-height:calc(100vh - 44px)!important;overflow:visible!important}
+#pantalla-tienda .contenido-tienda-rpg,#pantalla-tienda .catalogo-tienda-libro,
+#pantalla-retos [class*="contenido"],#pantalla-logros [class*="contenido"]{height:auto!important;max-height:none!important;overflow:visible!important}
+
+/* Scrollbar acorde al juego */
+.pantalla::-webkit-scrollbar{width:11px}.pantalla::-webkit-scrollbar-track{background:#07081b}.pantalla::-webkit-scrollbar-thumb{background:linear-gradient(#8c5cff,#5631a9);border:2px solid #07081b;border-radius:10px}
+
+/* Final/castillo */
+.pantalla-final-rpg{display:none;align-items:center;justify-content:center;padding:24px}
+.pantalla-final-rpg.pantalla-activa{display:flex!important}
+.panel-final-rpg{position:relative;max-width:980px;text-align:center}
+.panel-final-rpg .boton-atras-rpg{position:absolute;left:24px;top:24px;width:54px;height:48px}
+.resumen-final-rpg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0}
+.estadistica-final-rpg{padding:18px 10px;border:1px solid rgba(128,91,205,.62);border-radius:10px;background:rgba(10,12,40,.85)}
+.boton-final-volver{width:min(420px,100%);padding:15px;margin-top:22px}
+
+/* Móvil */
+@media(max-width:760px){
+ .pantalla>.contenedor,.pantalla>.libro-rpg,.pantalla>.panel-final-rpg,.pantalla>.contenedor-seccion-rpg,.pantalla>.cena-panel-rpg{width:calc(100% - 16px);margin:8px auto;padding:16px;border-radius:14px}
+ .resumen-final-rpg{grid-template-columns:1fr 1fr}.panel-final-rpg .boton-atras-rpg{left:12px;top:12px}
+ .libro-rpg-cabecera{gap:10px}.libro-rpg-cabecera h1{font-size:1.45rem}
+ .rejilla-personajes-rpg,.grid-progreso-rpg,.grid-tienda-rpg,.lista-retos-rpg{grid-template-columns:1fr!important}
+}
+
+/* ==========================================================
+   COMPACT UI PASS — 26/09/2026
+   Retos · Tienda · Personajes · Logros · Progreso
+   ========================================================== */
+@media (min-width: 901px) {
+  #pantalla-retos .libro-rpg,
+  #pantalla-tienda .libro-rpg,
+  #pantalla-personajes .libro-rpg,
+  #pantalla-logros .libro-rpg,
+  #pantalla-progreso .libro-rpg {
+    min-height: 0 !important;
+    height: auto !important;
+    margin-top: 18px !important;
+    margin-bottom: 18px !important;
+    padding: 24px 28px !important;
   }
-  .libro-rpg-cabecera { min-height:0 !important; padding:8px 4px 14px !important; gap:10px !important; }
-  .libro-rpg-cabecera h1 { font-size:clamp(22px,7vw,30px) !important; }
-  .libro-rpg-cabecera p { font-size:8px !important; letter-spacing:2px !important; }
-  .contador-logros-rpg { position:static !important; min-width:76px !important; padding:8px !important; flex:0 0 auto; }
-  .barra-logros-rpg { margin:0 0 12px !important; }
 
-  /* Retos / Logros / Archivos: una columna; el detalle va debajo */
+  /* RETOS / LOGROS: libro compacto con panel de detalle real */
   #pantalla-retos .libro-rpg-paginas,
-  #pantalla-logros .libro-rpg-paginas,
-  #pantalla-archivos .libro-rpg-paginas {
-    display:block !important; height:auto !important; min-height:0 !important; overflow:visible !important;
+  #pantalla-logros .libro-rpg-paginas {
+    display: grid !important;
+    grid-template-columns: minmax(360px, .9fr) minmax(420px, 1.1fr) !important;
+    min-height: 520px !important;
+    height: 520px !important;
+    overflow: hidden !important;
   }
   #pantalla-retos .pagina-rpg,
-  #pantalla-logros .pagina-rpg,
-  #pantalla-archivos .pagina-rpg {
-    width:100% !important; min-height:0 !important; height:auto !important;
-    border-left:0 !important; border-right:0 !important; padding:16px 10px !important;
+  #pantalla-logros .pagina-rpg {
+    min-height: 0 !important;
+    height: 100% !important;
+    padding: 24px !important;
+    overflow: hidden !important;
   }
-  #pantalla-retos .pagina-reto-detalle,
-  #pantalla-logros .pagina-logro-detalle,
-  #pantalla-archivos .pagina-archivo-detalle { margin-top:12px !important; }
-  .lista-retos-rpg, .lista-logros-rpg, .lista-archivos-rpg {
-    max-height:52dvh !important; overflow-y:auto !important; overflow-x:hidden !important;
-    padding-right:4px !important; overscroll-behavior:contain;
+  #pantalla-retos .lista-retos-rpg,
+  #pantalla-logros .lista-logros-rpg {
+    max-height: 395px !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    padding-right: 8px !important;
   }
-  .detalle-logro-vacio, .detalle-archivo-vacio { min-height:220px !important; padding:24px 12px !important; }
+  #pantalla-retos .libro-rpg-pie,
+  #pantalla-logros .libro-rpg-pie { margin-top: 14px !important; }
 
-  /* Tienda: una tarjeta por fila y scroll natural de toda la página */
-  #pantalla-tienda .catalogo-tienda-libro { height:auto !important; max-height:none !important; overflow:visible !important; padding:12px 4px 20px !important; }
-  #pantalla-tienda .grid-tienda-rpg { display:grid !important; grid-template-columns:1fr !important; gap:12px !important; height:auto !important; overflow:visible !important; }
-  #pantalla-tienda .producto-rpg { width:100% !important; min-height:230px !important; height:auto !important; margin:0 !important; }
-  #pantalla-tienda .producto-rpg-inferior { margin-top:18px !important; }
-
-  /* Progreso: sin gran espacio vacío */
-  #pantalla-progreso .contenido-progreso-rpg { min-height:0 !important; height:auto !important; padding:12px 2px 18px !important; }
-  #pantalla-progreso .panel-xp-rpg { padding:16px 12px !important; }
-  #pantalla-progreso .xp-rpg-cabecera { align-items:flex-start !important; gap:10px !important; }
-  #pantalla-progreso .grid-progreso-rpg { grid-template-columns:1fr 1fr !important; gap:10px !important; }
-  #pantalla-progreso .estadistica-progreso-rpg { min-height:145px !important; padding:14px 8px !important; }
-  #pantalla-progreso .mensaje-progreso-rpg { margin:16px 0 4px !important; }
-
-  /* Personajes: tarjetas arriba y en columna */
-  #pantalla-personajes .contenido-personajes-rpg { min-height:0 !important; height:auto !important; padding:12px 2px !important; }
-  #pantalla-personajes .rejilla-personajes-rpg { grid-template-columns:1fr !important; gap:12px !important; margin-top:14px !important; }
-  #pantalla-personajes .personaje-seleccion-rpg { min-height:0 !important; }
-
-  /* Pies siempre después del contenido, no al fondo de un lienzo gigante */
-  .libro-rpg-pie { position:static !important; margin-top:16px !important; padding-top:12px !important; min-height:0 !important; }
-  .libro-rpg-pie > span { display:none !important; }
-  .boton-volver, .boton-rpg-secundario { min-height:44px; }
-
-  /* Carta secreta y final: caben en móvil */
-  .contenedor-carta-rpg { width:calc(100% - 16px) !important; min-height:calc(100dvh - 16px) !important; margin:8px auto !important; }
-  .carta-secreta-rpg { width:100% !important; max-width:100% !important; padding:54px 18px 24px !important; box-sizing:border-box; }
-  .texto-carta-rpg { font-size:15px !important; line-height:1.7 !important; }
-  .panel-final-rpg { width:calc(100% - 20px) !important; max-width:620px !important; margin:10px auto !important; padding:18px 14px !important; }
-  .resumen-final-rpg { grid-template-columns:1fr 1fr !important; gap:8px !important; }
-}
-
-@media (max-width: 390px) {
-  #pantalla-progreso .grid-progreso-rpg { grid-template-columns:1fr !important; }
-  .resumen-final-rpg { grid-template-columns:1fr !important; }
-  .libro-rpg-cabecera { align-items:flex-start !important; }
-}
-
-/* =========================================================
-   NIVEL 23 — CORRECCIÓN MÓVIL FINAL · iPhone / Android
-   ========================================================= */
-@media (max-width: 700px) {
-  html { background:#0d0d18; }
-  body {
-    background:#0d0d18;
-    padding-top:env(safe-area-inset-top);
-    padding-left:env(safe-area-inset-left);
-    padding-right:env(safe-area-inset-right);
-    padding-bottom:env(safe-area-inset-bottom);
+  /* TIENDA: 3x2 visible, sin gran pozo vacío */
+  #pantalla-tienda .catalogo-tienda-libro {
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 24px 30px 28px !important;
+    overflow: visible !important;
   }
-
-  /* PORTADA: dos fichas proporcionadas y sin texto aplastado */
-  .portada-personajes { width:100%; gap:8px !important; align-items:center; }
-  .portada-personaje {
-    min-width:0 !important;
-    flex:1 1 0 !important;
-    padding:8px 6px !important;
-    gap:7px !important;
-  }
-  .portada-avatar { width:48px !important; height:48px !important; flex:0 0 48px !important; }
-  .portada-info-personaje { min-width:0 !important; text-align:left; }
-  .portada-info-personaje small { font-size:7px !important; letter-spacing:1px !important; }
-  .portada-info-personaje strong { font-size:15px !important; letter-spacing:1px !important; white-space:nowrap; }
-  .portada-info-personaje span { font-size:7px !important; letter-spacing:.5px !important; white-space:normal !important; }
-  .portada-corazon { flex:0 0 20px !important; font-size:20px !important; }
-
-  /* DASHBOARD: 4 accesos + MÁS, sin superposición */
-  .dashboard-nav {
-    left:8px !important;
-    right:68px !important;
-    bottom:calc(8px + env(safe-area-inset-bottom)) !important;
-    width:auto !important;
-    padding:5px !important;
-    gap:3px !important;
-  }
-  .dashboard-nav button {
-    min-width:0 !important;
-    padding:6px 2px !important;
-    font-size:11px !important;
-  }
-  .dashboard-nav button span { font-size:18px !important; }
-  .dashboard-nav button small { font-size:8px !important; letter-spacing:.3px !important; }
-  .nav-movil-mas {
-    right:8px !important;
-    bottom:calc(8px + env(safe-area-inset-bottom)) !important;
-    width:54px !important;
-    height:54px !important;
-    min-height:54px !important;
-  }
-
-  /* RETOS: cada misión muestra nombre + descripción completa */
-  #pantalla-retos .pagina-retos-lista .lista-retos-rpg {
-    max-height:none !important;
-    height:auto !important;
-    overflow:visible !important;
-    display:flex !important;
-    flex-direction:column !important;
-    gap:10px !important;
-  }
-  #pantalla-retos .reto-rpg-lista {
-    width:100% !important;
-    height:auto !important;
-    min-height:92px !important;
-    grid-template-columns:48px minmax(0,1fr) 18px !important;
-    padding:12px 10px !important;
-    align-items:center !important;
-    overflow:visible !important;
-  }
-  #pantalla-retos .reto-lista-icono { width:44px !important; height:44px !important; }
-  #pantalla-retos .reto-lista-info { min-width:0 !important; overflow:visible !important; }
-  #pantalla-retos .reto-lista-info strong,
-  #pantalla-retos .reto-lista-info p { white-space:normal !important; overflow:visible !important; text-overflow:clip !important; }
-  #pantalla-retos .reto-lista-info p { line-height:1.4 !important; margin-top:5px !important; }
-
-  /* TIENDA: tarjetas compactas; sin panel con scroll interno */
-  #pantalla-tienda .catalogo-tienda-libro,
-  #pantalla-tienda .tienda-grid-definitiva,
   #pantalla-tienda .grid-tienda-rpg {
-    height:auto !important;
-    max-height:none !important;
-    overflow:visible !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0,1fr)) !important;
+    gap: 16px !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 4px !important;
   }
-  #pantalla-tienda .tienda-grid-definitiva,
-  #pantalla-tienda .grid-tienda-rpg { grid-template-columns:1fr !important; gap:12px !important; padding:0 !important; }
-  #pantalla-tienda .producto-rpg,
-  #pantalla-tienda .producto-rasca {
-    min-height:0 !important;
-    height:auto !important;
-    padding:16px 14px !important;
-    display:grid !important;
-    grid-template-columns:72px minmax(0,1fr) !important;
-    column-gap:14px !important;
-    align-items:center !important;
+  #pantalla-tienda .producto-rpg {
+    min-height: 245px !important;
+    height: 245px !important;
+    padding: 18px !important;
   }
-  #pantalla-tienda .icono-producto-rpg { grid-column:1; grid-row:1 / span 4; width:64px !important; height:64px !important; margin:0 !important; }
-  #pantalla-tienda .tipo-producto-rpg,
-  #pantalla-tienda .producto-rpg h3,
-  #pantalla-tienda .producto-rpg > p,
-  #pantalla-tienda .intentos-rasca-tienda { grid-column:2; text-align:left !important; }
-  #pantalla-tienda .producto-rpg h3 { margin:3px 0 !important; font-size:15px !important; }
-  #pantalla-tienda .producto-rpg > p { margin:4px 0 !important; font-size:11px !important; line-height:1.45 !important; }
-  #pantalla-tienda .producto-rpg-inferior {
-    grid-column:1 / -1 !important;
-    margin-top:12px !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:space-between !important;
-    gap:12px !important;
-  }
-  #pantalla-tienda .producto-rpg-inferior button { width:auto !important; min-width:125px !important; margin:0 !important; }
+  #pantalla-tienda .producto-rpg > p { min-height: 38px !important; margin: 8px 0 10px !important; }
+  #pantalla-tienda .producto-rpg-inferior { margin-top: auto !important; }
+  #pantalla-tienda .libro-rpg-pie { margin-top: 14px !important; }
 
-  /* PERSONAJES: conserva la estética pero ocupa menos alto */
+  /* PERSONAJES: tarjetas arriba y marco ajustado al contenido */
+  #pantalla-personajes .contenido-personajes-rpg {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 24px 24px 18px !important;
+  }
+  #pantalla-personajes .rejilla-personajes-rpg {
+    margin: 26px auto 20px !important;
+    align-items: stretch !important;
+    max-width: 900px !important;
+    gap: 22px !important;
+  }
   #pantalla-personajes .personaje-seleccion-rpg {
-    padding:14px 12px !important;
-    gap:14px !important;
-    height:auto !important;
+    min-height: 285px !important;
+    height: auto !important;
   }
-  #pantalla-personajes .personaje-marco-rpg { width:105px !important; flex:0 0 105px !important; }
-  #pantalla-personajes .personaje-info-rpg h2 { font-size:22px !important; }
-  #pantalla-personajes .personaje-mini-stats-rpg { gap:6px !important; }
+  #pantalla-personajes .frase-grupo-rpg { margin: 18px 0 6px !important; }
+  #pantalla-personajes .libro-rpg-pie { margin-top: 12px !important; }
+
+  /* PROGRESO: termina donde termina la información */
+  #pantalla-progreso .contenido-progreso-rpg {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 24px 0 8px !important;
+  }
+  #pantalla-progreso .panel-xp-rpg { max-width: 900px !important; margin: 0 auto 20px !important; }
+  #pantalla-progreso .grid-progreso-rpg {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+    grid-template-columns: repeat(3,1fr) !important;
+    gap: 14px !important;
+  }
+  #pantalla-progreso .estadistica-progreso-rpg {
+    min-height: 155px !important;
+    height: auto !important;
+    padding: 18px 12px !important;
+  }
+  #pantalla-progreso .mensaje-progreso-rpg { margin: 18px auto 4px !important; }
+  #pantalla-progreso .libro-rpg-pie { margin-top: 12px !important; }
 }
 
-@media (max-width: 390px) {
-  .portada-avatar { width:43px !important; height:43px !important; flex-basis:43px !important; }
-  .portada-info-personaje strong { font-size:13px !important; }
-  #pantalla-personajes .personaje-marco-rpg { width:92px !important; flex-basis:92px !important; }
+@media (max-width: 900px) {
+  #pantalla-retos .libro-rpg-paginas,
+  #pantalla-logros .libro-rpg-paginas { height:auto!important; min-height:0!important; grid-template-columns:1fr!important; }
+  #pantalla-retos .pagina-rpg,
+  #pantalla-logros .pagina-rpg { height:auto!important; min-height:0!important; }
+  #pantalla-tienda .grid-tienda-rpg { height:auto!important; max-height:none!important; overflow:visible!important; }
 }
-/* =====================================================
-   NIVEL 23
-   MENÚ MÓVIL DESLIZABLE
-===================================================== */
+
+/* ==========================================================
+   FIX LOGROS COMPACTO — 26/09/2026
+   Evita que la cantidad de logros estire todo el libro.
+   ========================================================== */
+#pantalla-logros .libro-rpg {
+    min-height: 0 !important;
+    height: auto !important;
+}
+
+#pantalla-logros .libro-rpg-paginas {
+    display: grid !important;
+    grid-template-columns: minmax(320px, .92fr) minmax(360px, 1.08fr) !important;
+    height: 560px !important;
+    min-height: 0 !important;
+    max-height: 560px !important;
+    overflow: hidden !important;
+}
+
+#pantalla-logros .pagina-rpg {
+    height: 560px !important;
+    min-height: 0 !important;
+    max-height: 560px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+#pantalla-logros #lista-logros {
+    height: 420px !important;
+    max-height: 420px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-right: 10px !important;
+    box-sizing: border-box !important;
+}
+
+#pantalla-logros #lista-logros::-webkit-scrollbar { width: 8px; }
+#pantalla-logros #lista-logros::-webkit-scrollbar-track { background: rgba(5,6,24,.8); border-radius: 10px; }
+#pantalla-logros #lista-logros::-webkit-scrollbar-thumb { background: linear-gradient(#8c5cff,#5631a9); border-radius: 10px; }
+
+#pantalla-logros .pagina-logro-detalle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#pantalla-logros .detalle-logro-vacio {
+    margin: 0 !important;
+    padding: 20px !important;
+}
+
+#pantalla-logros .libro-rpg-pie {
+    margin-top: 14px !important;
+}
+
+@media (max-width: 700px) {
+    #pantalla-logros .libro-rpg-paginas {
+        grid-template-columns: 1fr !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+    #pantalla-logros .pagina-rpg {
+        height: auto !important;
+        max-height: none !important;
+    }
+    #pantalla-logros #lista-logros {
+        height: 430px !important;
+        max-height: 430px !important;
+        overflow-y: auto !important;
+    }
+    #pantalla-logros .pagina-logro-detalle {
+        min-height: 300px !important;
+    }
+}
+/* =========================================
+   NIVEL 23 · NAVEGACIÓN MÓVIL HORIZONTAL
+========================================= */
 
 @media (max-width: 600px) {
 
-    /* Ocultamos completamente el botón MÁS */
-    .nav-movil-mas,
-    .menu-movil-extra {
-        display: none !important;
-    }
-
-
-    /* MENÚ PRINCIPAL */
+    /* Barra inferior */
     .dashboard-nav {
         position: fixed !important;
 
         left: 10px !important;
         right: 10px !important;
+
         bottom: calc(10px + env(safe-area-inset-bottom)) !important;
 
         width: auto !important;
         max-width: none !important;
 
         display: flex !important;
-        flex-direction: row !important;
         justify-content: flex-start !important;
-        align-items: center !important;
 
         gap: 8px !important;
 
         padding: 8px !important;
-        margin: 0 !important;
 
         overflow-x: auto !important;
         overflow-y: hidden !important;
 
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
-        scroll-snap-type: x proximity;
-
-        scrollbar-width: none;
-
         transform: none !important;
+
+        scroll-snap-type: x proximity;
+        scroll-behavior: smooth;
+
+        -webkit-overflow-scrolling: touch;
+
+        z-index: 100 !important;
 
         background: rgba(8, 8, 25, 0.96) !important;
 
-        border: 1px solid rgba(150, 110, 255, 0.45) !important;
-        border-radius: 20px !important;
+        border: 1px solid rgba(160, 120, 255, 0.45) !important;
 
-        z-index: 9999 !important;
+        border-radius: 20px !important;
     }
 
 
-    /* Quitar barra de desplazamiento */
+    /* Ocultar scrollbar */
     .dashboard-nav::-webkit-scrollbar {
         display: none;
     }
 
+    .dashboard-nav {
+        scrollbar-width: none;
+    }
 
-    /* MOSTRAR TODOS LOS BOTONES */
-    .dashboard-nav button {
+
+    /* IMPORTANTE:
+       volver a mostrar TODOS los botones */
+    .dashboard-nav button,
+    .dashboard-nav button:nth-child(n) {
+
         display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: center !important;
+        justify-content: center !important;
 
         flex: 0 0 105px !important;
 
@@ -11607,52 +11682,78 @@ strong {
         height: 72px !important;
         min-height: 72px !important;
 
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-
-        gap: 5px !important;
-
-        padding: 7px 5px !important;
         margin: 0 !important;
 
-        border-radius: 15px !important;
+        padding: 7px 5px !important;
 
         scroll-snap-align: start;
 
-        white-space: nowrap !important;
+        border-radius: 15px !important;
     }
 
 
-    /* ICONOS */
     .dashboard-nav button span {
-        display: block !important;
-
         font-size: 22px !important;
         line-height: 1 !important;
-
-        margin: 0 !important;
     }
 
 
-    /* TEXTO */
     .dashboard-nav button small {
-        display: block !important;
+        margin-top: 6px !important;
 
         font-size: 9px !important;
-        line-height: 1.1 !important;
 
         letter-spacing: 0.5px !important;
 
-        margin: 2px 0 0 !important;
-
         white-space: nowrap !important;
     }
 
 
-    /* Evitar que el contenido quede debajo del menú */
+    /* Ya no necesitamos MÁS */
+    .nav-movil-mas {
+        display: none !important;
+    }
+
+
+    /* Dejamos espacio inferior para la barra */
     .dashboard-contenido {
         padding-bottom: 115px !important;
     }
 
+}
+
+
+/* ==========================================================
+   NIVEL 23 · TIENDA MÓVIL · REDISEÑO RPG PIXEL
+   ========================================================== */
+@media (max-width: 650px) {
+  #pantalla-tienda { min-height:100vh!important; height:auto!important; overflow-x:hidden!important; overflow-y:auto!important; }
+  #pantalla-tienda .contenedor-seccion-rpg { width:calc(100% - 18px)!important; height:auto!important; min-height:0!important; margin:10px auto!important; padding:14px 10px 18px!important; border:2px solid #744bd0!important; border-radius:18px!important; background:linear-gradient(180deg,rgba(25,20,65,.97),rgba(5,7,28,.98))!important; box-shadow:0 0 0 4px rgba(116,75,208,.14),0 0 22px rgba(113,70,220,.25)!important; }
+  #pantalla-tienda .cabecera-seccion-rpg { min-height:88px!important; display:grid!important; grid-template-columns:44px 1fr 62px!important; align-items:center!important; gap:8px!important; padding:8px 4px 12px!important; }
+  #pantalla-tienda .boton-atras-rpg { width:40px!important; height:40px!important; min-width:40px!important; padding:0!important; border:1px solid #8058d8!important; border-radius:8px!important; background:#0b0b29!important; font-size:20px!important; }
+  #pantalla-tienda .titulo-seccion-rpg { text-align:center!important; }
+  #pantalla-tienda .titulo-seccion-rpg small { display:none!important; }
+  #pantalla-tienda .titulo-seccion-rpg h1 { margin:0!important; font-size:clamp(22px,7vw,30px)!important; line-height:1!important; letter-spacing:2px!important; color:#fff!important; text-shadow:0 0 8px rgba(255,255,255,.35),0 0 14px rgba(187,107,255,.25)!important; }
+  #pantalla-tienda .titulo-seccion-rpg p { margin:7px 0 0!important; font-size:8px!important; letter-spacing:2px!important; color:#64e9f5!important; text-transform:uppercase!important; }
+  #pantalla-tienda .saldo-cabecera-rpg { width:58px!important; height:54px!important; padding:5px!important; display:flex!important; flex-direction:column!important; align-items:center!important; justify-content:center!important; border:1px solid #7550c9!important; border-radius:8px!important; background:rgba(4,7,29,.9)!important; }
+  #pantalla-tienda .saldo-cabecera-rpg small { font-size:6px!important; letter-spacing:1px!important; color:#6ff4ff!important; }
+  #pantalla-tienda .saldo-cabecera-rpg strong { margin-top:3px!important; font-size:10px!important; color:#fff!important; }
+  #pantalla-tienda .separador-rpg-seccion { margin:0 0 10px!important; }
+  #pantalla-tienda .cabecera-tienda-rpg { display:block!important; padding:10px 4px 14px!important; text-align:center!important; }
+  #pantalla-tienda .cabecera-tienda-rpg small { display:none!important; }
+  #pantalla-tienda .cabecera-tienda-rpg h2 { margin:0!important; font-size:15px!important; letter-spacing:1.5px!important; color:#ffb5f6!important; }
+  #pantalla-tienda .cabecera-tienda-rpg>span { display:block!important; margin-top:6px!important; font-size:7px!important; letter-spacing:2px!important; color:#5de8f6!important; }
+  #pantalla-tienda .grid-tienda-rpg, #pantalla-tienda .tienda-grid-definitiva { display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important; grid-auto-rows:auto!important; width:100%!important; height:auto!important; min-height:0!important; max-height:none!important; overflow:visible!important; gap:9px!important; padding:4px!important; margin:0!important; }
+  #pantalla-tienda .producto-rpg, #pantalla-tienda .producto-rasca, #pantalla-tienda .tienda-grid-definitiva .producto-rpg { position:relative!important; width:100%!important; height:215px!important; min-height:215px!important; max-height:215px!important; margin:0!important; padding:13px 8px 10px!important; display:flex!important; flex-direction:column!important; align-items:center!important; overflow:hidden!important; text-align:center!important; border:1px solid #594390!important; border-radius:10px!important; background:linear-gradient(145deg,rgba(20,20,58,.98),rgba(7,8,31,.98))!important; box-shadow:inset 0 0 18px rgba(126,76,220,.05)!important; }
+  #pantalla-tienda .producto-rpg::before { content:"✦"; position:absolute; top:5px; left:7px; font-size:6px; color:#c369ff; opacity:.8; }
+  #pantalla-tienda .icono-producto-rpg { width:48px!important; height:48px!important; min-width:48px!important; min-height:48px!important; margin:2px auto 8px!important; display:flex!important; align-items:center!important; justify-content:center!important; border:1px solid #57428b!important; border-radius:8px!important; background:rgba(11,11,40,.92)!important; font-size:25px!important; }
+  #pantalla-tienda .tipo-producto-rpg { margin:0 0 5px!important; font-size:6px!important; letter-spacing:1.5px!important; color:#5ce9f7!important; text-transform:uppercase!important; }
+  #pantalla-tienda .producto-rpg h3 { margin:0 0 7px!important; font-size:11px!important; line-height:1.25!important; letter-spacing:.8px!important; color:#78f0fb!important; }
+  #pantalla-tienda .producto-rpg>p { margin:0!important; padding:0 2px!important; font-size:7px!important; line-height:1.45!important; color:#aaa6bd!important; flex:1!important; }
+  #pantalla-tienda .producto-rpg-inferior { width:100%!important; margin-top:auto!important; display:grid!important; grid-template-columns:auto 1fr!important; gap:6px!important; align-items:center!important; }
+  #pantalla-tienda .producto-rpg-inferior strong { white-space:nowrap!important; font-size:9px!important; color:#ffd55c!important; }
+  #pantalla-tienda .producto-rpg-inferior button { width:100%!important; min-width:0!important; min-height:31px!important; margin:0!important; padding:6px 4px!important; border:1px solid #a86cff!important; border-radius:5px!important; background:linear-gradient(180deg,#9256ed,#6632c5)!important; box-shadow:inset 0 1px rgba(255,255,255,.2),0 0 8px rgba(130,69,230,.18)!important; font-size:7px!important; letter-spacing:.4px!important; color:#fff!important; }
+  #pantalla-tienda .producto-rpg button:disabled { background:#292943!important; border-color:#41415e!important; color:#77778d!important; box-shadow:none!important; opacity:.8!important; }
+  #pantalla-tienda .resultado-tienda-rpg { margin:12px 4px 0!important; padding:9px!important; font-size:8px!important; }
+  #pantalla-tienda .pie-seccion-rpg { margin:14px 4px 0!important; padding-top:12px!important; }
 }

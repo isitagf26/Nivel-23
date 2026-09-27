@@ -7510,3 +7510,22 @@ cargarPartida();
 */
 
 mostrarPantalla("pantalla-inicio");
+
+// ==================================================
+// AUTOGUARDADO DE LA PARTIDA
+// ==================================================
+function autoguardarPartida() {
+    try {
+        guardarPartida();
+        console.log("Partida guardada automáticamente");
+    } catch (error) {
+        console.error("Error al guardar automáticamente:", error);
+    }
+}
+
+document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") autoguardarPartida();
+});
+window.addEventListener("pagehide", autoguardarPartida);
+window.addEventListener("beforeunload", autoguardarPartida);
+setInterval(autoguardarPartida, 5000);
