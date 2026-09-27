@@ -11982,3 +11982,52 @@ setInterval(
     }
 }
 
+
+/* ==========================================================
+   NIVEL 23 · SAFE AREA GLOBAL iPHONE / ANDROID
+========================================================== */
+html {
+    background: #070713;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    box-sizing: border-box;
+}
+
+@supports (padding: env(safe-area-inset-top)) {
+    body {
+        padding-left: env(safe-area-inset-left, 0px);
+        padding-right: env(safe-area-inset-right, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+}
+
+@media (max-width: 768px) {
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body > .pantalla {
+        box-sizing: border-box !important;
+        padding-top: calc(env(safe-area-inset-top, 0px) + 14px) !important;
+        min-height: 100dvh !important;
+    }
+
+    body > .pantalla > :first-child {
+        box-sizing: border-box;
+    }
+}
+
+@media (display-mode: standalone) and (max-width: 768px) {
+    body > .pantalla {
+        padding-top: calc(env(safe-area-inset-top, 0px) + 18px) !important;
+    }
+}
+
