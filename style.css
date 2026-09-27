@@ -11721,75 +11721,7 @@ button:hover,[class*="boton-"]:hover{filter:brightness(1.12);transform:translate
     }
 
 }
-// ==================================================
-// AUTOGUARDADO DE LA PARTIDA
-// ==================================================
 
-function autoguardarPartida() {
-
-    try {
-
-        guardarPartida();
-
-        console.log("Partida guardada automáticamente");
-
-    } catch (error) {
-
-        console.error(
-            "Error al guardar automáticamente:",
-            error
-        );
-
-    }
-}
-
-
-// Cuando la app pasa a segundo plano
-document.addEventListener(
-    "visibilitychange",
-    function () {
-
-        if (document.visibilityState === "hidden") {
-
-            autoguardarPartida();
-
-        }
-
-    }
-);
-
-
-// Especialmente importante en iPhone / Safari / PWA
-window.addEventListener(
-    "pagehide",
-    function () {
-
-        autoguardarPartida();
-
-    }
-);
-
-
-// Respaldo adicional
-window.addEventListener(
-    "beforeunload",
-    function () {
-
-        autoguardarPartida();
-
-    }
-);
-
-
-// Guardado periódico mientras juegas
-setInterval(
-    function () {
-
-        autoguardarPartida();
-
-    },
-    5000
-)
 /* NIVEL 23 · TIENDA MÓVIL COMPACTA · FIX */
 @media (max-width:650px){
 #pantalla-tienda .catalogo-tienda-libro{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;padding:14px 10px 22px!important}
