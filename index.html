@@ -8,11 +8,6 @@
     <title>Nivel 23</title>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#120d2d">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="assets/iconos/icon-192.png">
 </head>
 
 <body>
@@ -3844,7 +3839,7 @@
      CENA SECRETA
 ================================================== -->
 
-<!-- ==================================================
+<<!-- ==================================================
      PUERTA SECRETA · CENA
 ================================================== -->
 
@@ -4067,68 +4062,7 @@
      FINAL
 ================================================== -->
 
-<div id="pantalla-final" class="pantalla">
-
-    <div class="contenedor">
-
-        <p class="mensaje-sistema">
-            ████████████████
-        </p>
-
-        <h1>
-            ⭐ NIVEL 23 COMPLETADO ⭐
-        </h1>
-
-        <p>
-            Has llegado al final de la aventura.
-        </p>
-
-
-        <div class="panel-final">
-
-            <p>⭐ XP</p>
-
-            <strong id="final-xp">
-                0 / 350
-            </strong>
-
-        </div>
-
-
-        <div class="panel-final">
-
-            <p>⚔️ RETOS</p>
-
-            <strong id="final-retos">
-                0 / 9
-            </strong>
-
-        </div>
-
-
-        <div class="panel-final">
-
-            <p>🏆 LOGROS</p>
-
-            <strong id="final-logros">
-                0 / 14
-            </strong>
-
-        </div>
-
-
-        <div class="panel-final">
-
-            <p>🪙 MONEDAS CONSEGUIDAS</p>
-
-            <strong id="final-monedas">
-                0
-            </strong>
-
-        </div>
-
-
-      <!-- ==================================================
+<!-- ==================================================
      CASTILLO · FINAL DEL NIVEL 23
 ================================================== -->
 
@@ -4140,8 +4074,8 @@
 
         <button
             class="boton-atras-rpg"
-            onclick="volverJuego()"
-            aria-label="Volver"
+            onclick="volverDelCastillo()"
+            aria-label="Volver al mapa"
         >
             ←
         </button>
@@ -4263,9 +4197,9 @@
 
         <button
             class="boton-final-volver"
-            onclick="volverJuego()"
+            onclick="volverDelCastillo()"
         >
-            VOLVER A LA AVENTURA
+            ← VOLVER AL MAPA
         </button>
 
     </div>
@@ -4273,14 +4207,6 @@
 </div>
 
 <script src="script.js"></script>
-
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('./service-worker.js');
-  });
-}
-</script>
 </body>
 
 </html>
