@@ -4839,6 +4839,36 @@ function recogerRecompensa3() {
 // RETOS SECUNDARIOS
 // ==================================================
 
+const iconosRetos = {
+
+    fotoJuntos:
+        "assets/retos/reto-recuerdo.png",
+
+    videojuegoCalle:
+        "assets/retos/reto-videojuego.png",
+
+    objetoRosa:
+        "assets/retos/reto-rosa.png",
+
+    tripleA:
+        "assets/retos/reto-triple-a.png",
+
+    juegoInfancia:
+        "assets/retos/reto-pasado.png",
+
+    japon:
+        "assets/retos/reto-japon.png",
+
+    peru:
+        "assets/retos/reto-peru.png",
+
+    platoGenko:
+        "assets/retos/reto-gastronomico.png",
+
+    lavaSinAbandonar:
+        "assets/retos/reto-superviviente.png"
+
+};
 function abrirRetos() {
 
     renderizarRetos();
@@ -4909,13 +4939,13 @@ function renderizarRetos() {
 
             tarjeta.innerHTML = `
 
-                <div class="reto-lista-icono">
-                    ${
-                        reto.completado
-                            ? "✓"
-                            : "⚔"
-                    }
-                </div>
+              <div class="reto-lista-icono">
+    <img
+        src="${iconosRetos[id]}"
+        alt="${reto.nombre}"
+        class="imagen-icono-reto"
+    >
+</div>
 
 
                 <div class="reto-lista-info">
@@ -5106,14 +5136,13 @@ function mostrarDetalleReto(id) {
             </div>
 
 
-            <div class="detalle-reto-icono-grande">
-                ${
-                    reto.completado
-                        ? "🏆"
-                        : "⚔️"
-                }
-            </div>
-
+          <div class="detalle-reto-icono-grande">
+    <img
+        src="${iconosRetos[id]}"
+        alt="${reto.nombre}"
+        class="imagen-icono-reto-grande"
+    >
+</div>
 
             <h2>
                 ${reto.nombre}
