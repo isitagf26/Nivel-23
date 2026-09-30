@@ -1,15 +1,21 @@
 {
-  "name": "Nivel 23 · La Aventura",
-  "short_name": "Nivel 23",
-  "description": "Una aventura especial de nivel 23.",
-  "start_url": "./index.html",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#070713",
-  "theme_color": "#120d2d",
-  "orientation": "any",
-  "icons": [
-    {"src":"assets/iconos/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"assets/iconos/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
-  ]
+    "name": "Nivel 23",
+    "short_name": "Nivel 23",
+    "start_url": "/Nivel-23/",
+    "scope": "/Nivel-23/",
+    "display": "standalone",
+    "background_color": "#08051a",
+    "theme_color": "#08051a",
+    "icons": [
+        {
+            "src": "/Nivel-23/assets/iconos/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/Nivel-23/assets/iconos/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
 }
