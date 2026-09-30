@@ -1413,7 +1413,263 @@ function actualizarTodo() {
 
     actualizarBotonPruebaPendiente();
 
+    // actualizarMisiones();
+
     comprobarLogrosAutomaticos();
+}
+function abrirMisiones() {
+
+    actualizarMisiones();
+
+    mostrarPantalla("pantalla-misiones");
+
+}
+
+
+function actualizarMisiones() {
+
+    /* DESAYUNO */
+
+    actualizarTarjetaMision(
+        "desayuno",
+        estadoDesayuno,
+        abrirDesayunoMapa
+    );
+
+
+    /* OXO = MISIÓN 1 */
+
+    actualizarTarjetaMision(
+        "oxo",
+        estadoMision1,
+        abrirZona1
+    );
+
+
+    /* GENKO = MISIÓN 2 */
+
+    actualizarTarjetaMision(
+        "genko",
+        estadoMision2,
+        abrirMision2
+    );
+
+
+    /* SUELO ES LAVA = MISIÓN 3 */
+
+    actualizarTarjetaMision(
+        "lava",
+        estadoMision3,
+        abrirMision3
+    );
+
+
+    /* CENA */
+
+    actualizarTarjetaMision(
+        "cena",
+        estadoCena,
+        abrirCenaMapa
+    );
+
+}
+function actualizarTarjetaMision(
+    id,
+    estado,
+    accion
+) {
+
+    const tarjeta =
+        document.getElementById(
+            "tarjeta-mision-" + id
+        );
+
+    const icono =
+        document.getElementById(
+            "icono-mision-" + id
+        );
+
+    const texto =
+        document.getElementById(
+            "estado-texto-" + id
+        );
+
+    const nombre =
+        document.getElementById(
+            "nombre-mision-" + id
+        );
+
+
+    if (
+        !tarjeta ||
+        !icono ||
+        !texto ||
+        !nombre
+    ) {
+        return;
+    }
+
+
+    /* =========================================
+       NOMBRES DE LAS MISIONES
+    ========================================= */
+
+    const nombresMisiones = {
+
+        desayuno:
+            "DESAYUNO",
+
+        oxo:
+            "OXO · MUSEO DE LOS VIDEOJUEGOS",
+
+        genko:
+            "GENKO",
+
+        lava:
+            "EL SUELO ES LAVA",
+
+        cena:
+            "RECARGA NOCTURNA"
+
+    };
+
+
+    /* =========================================
+       IMAGEN PROPIA DE CADA MISIÓN
+    ========================================= */
+
+    const iconosMisiones = {
+
+        desayuno:
+            "assets/iconos/desayuno.png",
+
+        oxo:
+            "assets/iconos/oxo.png",
+
+        genko:
+            "assets/iconos/genko.png",
+
+        lava:
+            "assets/iconos/lava.png",
+
+        cena:
+            "assets/iconos/cena.png"
+
+    };
+
+
+    /* =========================================
+       LIMPIAR ESTADOS ANTERIORES
+    ========================================= */
+
+    tarjeta.classList.remove(
+        "bloqueada",
+        "disponible",
+        "enCurso",
+        "completada"
+    );
+
+
+    /* =========================================
+       MISIÓN COMPLETADA
+    ========================================= */
+
+ if (estado === "completada") {
+
+    const iconosCompletadas = {
+        desayuno: "assets/iconos/desayuno.png",
+        oxo: "assets/iconos/oxo.png",
+        genko: "assets/iconos/genko.png",
+        lava: "assets/iconos/lava.png",
+        cena: "assets/iconos/cena.png"
+    };
+
+    icono.src =
+        iconosCompletadas[id] ||
+        "assets/iconos/mision completada.png";
+
+    texto.textContent =
+        "MISIÓN COMPLETADA";
+
+    tarjeta.onclick = null;
+
+    return;
+}
+
+    /* =========================================
+       MISIÓN DISPONIBLE
+       → APARECE SU IMAGEN
+    ========================================= */
+
+    if (estado === "disponible") {
+
+        tarjeta.classList.add(
+            "disponible"
+        );
+
+        nombre.textContent =
+            nombresMisiones[id];
+
+        icono.src =
+            iconosMisiones[id];
+
+        texto.textContent =
+            "MISIÓN DISPONIBLE";
+
+        tarjeta.onclick =
+            accion || null;
+
+        return;
+    }
+
+
+    /* =========================================
+       MISIÓN EN CURSO
+       → MANTIENE SU IMAGEN
+    ========================================= */
+
+    if (estado === "enCurso") {
+
+        tarjeta.classList.add(
+            "enCurso"
+        );
+
+        nombre.textContent =
+            nombresMisiones[id];
+
+        icono.src =
+            iconosMisiones[id];
+
+        texto.textContent =
+            "MISIÓN EN CURSO";
+
+        tarjeta.onclick =
+            accion || null;
+
+        return;
+    }
+
+
+    /* =========================================
+       MISIÓN BLOQUEADA / OCULTA
+       → PERGAMINO CON CANDADO
+    ========================================= */
+
+    tarjeta.classList.add(
+        "bloqueada"
+    );
+
+    nombre.textContent =
+        "???";
+
+    icono.src =
+        "assets/iconos/mision bloqueada.png";
+
+    texto.textContent =
+        "MISIÓN BLOQUEADA";
+
+    tarjeta.onclick =
+        null;
 }
 // ==================================================
 // DASHBOARD PRINCIPAL

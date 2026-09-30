@@ -11359,13 +11359,37 @@ h1,h2,h3{text-shadow:0 0 14px rgba(183,119,255,.22)}
 .mensaje-sistema,small,.subtitulo,[class*="etiqueta"],[class*="tipo-"]{color:var(--rpg-cyan)!important;letter-spacing:.18em}
 
 /* Botones RPG */
-button,.boton-volver,.boton-rpg-secundario,.boton-final-volver,
-[class*="boton-"]{box-sizing:border-box;border:1px solid rgba(176,136,255,.72);border-radius:8px;
- background:linear-gradient(180deg,#8959ee,#6737c8);color:#fff;font-weight:700;
- box-shadow:inset 0 1px rgba(255,255,255,.18),0 5px 16px rgba(73,35,145,.2);cursor:pointer;}
-button:hover,[class*="boton-"]:hover{filter:brightness(1.12);transform:translateY(-1px)}
-.boton-volver,.boton-rpg-secundario,.boton-atras-rpg{background:rgba(12,13,40,.88)!important}
+/* BOTONES RPG GENERALES */
+button,
+.boton-volver,
+.boton-rpg-secundario,
+.boton-final-volver {
+    box-sizing: border-box;
+    border: 1px solid rgba(176,136,255,.72);
+    border-radius: 8px;
+    background: linear-gradient(180deg,#8959ee,#6737c8);
+    color: #fff;
+    font-weight: 700;
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.18),
+        0 5px 16px rgba(73,35,145,.2);
+    cursor: pointer;
+}
 
+button:hover,
+.boton-volver:hover,
+.boton-rpg-secundario:hover,
+.boton-final-volver:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+/* VOLVER / ATRÁS */
+.boton-volver,
+.boton-rpg-secundario,
+.boton-atras-rpg {
+    background: rgba(12,13,40,.88) !important;
+}
 /* Tarjetas, misiones, retos, tienda, personajes, logros y progreso */
 .panel,.panel-final,.reto,.producto-rpg,.personaje-seleccion-rpg,.estadistica-progreso-rpg,
 [class*="tarjeta-"],[class*="panel-"]:not(.panel-final-rpg){
@@ -11962,4 +11986,532 @@ body {
         padding-top: calc(env(safe-area-inset-top, 0px) + 18px) !important;
     }
 }
+/* ==================================================
+   ICONOS RPG · NAVEGACIÓN PRINCIPAL
+================================================== */
 
+.dashboard-nav .nav-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 54px;
+    height: 54px;
+
+    margin: 0 auto 5px;
+}
+
+.dashboard-nav .nav-icono img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    image-rendering: auto;
+
+    filter:
+        drop-shadow(0 0 5px rgba(137, 92, 255, 0.35));
+}
+
+.dashboard-nav button:hover .nav-icono img {
+    transform: scale(1.08);
+}
+
+.dashboard-nav .nav-icono img {
+    transition: transform 0.18s ease;
+}
+/* ==================================================
+   ICONOS RPG · HUD
+================================================== */
+
+.stat-titulo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stat-icono {
+    width: 22px;
+    height: 22px;
+
+    object-fit: contain;
+    flex-shrink: 0;
+
+    filter:
+        drop-shadow(0 0 4px rgba(137, 92, 255, 0.35));
+}
+
+.stat-icono-xp {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* Un poquito más grande en escritorio */
+
+@media (min-width: 900px) {
+
+    .stat-icono {
+        width: 24px;
+        height: 24px;
+    }
+
+    .stat-icono-xp {
+        width: 26px;
+        height: 26px;
+    }
+
+}
+/* ==================================================
+   BOTONES RPG CON ICONOS
+================================================== */
+
+.boton-con-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+.icono-boton-rpg {
+    width: 28px;
+    height: 28px;
+
+    object-fit: contain;
+    flex-shrink: 0;
+
+    filter:
+        drop-shadow(0 0 5px rgba(137, 92, 255, 0.4));
+}
+
+
+/* MÓVIL */
+
+@media (max-width: 600px) {
+
+    .icono-boton-rpg {
+        width: 24px;
+        height: 24px;
+    }
+
+}
+/* ==================================================
+   ICONO VOLVER · TODA LA APP
+================================================== */
+
+.boton-volver {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.icono-volver-rpg {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+
+    filter:
+        drop-shadow(0 0 5px rgba(137, 92, 255, 0.4));
+}
+
+@media (max-width: 600px) {
+
+    .icono-volver-rpg {
+        width: 24px;
+        height: 24px;
+    }
+
+}
+/* Quitar caja/fondo del icono VOLVER */
+.icono-volver-rpg {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+
+    width: 30px !important;
+    height: 30px !important;
+
+    object-fit: contain;
+}
+/* ==================================================
+   FIX DEFINITIVO · ICONO VOLVER
+================================================== */
+
+/* Botón VOLVER */
+.boton-volver.boton-rpg-secundario {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+}
+
+/* Imagen de la flecha */
+.boton-volver.boton-rpg-secundario .icono-volver-rpg {
+    display: block !important;
+
+    width: 30px !important;
+    height: 30px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    background: transparent !important;
+    background-image: none !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    object-fit: contain !important;
+}
+
+/* Evita que estilos genéricos de iconos creen una caja */
+.boton-volver .icono-volver-rpg:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+.icono-volver-rpg {
+    opacity: 0 !important;
+}
+/* =========================================
+   ICONOS · ESTADO DE MISIÓN
+========================================= */
+
+.icono-estado-mision {
+    display: block;
+
+    width: 82px;
+    height: 82px;
+
+    object-fit: contain;
+
+    margin: 0 auto 16px;
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+/* =========================================
+   PANTALLA · MISIONES
+========================================= */
+
+#pantalla-misiones {
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contenido-misiones-rpg {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.cabecera-misiones-rpg {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.cabecera-misiones-rpg h1 {
+    margin: 8px 0;
+}
+
+.lista-misiones-rpg {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+
+/* TARJETA */
+
+.tarjeta-mision-rpg {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    min-height: 130px;
+    padding: 18px;
+
+    border: 1px solid rgba(176, 136, 255, .65);
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(21, 18, 57, .96),
+            rgba(8, 8, 28, .96)
+        );
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        opacity .2s ease;
+}
+
+
+/* ICONO */
+
+.icono-lista-mision {
+    width: 90px;
+    height: 90px;
+
+    flex-shrink: 0;
+    object-fit: contain;
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/* TEXTO */
+
+.info-mision-rpg {
+    flex: 1;
+}
+
+.info-mision-rpg small {
+    color: #64f5ff;
+    letter-spacing: 2px;
+}
+
+.info-mision-rpg h2 {
+    margin: 6px 0;
+}
+
+.info-mision-rpg p {
+    margin: 0;
+    font-size: .85rem;
+    letter-spacing: 1px;
+}
+
+
+/* ESTADOS */
+
+.tarjeta-mision-rpg.bloqueada {
+    opacity: .48;
+}
+
+.tarjeta-mision-rpg.disponible {
+    cursor: pointer;
+    border-color: #b88cff;
+}
+
+.tarjeta-mision-rpg.disponible:hover,
+.tarjeta-mision-rpg.enCurso:hover {
+    transform: translateY(-3px);
+}
+
+.tarjeta-mision-rpg.enCurso {
+    cursor: pointer;
+    border-color: #64f5ff;
+}
+
+.tarjeta-mision-rpg.completada {
+    opacity: .82;
+}
+
+
+/* MÓVIL */
+
+@media (max-width: 700px) {
+
+    .lista-misiones-rpg {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-mision-rpg {
+        min-height: 110px;
+        padding: 14px;
+    }
+
+    .icono-lista-mision {
+        width: 72px;
+        height: 72px;
+    }
+}
+/* =========================================
+   PIE · MISIONES
+========================================= */
+
+#pantalla-misiones .pie-misiones {
+    width: 100%;
+    margin-top: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0;
+}
+
+
+/* BOTÓN VOLVER */
+
+#pantalla-misiones .pie-misiones .boton-con-icono {
+    width: auto !important;
+    min-width: 0 !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 10px !important;
+
+    padding: 10px 18px !important;
+
+    background: transparent !important;
+}
+
+
+/* ICONO */
+
+#pantalla-misiones .pie-misiones .icono-boton-rpg {
+    display: block !important;
+
+    width: 34px !important;
+    height: 34px !important;
+
+    object-fit: contain !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+
+/* TEXTO PARTY */
+
+#pantalla-misiones .pie-misiones .party-nivel {
+    margin-left: auto;
+
+    font-size: 13px;
+    letter-spacing: 4px;
+
+    color: #a990e8;
+}
+/* =========================================
+   CABECERA MAPA CENTRADA
+========================================= */
+
+#pantalla-mapa .cabecera-mapa-centrada {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    width: 100% !important;
+
+    margin-bottom: 24px !important;
+    text-align: center !important;
+}
+
+#pantalla-mapa .titulo-mapa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: auto !important;
+}
+
+#pantalla-mapa .titulo-mapa h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 0 !important;
+
+    white-space: nowrap !important;
+}
+
+#pantalla-mapa .icono-titulo-mapa {
+    width: 48px !important;
+    height: 48px !important;
+
+    object-fit: contain;
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+#pantalla-mapa .titulo-mapa .subtitulo {
+    margin: 8px 0 0 !important;
+
+    width: auto !important;
+
+    white-space: nowrap !important;
+
+    text-align: center !important;
+}
+/* =========================================
+   VOLVER · MAPA
+========================================= */
+
+#pantalla-mapa .boton-volver {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: fit-content !important;
+    min-width: 0 !important;
+
+    margin: 28px auto 0 !important;
+    padding: 10px 20px !important;
+
+    gap: 10px !important;
+}
+
+#pantalla-mapa .boton-volver .icono-boton-rpg {
+    display: block !important;
+
+    width: 34px !important;
+    height: 34px !important;
+
+    object-fit: contain !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+#pantalla-mapa .boton-volver span {
+    white-space: nowrap;
+}
+/* =========================================
+   IMÁGENES DE MISIONES
+========================================= */
+
+#pantalla-misiones .icono-lista-mision {
+    display: block !important;
+
+    width: 130px !important;
+    height: 130px !important;
+
+    object-fit: contain !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    flex-shrink: 0;
+}
