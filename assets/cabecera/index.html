@@ -1,0 +1,4585 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <title>Nivel 23</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ICONO NAVEGADOR -->
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href="/Nivel-23/assets/iconos/icon-192.png"
+    >
+
+    <!-- ICONO IPHONE / IPAD -->
+    <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/Nivel-23/assets/iconos/icon-180.png"
+    >
+
+    <!-- MANIFEST DE LA APP -->
+    <link
+        rel="manifest"
+        href="/Nivel-23/manifest.json"
+    >
+
+    <!-- CONFIGURACIÓN APP -->
+    <meta
+        name="apple-mobile-web-app-capable"
+        content="yes"
+    >
+
+    <meta
+        name="mobile-web-app-capable"
+        content="yes"
+    >
+
+    <meta
+        name="apple-mobile-web-app-title"
+        content="Nivel 23"
+    >
+
+    <meta
+        name="application-name"
+        content="Nivel 23"
+    >
+
+    <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent"
+    >
+
+    <meta
+        name="theme-color"
+        content="#08051a"
+    >
+
+</head>
+
+<body>
+
+<!-- ==================================================
+     NOTIFICACIONES
+================================================== -->
+
+<div id="notificacion" class="notificacion">
+
+    <div id="notificacion-icono" class="notificacion-icono">
+        🏆
+    </div>
+
+    <div>
+        <strong id="notificacion-titulo">
+            LOGRO DESBLOQUEADO
+        </strong>
+
+        <p id="notificacion-texto">
+            Nuevo logro
+        </p>
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     INICIO
+================================================== -->
+
+<!-- =========================================
+     PANTALLA DE INICIO · NIVEL 23
+========================================= -->
+
+<div id="pantalla-inicio" class="pantalla pantalla-activa portada-juego">
+
+    <div class="portada-fondo"></div>
+    <div class="portada-oscuridad"></div>
+
+    <div class="portada-marco">
+
+        <!-- DECORACIÓN SUPERIOR -->
+
+        <div class="portada-linea-superior">
+
+            <span>✦</span>
+
+            <p>
+                UNA AVENTURA PARA DOS
+            </p>
+
+            <span>✦</span>
+
+        </div>
+
+<!-- LOGO PRINCIPAL · NIVEL 23 -->
+
+<div class="portada-logo portada-logo-rpg">
+
+    <img
+        src="assets/cabecera/logo-nivel23.png"
+        alt="Nivel 23"
+        class="portada-logo-imagen"
+        onclick="secretoTitulo()"
+    >
+
+    <p class="portada-lema-rpg">
+        <span>✦</span>
+        UNA NUEVA AVENTURA COMIENZA
+        <span>✦</span>
+    </p>
+
+</div>
+
+        <!-- SEPARADOR -->
+
+        <div class="portada-separador-rpg">
+            <span></span>
+            <b>✦</b>
+            <span></span>
+        </div>
+
+
+  <!-- PERSONAJES · PORTADA RPG -->
+
+<div class="portada-personajes-imagen">
+
+    <img
+        src="assets/portada/personajes-portada.png"
+        alt="Aimar e Isa - Nivel 23"
+        class="imagen-personajes-portada"
+    >
+
+</div>
+
+
+        <!-- TEXTO -->
+
+        <div class="portada-mensaje">
+
+            <p>
+                DOS JUGADORES
+            </p>
+
+            <span>
+                UNA HISTORIA
+            </span>
+
+        </div>
+
+
+        <!-- BOTÓN -->
+
+        <button
+            class="boton-comenzar-aventura"
+            onclick="comenzarJuego()"
+        >
+
+            <span class="boton-icono">
+                ▶
+            </span>
+
+            <span>
+                INICIAR PARTIDA
+            </span>
+
+        </button>
+
+
+        <!-- TEXTO INFERIOR -->
+
+        <p class="portada-continuar">
+            PRESIONA PARA COMENZAR
+        </p>
+
+
+        <div class="portada-frase">
+
+            <span>✦</span>
+
+            <p>
+                LAS MEJORES AVENTURAS<br>
+                SIEMPRE SON JUNTOS
+            </p>
+
+            <span>♥</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==================================================
+     MENÚ PRINCIPAL
+================================================== -->
+
+<!-- ==================================================
+     MENÚ PRINCIPAL · DASHBOARD RPG
+================================================== -->
+
+<div id="pantalla-juego" class="pantalla dashboard-rpg">
+
+    <div class="dashboard-fondo"></div>
+
+    <div class="dashboard-contenido">
+
+        <!-- =========================================
+             CABECERA
+        ========================================== -->
+
+ <header class="dashboard-header dashboard-header-imagen">
+
+    <img
+        src="assets/cabecera/cabecera-nivel23.png"
+        alt="Nivel 23 - Nuestra Aventura"
+        class="cabecera-rpg-imagen"
+        onclick="secretoTitulo()"
+    >
+
+</header>
+
+
+        <!-- =========================================
+             CUERPO
+        ========================================== -->
+
+        <main class="dashboard-grid">
+
+
+            <!-- =====================================
+                 IZQUIERDA · JUGADORES
+            ====================================== -->
+
+            <section class="panel-rpg panel-jugadores">
+
+                <div class="titulo-panel-rpg">
+                    <span>✦</span>
+                    PERSONAJES
+                </div>
+
+
+                <!-- AIMAR -->
+
+                <button
+                    class="ficha-dashboard ficha-aimar"
+                    onclick="abrirFichaPersonaje('aimar')"
+                >
+
+                    <div class="retrato-dashboard">
+
+                        <img
+                            src="assets/personajes/aimar.png"
+                            alt="Aimar"
+                        >
+
+                        <span class="nivel-personaje">
+                            LV.23
+                        </span>
+
+                    </div>
+
+
+                    <div class="datos-personaje-dashboard">
+
+                        <small>
+                            JUGADOR 1
+                        </small>
+
+                        <strong>
+                            AIMAR
+                        </strong>
+
+                        <span>
+                            AVENTURERO
+                        </span>
+
+                    </div>
+
+                </button>
+
+
+                <!-- ESTADÍSTICAS -->
+
+                <div class="estadisticas-dashboard">
+
+    <!-- VIDAS -->
+    <div class="stat-dashboard">
+
+        <span class="stat-titulo">
+            <img
+                src="assets/iconos/corazon-lleno.png"
+                class="stat-icono"
+                alt=""
+            >
+            VIDAS
+        </span>
+
+        <strong id="vidas">
+            3
+        </strong>
+
+    </div>
+
+
+    <!-- MONEDAS -->
+    <div class="stat-dashboard">
+
+        <span class="stat-titulo">
+            <img
+                src="assets/iconos/moneda.png"
+                class="stat-icono"
+                alt=""
+            >
+            MONEDAS
+        </span>
+
+        <strong id="monedas">
+            0
+        </strong>
+
+    </div>
+
+
+    <!-- LOGROS -->
+    <div class="stat-dashboard">
+
+        <span class="stat-titulo">
+            <img
+                src="assets/iconos/logros.png"
+                class="stat-icono"
+                alt=""
+            >
+            LOGROS
+        </span>
+
+        <strong id="numero-logros">
+            0
+        </strong>
+
+    </div>
+
+</div>
+
+
+<!-- XP -->
+
+<div class="xp-dashboard">
+
+    <div class="xp-dashboard-texto">
+
+        <span class="stat-titulo">
+            <img
+                src="assets/iconos/experiencia.png"
+                class="stat-icono stat-icono-xp"
+                alt=""
+            >
+            EXPERIENCIA
+        </span>
+
+        <strong>
+            <span id="experiencia">0</span>
+            / 350
+        </strong>
+
+    </div>
+
+    <div class="barra-xp-fondo">
+
+        <div
+            id="barra-xp"
+            class="barra-xp"
+        ></div>
+
+    </div>
+
+</div>
+
+                <!-- ISA -->
+
+                <button
+                    class="ficha-dashboard ficha-isa"
+                    onclick="abrirFichaPersonaje('isa')"
+                >
+
+                    <div class="retrato-dashboard">
+
+                        <img
+                            src="assets/personajes/isa.png"
+                            alt="Isa"
+                        >
+
+                        <span class="nivel-personaje game-master">
+                            GM
+                        </span>
+
+                    </div>
+
+
+                    <div class="datos-personaje-dashboard">
+
+                        <small>
+                            JUGADOR 2
+                        </small>
+
+                        <strong>
+                            ISA
+                        </strong>
+
+                        <span>
+                            GAME MASTER
+                        </span>
+
+                    </div>
+
+                </button>
+
+            </section>
+
+
+            <!-- =====================================
+                 CENTRO · MAPA
+            ====================================== -->
+
+            <section class="panel-rpg panel-mapa-dashboard">
+
+                <div class="titulo-panel-rpg">
+
+                    <span>🗺</span>
+
+                    MAPA DEL NIVEL 23
+
+                    <small>
+                        EXPLORACIÓN
+                    </small>
+
+                </div>
+
+
+                <button
+                    class="mapa-dashboard"
+                    onclick="abrirMapa()"
+                >
+
+                    <img
+                        id="imagen-mapa-dashboard"
+                        src="assets/mapa/mapa-01-casa.png"
+                        alt="Mapa actual"
+                    >
+
+
+                    <div class="mapa-dashboard-sombra"></div>
+
+
+                    <div class="mapa-dashboard-etiqueta">
+
+                        <small>
+                            ZONA ACTUAL
+                        </small>
+
+                        <strong id="titulo-mapa-dashboard">
+                            LA CASA
+                        </strong>
+
+                        <span id="descripcion-mapa-dashboard">
+                            Solo el comienzo
+                        </span>
+
+                    </div>
+
+
+                    <div class="mapa-dashboard-abrir">
+                        🗺 ABRIR MAPA
+                    </div>
+
+                </button>
+
+            </section>
+
+
+            <!-- =====================================
+                 DERECHA · AVENTURA
+            ====================================== -->
+
+            <section class="panel-rpg panel-aventura">
+
+                <div class="titulo-panel-rpg">
+
+                    <span>⚔</span>
+
+                    AVENTURA
+
+                </div>
+
+
+                <div class="estado-aventura">
+
+                    <small>
+                        OBJETIVO ACTUAL
+                    </small>
+
+                    <div class="icono-aventura">
+                        ✦
+                    </div>
+
+                    <h2>
+                        CONTINÚA TU
+                        AVENTURA
+                    </h2>
+
+                    <p>
+                        Explora el mapa para descubrir
+                        tu siguiente objetivo.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="boton-dashboard-principal"
+                    onclick="abrirMapa()"
+                >
+                    🗺 VER MAPA
+                </button>
+
+
+                <button
+                    id="boton-prueba-pendiente"
+                    class="zona-oculta boton-dashboard-alerta"
+                    onclick="abrirPruebaPendiente()"
+                >
+                    ⚔ PRUEBA PENDIENTE
+                </button>
+
+
+                <button
+                    id="boton-final"
+                    class="zona-oculta boton-dashboard-final"
+                    onclick="abrirFinal()"
+                >
+                    🏁 FINAL DEL NIVEL 23
+                </button>
+
+
+                <div class="dashboard-tip">
+
+                    <span>💡</span>
+
+                    <p>
+                        Completa misiones y retos
+                        para desbloquear nuevas zonas.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =========================================
+             NAVEGACIÓN
+        ========================================== -->
+
+        <nav class="dashboard-nav">
+
+            <button
+                class="nav-rpg activo"
+                onclick="abrirMapa()"
+            >
+                <span class="nav-icono">
+    <img src="assets/iconos/mapa.png" alt="">
+</span>
+<small>MAPA</small>
+            </button>
+<!-- MISIONES -->
+
+<button
+    class="nav-rpg"
+    onclick="abrirMisiones()"
+>
+    <span class="nav-icono">
+        <img
+            src="assets/iconos/mision disponible.png"
+            alt=""
+        >
+    </span>
+
+    <small>MISIONES</small>
+</button>
+
+            <button onclick="abrirRetos()">
+
+               <span class="nav-icono">
+    <img src="assets/iconos/retos.png" alt="">
+</span>
+<small>RETOS</small>
+            </button>
+
+
+            <button onclick="abrirTienda()">
+
+            <span class="nav-icono">
+    <img src="assets/iconos/tienda.png" alt="">
+</span>
+<small>TIENDA</small>
+
+            </button>
+
+
+            <button onclick="abrirPersonajes()">
+
+            <span class="nav-icono">
+    <img src="assets/iconos/personajes.png" alt="">
+</span>
+<small>PERSONAJES</small>
+            </button>
+
+
+            <button onclick="abrirLogros()">
+
+             <span class="nav-icono">
+    <img src="assets/iconos/logros.png" alt="">
+</span>
+<small>LOGROS</small>
+
+            </button>
+
+
+            <button onclick="abrirArchivos()">
+
+         <span class="nav-icono">
+    <img src="assets/iconos/archivos.png" alt="">
+</span>
+<small>ARCHIVOS</small>
+            </button>
+
+
+            <button onclick="abrirProgreso()">
+
+            <span class="nav-icono">
+    <img src="assets/iconos/progreso.png" alt="">
+</span>
+<small>PROGRESO</small>
+            </button>
+
+        </nav>
+
+
+        <!-- REINICIAR -->
+
+        <button
+            class="reiniciar-dashboard"
+            onclick="reiniciarPartida()"
+        >
+            ↻ REINICIAR PARTIDA
+        </button>
+
+    </div>
+<button
+    class="nav-movil-mas"
+    onclick="abrirMenuMasMovil()"
+>
+    <span>•••</span>
+    <small>MÁS</small>
+</button>
+<!-- =========================================
+     MENÚ MÁS · SOLO MÓVIL
+========================================= -->
+
+<div
+    id="menu-mas-movil"
+    class="menu-mas-movil zona-oculta"
+>
+
+    <div
+        class="menu-mas-fondo"
+        onclick="cerrarMenuMasMovil()"
+    ></div>
+
+    <div class="menu-mas-panel">
+
+        <div class="menu-mas-cabecera">
+
+            <div>
+                <small>NIVEL 23</small>
+                <strong>MÁS OPCIONES</strong>
+            </div>
+
+            <button
+                class="cerrar-menu-mas"
+                onclick="cerrarMenuMasMovil()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <button onclick="abrirDesdeMenuMas('logros')">
+            <span>🏆</span>
+
+            <div>
+                <strong>LOGROS</strong>
+                <small>Revisa todo lo conseguido</small>
+            </div>
+
+            <b>›</b>
+        </button>
+
+
+        <button onclick="abrirDesdeMenuMas('archivos')">
+            <span>📖</span>
+
+            <div>
+                <strong>ARCHIVOS</strong>
+                <small>Recuerdos de la aventura</small>
+            </div>
+
+            <b>›</b>
+        </button>
+
+
+        <button onclick="abrirDesdeMenuMas('progreso')">
+            <span>📊</span>
+
+            <div>
+                <strong>PROGRESO</strong>
+                <small>Consulta el Nivel 23</small>
+            </div>
+
+            <b>›</b>
+        </button>
+
+
+        <div class="menu-mas-separador"></div>
+
+
+        <button
+            class="menu-mas-reiniciar"
+            onclick="cerrarMenuMasMovil(); reiniciarPartida();"
+        >
+            <span>↻</span>
+
+            <div>
+                <strong>REINICIAR PARTIDA</strong>
+                <small>Comenzar la aventura de nuevo</small>
+            </div>
+
+        </button>
+
+    </div>
+
+</div>
+
+</div> <!-- /pantalla-juego -->
+<!-- =========================================
+     PANTALLA · MISIONES
+========================================= -->
+
+<<div id="pantalla-misiones" class="pantalla">
+
+    <div class="contenedor contenido-misiones-rpg">
+
+        <!-- CABECERA -->
+
+        <div class="cabecera-misiones-rpg">
+            <span class="mini-etiqueta-rpg">
+                ✦ REGISTRO DE AVENTURA ✦
+            </span>
+
+            <h1>MISIONES</h1>
+
+            <p>
+                Consulta el estado de cada etapa del Nivel 23.
+            </p>
+        </div>
+
+
+        <!-- LISTA DE MISIONES -->
+
+        <div class="lista-misiones-rpg">
+
+
+            <!-- =========================
+                 DESAYUNO
+            ========================== -->
+
+            <div
+                id="tarjeta-mision-desayuno"
+                class="tarjeta-mision-rpg bloqueada"
+            >
+
+                <!-- Estado -->
+                <img
+                    id="icono-mision-desayuno"
+                    class="icono-lista-mision"
+                    src="assets/iconos/mision bloqueada.png"
+                    alt=""
+                >
+
+                <!-- Icono real -->
+                <img
+                    id="icono-real-desayuno"
+                    class="icono-real-mision zona-oculta"
+                    src="assets/iconos/desayuno.png"
+                    alt=""
+                >
+
+                <div class="info-mision-rpg">
+
+                    <small>
+                        MISIÓN SECUNDARIA
+                    </small>
+
+                    <h2 id="nombre-mision-desayuno">
+                        ???
+                    </h2>
+
+                    <p id="estado-texto-desayuno">
+                        MISIÓN BLOQUEADA
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 OXO
+            ========================== -->
+
+            <div
+                id="tarjeta-mision-oxo"
+                class="tarjeta-mision-rpg bloqueada"
+            >
+
+                <img
+                    id="icono-mision-oxo"
+                    class="icono-lista-mision"
+                    src="assets/iconos/mision bloqueada.png"
+                    alt=""
+                >
+
+                <img
+                    id="icono-real-oxo"
+                    class="icono-real-mision zona-oculta"
+                    src="assets/iconos/oxo.png"
+                    alt=""
+                >
+
+                <div class="info-mision-rpg">
+
+                    <small>
+                        MISIÓN 01
+                    </small>
+
+                    <h2 id="nombre-mision-oxo">
+                        ???
+                    </h2>
+
+                    <p id="estado-texto-oxo">
+                        MISIÓN BLOQUEADA
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 GENKO
+            ========================== -->
+
+            <div
+                id="tarjeta-mision-genko"
+                class="tarjeta-mision-rpg bloqueada"
+            >
+
+                <img
+                    id="icono-mision-genko"
+                    class="icono-lista-mision"
+                    src="assets/iconos/mision bloqueada.png"
+                    alt=""
+                >
+
+                <img
+                    id="icono-real-genko"
+                    class="icono-real-mision zona-oculta"
+                    src="assets/iconos/genko.png"
+                    alt=""
+                >
+
+                <div class="info-mision-rpg">
+
+                    <small>
+                        MISIÓN 02
+                    </small>
+
+                    <h2 id="nombre-mision-genko">
+                        ???
+                    </h2>
+
+                    <p id="estado-texto-genko">
+                        MISIÓN BLOQUEADA
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 LAVA
+            ========================== -->
+
+            <div
+                id="tarjeta-mision-lava"
+                class="tarjeta-mision-rpg bloqueada"
+            >
+
+                <img
+                    id="icono-mision-lava"
+                    class="icono-lista-mision"
+                    src="assets/iconos/mision bloqueada.png"
+                    alt=""
+                >
+
+                <img
+                    id="icono-real-lava"
+                    class="icono-real-mision zona-oculta"
+                    src="assets/iconos/lava.png"
+                    alt=""
+                >
+
+                <div class="info-mision-rpg">
+
+                    <small>
+                        MISIÓN 03
+                    </small>
+
+                    <h2 id="nombre-mision-lava">
+                        ???
+                    </h2>
+
+                    <p id="estado-texto-lava">
+                        MISIÓN BLOQUEADA
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 CENA
+            ========================== -->
+
+            <div
+                id="tarjeta-mision-cena"
+                class="tarjeta-mision-rpg bloqueada"
+            >
+
+                <img
+                    id="icono-mision-cena"
+                    class="icono-lista-mision"
+                    src="assets/iconos/mision bloqueada.png"
+                    alt=""
+                >
+
+                <img
+                    id="icono-real-cena"
+                    class="icono-real-mision zona-oculta"
+                    src="assets/iconos/cena.png"
+                    alt=""
+                >
+
+                <div class="info-mision-rpg">
+
+                    <small>
+                        MISIÓN SECRETA
+                    </small>
+
+                    <h2 id="nombre-mision-cena">
+                        ???
+                    </h2>
+
+                    <p id="estado-texto-cena">
+                        MISIÓN BLOQUEADA
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 CASTILLO · FINAL
+            ========================== -->
+
+            <div
+                id="tarjeta-mision-castillo"
+                class="tarjeta-mision-rpg tarjeta-final-rpg bloqueada"
+            >
+
+                <img
+                    id="icono-mision-castillo"
+                    class="icono-lista-mision"
+                    src="assets/iconos/mision bloqueada.png"
+                    alt=""
+                >
+
+                <img
+                    id="icono-real-castillo"
+                    class="icono-real-mision zona-oculta"
+                    src="assets/iconos/castillo.png"
+                    alt=""
+                >
+
+                <div class="info-mision-rpg">
+
+                    <small id="tipo-mision-castillo">
+                        ???
+                    </small>
+
+                    <h2 id="nombre-mision-castillo">
+                        ???
+                    </h2>
+
+                    <p id="estado-texto-castillo">
+                        MISIÓN BLOQUEADA
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- FIN LISTA DE MISIONES -->
+
+
+        <!-- PIE -->
+
+        <div class="libro-rpg-pie pie-misiones">
+
+            <button
+                class="boton-volver boton-rpg-secundario boton-con-icono"
+                onclick="volverJuego()"
+            >
+
+                <img
+                    src="assets/iconos/volver.png"
+                    class="icono-boton-rpg"
+                    alt=""
+                >
+
+                <span>VOLVER</span>
+
+            </button>
+
+            <span class="party-nivel">
+                ✦ PARTY · NIVEL 23 ✦
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==================================================
+     PERSONAJES
+================================================== -->
+<!-- ==================================================
+     PERSONAJES
+================================================== -->
+<div id="pantalla-personajes" class="pantalla pantalla-libro-rpg">
+
+    <div class="libro-rpg libro-personajes-rpg">
+
+        <!-- CABECERA -->
+
+        <div class="libro-rpg-cabecera">
+
+            <div>
+
+                <span class="libro-rpg-icono">
+                    👥
+                </span>
+
+                <h1>
+                    PERSONAJES
+                </h1>
+
+                <p>
+                    GRUPO DE AVENTURA · NIVEL 23
+                </p>
+
+            </div>
+
+
+            <div class="contador-logros-rpg contador-grupo-rpg">
+
+                <span>
+                    GRUPO
+                </span>
+
+                <strong>
+                    2 / 2
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEPARADOR -->
+
+        <div class="barra-logros-rpg barra-personajes-rpg">
+            <div></div>
+        </div>
+
+
+        <!-- CONTENIDO -->
+
+        <div class="contenido-personajes-rpg">
+
+            <div class="titulo-grupo-rpg">
+
+                <span>✦</span>
+
+                <div>
+
+                    <small>
+                        COMPAÑEROS DE VIAJE
+                    </small>
+
+                    <h2>
+                        GRUPO ACTUAL
+                    </h2>
+
+                </div>
+
+                <span>✦</span>
+
+            </div>
+
+
+            <div class="rejilla-personajes-rpg">
+
+
+                <!-- AIMAR -->
+
+                <button
+                    class="personaje-seleccion-rpg personaje-aimar-rpg"
+                    onclick="abrirFichaPersonaje('aimar')"
+                >
+
+                    <div class="personaje-marco-rpg">
+
+                        <div class="personaje-retrato-rpg">
+
+                            <img
+                                src="assets/personajes/aimar.png"
+                                alt="Aimar"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="personaje-info-rpg">
+
+                        <span class="personaje-tipo-rpg">
+                            🎮 JUGADOR 1
+                        </span>
+
+                        <h2>
+                            AIMAR
+                        </h2>
+
+                        <p>
+                            AVENTURERO · NIVEL 23
+                        </p>
+
+
+                        <div class="personaje-mini-stats-rpg">
+
+                            <span>
+                                ⭐ <strong id="personaje-xp">0</strong> XP
+                            </span>
+
+                            <span>
+                                ❤️ <strong id="personaje-vidas">3</strong>
+                            </span>
+
+                            <span>
+                                🪙 <strong id="personaje-monedas">0</strong>
+                            </span>
+
+                        </div>
+
+
+                        <div class="personaje-ver-ficha-rpg">
+                            VER FICHA
+                            <span>›</span>
+                        </div>
+
+                    </div>
+
+                </button>
+
+
+                <!-- ISA -->
+
+                <button
+                    class="personaje-seleccion-rpg personaje-isa-rpg"
+                    onclick="abrirFichaPersonaje('isa')"
+                >
+
+                    <div class="personaje-marco-rpg">
+
+                        <div class="personaje-retrato-rpg">
+
+                            <img
+                                src="assets/personajes/isa.png"
+                                alt="Isa"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="personaje-info-rpg">
+
+                        <span class="personaje-tipo-rpg">
+                            🎀 JUGADOR 2
+                        </span>
+
+                        <h2>
+                            ISA
+                        </h2>
+
+                        <p>
+                            PLAYER 2 · GAME MASTER
+                        </p>
+
+
+                        <div class="personaje-mini-stats-rpg personaje-rol-rpg">
+
+                            <span>
+                                👑 GAME MASTER
+                            </span>
+
+                            <span>
+                                💜 PLAYER 2
+                            </span>
+
+                        </div>
+
+
+                        <div class="personaje-ver-ficha-rpg">
+                            VER FICHA
+                            <span>›</span>
+                        </div>
+
+                    </div>
+
+                </button>
+
+            </div>
+
+
+            <div class="frase-grupo-rpg">
+
+                <span>✦</span>
+
+                <p>
+                    TODA GRAN AVENTURA NECESITA UN BUEN EQUIPO
+                </p>
+
+                <span>✦</span>
+
+            </div>
+
+        </div>
+
+
+   <!-- PIE -->
+
+<div class="libro-rpg-pie">
+
+    <button
+        class="boton-volver boton-rpg-secundario boton-con-icono"
+        onclick="volverJuego()"
+    >
+        <img
+            src="assets/iconos/volver.png"
+            class="icono-boton-rpg"
+            alt=""
+        >
+        <span>VOLVER</span>
+    </button>
+
+    <span>
+        ✦ PARTY · NIVEL 23 ✦
+    </span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==================================================
+     MAPA
+================================================== -->
+
+<!-- ==================================================
+     MAPA INTERACTIVO
+================================================== -->
+
+<div id="pantalla-mapa" class="pantalla">
+
+    <div class="contenedor-mapa">
+
+  <div class="cabecera-mapa cabecera-mapa-centrada">
+
+    <div class="titulo-mapa">
+        <h1>
+            <img
+                src="assets/iconos/mapa.png"
+                class="icono-titulo-mapa"
+                alt=""
+            >
+            MAPA
+        </h1>
+
+        <p class="subtitulo">
+            NIVEL 23
+        </p>
+    </div>
+
+</div>
+
+        <div
+            id="aviso-mapa"
+            class="aviso-mapa zona-oculta"
+        >
+            ✨ NUEVA ZONA DESCUBIERTA
+            <small>
+                El mapa se ha actualizado
+            </small>
+        </div>
+
+
+        <div
+            id="marco-mapa"
+            class="marco-mapa"
+        >
+
+            <img
+    id="imagen-mapa"
+    class="imagen-mapa"
+    src="assets/mapa/mapa-01-casa.png"
+    alt="Mapa Nivel 23"
+>
+
+            <!-- CASA -->
+
+            <button
+                id="punto-casa"
+                class="punto-mapa punto-casa"
+                onclick="abrirZonaMapa('casa')"
+                aria-label="Casa"
+            ></button>
+
+
+            <!-- DESAYUNO -->
+
+            <button
+                id="punto-desayuno"
+                class="punto-mapa punto-desayuno zona-oculta"
+                onclick="abrirZonaMapa('desayuno')"
+                aria-label="Desayuno"
+            ></button>
+
+
+            <!-- OXO -->
+
+            <button
+                id="punto-oxo"
+                class="punto-mapa punto-oxo zona-oculta"
+                onclick="abrirZonaMapa('oxo')"
+                aria-label="OXO"
+            ></button>
+
+
+            <!-- GENKO -->
+
+            <button
+                id="punto-genko"
+                class="punto-mapa punto-genko zona-oculta"
+                onclick="abrirZonaMapa('genko')"
+                aria-label="Genko"
+            ></button>
+
+
+            <!-- LAVA -->
+
+            <button
+                id="punto-lava"
+                class="punto-mapa punto-lava zona-oculta"
+                onclick="abrirZonaMapa('lava')"
+                aria-label="El suelo es lava"
+            ></button>
+
+
+            <!-- CENA -->
+
+            <button
+                id="punto-cena"
+                class="punto-mapa punto-cena zona-oculta"
+                onclick="abrirZonaMapa('cena')"
+                aria-label="Cena"
+            ></button>
+
+
+            <!-- CASTILLO -->
+
+            <button
+                id="punto-castillo"
+                class="punto-mapa punto-castillo zona-oculta"
+                onclick="abrirZonaMapa('castillo')"
+                aria-label="Castillo"
+            ></button>
+
+
+            <div
+                id="niebla-mapa"
+                class="niebla-mapa"
+            ></div>
+
+        </div>
+
+<button
+    class="boton-volver boton-rpg-secundario boton-con-icono"
+    onclick="volverJuego()"
+>
+    <img
+        src="assets/iconos/volver.png"
+        class="icono-boton-rpg"
+        alt=""
+    >
+
+    <span>VOLVER</span>
+</button>
+
+</div>
+
+</div>
+
+<!-- ==================================================
+     STARTER PACK
+================================================== -->
+
+<div id="pantalla-starter-pack" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            ⚠️ EVENTO SECUNDARIO DETECTADO
+        </p>
+
+        <h1>
+            🎒 STARTER PACK
+        </h1>
+
+        <p class="subtitulo">
+            PREPARACIÓN DE AVENTURA
+        </p>
+
+
+        <div class="archivo">
+
+            <p>
+                NUEVA AVENTURA DETECTADA...
+            </p>
+
+            <p>
+                Antes de comenzar el
+                <strong>Nivel 23</strong>,
+                todo jugador necesita preparar
+                correctamente su inventario.
+            </p>
+
+            <p>
+                Elige los objetos que consideres
+                imprescindibles para comenzar
+                la aventura.
+            </p>
+
+        </div>
+
+
+        <p class="mensaje-sistema">
+            🎒 ESPACIOS DISPONIBLES: 3
+        </p>
+
+
+        <button onclick="prepararStarterPack()">
+            ⚔️ PREPARAR EQUIPO
+        </button>
+
+        <button class="boton-volver" onclick="abrirMapa()">
+            <img src="assets/iconos/volver.png" class="icono-volver-rpg" alt=""> <span>VOLVER</span> AL MAPA
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     INVENTARIO STARTER
+================================================== -->
+
+<div id="pantalla-inventario-starter" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            🎒 INVENTARIO INICIAL
+        </p>
+
+        <h1>
+            ELIGE TU EQUIPO
+        </h1>
+
+        <p>
+            Solo puedes llevar
+            <strong>3 objetos</strong>.
+        </p>
+
+        <p>
+            Elige sabiamente...
+        </p>
+
+
+        <div class="estado-starter">
+
+            <span>
+                OBJETOS EQUIPADOS
+            </span>
+
+            <strong id="contador-starter">
+                0 / 3
+            </strong>
+
+        </div>
+
+
+        <div class="objetos-starter">
+
+            <button
+                class="objeto-starter"
+                data-objeto="☕"
+                onclick="seleccionarObjetoStarter(this)"
+            >
+                <span class="emoji-objeto">☕</span>
+                <small>CAFÉ</small>
+            </button>
+
+
+            <button
+                class="objeto-starter"
+                data-objeto="🥐"
+                onclick="seleccionarObjetoStarter(this)"
+            >
+                <span class="emoji-objeto">🥐</span>
+                <small>PROVISIONES</small>
+            </button>
+
+
+            <button
+                class="objeto-starter"
+                data-objeto="📱"
+                onclick="seleccionarObjetoStarter(this)"
+            >
+                <span class="emoji-objeto">📱</span>
+                <small>COMUNICADOR</small>
+            </button>
+
+
+            <button
+                class="objeto-starter"
+                data-objeto="🎮"
+                onclick="seleccionarObjetoStarter(this)"
+            >
+                <span class="emoji-objeto">🎮</span>
+                <small>CONTROL</small>
+            </button>
+
+
+            <button
+                class="objeto-starter"
+                data-objeto="🗡️"
+                onclick="seleccionarObjetoStarter(this)"
+            >
+                <span class="emoji-objeto">🗡️</span>
+                <small>ESPADA</small>
+            </button>
+
+
+            <button
+                class="objeto-starter"
+                data-objeto="🧪"
+                onclick="seleccionarObjetoStarter(this)"
+            >
+                <span class="emoji-objeto">🧪</span>
+                <small>POCIÓN</small>
+            </button>
+
+
+            <button
+                class="objeto-starter"
+                data-objeto="🧸"
+                onclick="seleccionarObjetoStarter(this)"
+            >
+                <span class="emoji-objeto">🧸</span>
+                <small>COMPAÑERO</small>
+            </button>
+
+
+            <button
+                class="objeto-starter"
+                data-objeto="💣"
+                onclick="seleccionarObjetoStarter(this)"
+            >
+                <span class="emoji-objeto">💣</span>
+                <small>BOMBA</small>
+            </button>
+
+        </div>
+
+
+        <p class="texto-ayuda-starter">
+            No existen elecciones incorrectas.
+            Todo aventurero prepara su equipo
+            de forma diferente.
+        </p>
+
+
+        <button
+            id="boton-confirmar-starter"
+            onclick="confirmarStarterPack()"
+            disabled
+        >
+            ⚔️ CONFIRMAR EQUIPO
+        </button>
+
+
+        <button
+            class="boton-volver"
+            onclick="mostrarPantalla('pantalla-starter-pack')"
+        >
+            <img src="assets/iconos/volver.png" class="icono-volver-rpg" alt=""> <span>VOLVER</span>
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     ANÁLISIS STARTER
+================================================== -->
+
+<div id="pantalla-resultado-starter" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            ⚙️ SISTEMA DE INVENTARIO
+        </p>
+
+        <h1>
+            ANALIZANDO EQUIPO...
+        </h1>
+
+
+        <div
+            id="objetos-equipados"
+            class="objetos-equipados"
+        ></div>
+
+
+        <div class="barra-analisis">
+            <div class="barra-analisis-interior"></div>
+        </div>
+
+
+        <div
+            id="mensaje-starter"
+            class="resultado-starter"
+        >
+
+            <p>
+                🔍 Comprobando inventario...
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     DESAYUNO
+================================================== -->
+
+<div id="pantalla-desayuno" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            ✨ MISIÓN SECUNDARIA DESBLOQUEADA
+        </p>
+
+        <div class="icono-mision-grande">
+            ☕
+        </div>
+
+        <h1>
+            DESAYUNO
+        </h1>
+
+        <p class="subtitulo">
+            RECUPERACIÓN DE ENERGÍA
+        </p>
+
+
+        <div class="archivo">
+
+            <p>
+                ⚡ ENERGÍA INICIAL INSUFICIENTE
+            </p>
+
+            <p>
+                Se ha localizado una fuente
+                de suministros cercana.
+            </p>
+
+        </div>
+
+
+        <div class="objetivo-mision">
+
+            <span>
+                OBJETIVO
+            </span>
+
+            <p>
+                Recuperar energía antes
+                de comenzar la aventura.
+            </p>
+
+        </div>
+
+
+        <p class="destino-mision">
+            📍 Destino todavía por determinar
+        </p>
+
+
+        <button onclick="aceptarDesayuno()">
+            ⚔️ ACEPTAR MISIÓN
+        </button>
+
+        <button class="boton-volver" onclick="abrirMapa()">
+            <img src="assets/iconos/volver.png" class="icono-volver-rpg" alt=""> <span>VOLVER</span> AL MAPA
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     DESAYUNO EN CURSO
+================================================== -->
+
+<div id="pantalla-desayuno-curso" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            ⚔️ MISIÓN SECUNDARIA EN CURSO
+        </p>
+
+        <div class="icono-mision-grande">
+            ☕
+        </div>
+
+        <h1>
+            DESAYUNO
+        </h1>
+
+
+        <div class="estado-energia">
+
+            <span>
+                ⚡ ENERGÍA
+            </span>
+
+            <strong>
+                23%
+            </strong>
+
+        </div>
+
+
+        <p>
+            Fuente de energía localizada.
+        </p>
+
+        <p>
+            Completa el desayuno para
+            restaurar tus estadísticas.
+        </p>
+
+
+        <button onclick="completarDesayuno()">
+            ✓ COMPLETAR MISIÓN
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     DESAYUNO COMPLETADO
+================================================== -->
+
+<div id="pantalla-desayuno-completado" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            ✅ MISIÓN SECUNDARIA COMPLETADA
+        </p>
+
+        <div class="icono-mision-grande">
+            ☕
+        </div>
+
+        <h1>
+            ENERGÍA RESTAURADA
+        </h1>
+
+
+        <div class="estado-energia energia-completa">
+
+            <span>
+                ⚡ ENERGÍA
+            </span>
+
+            <strong>
+                100%
+            </strong>
+
+        </div>
+
+
+        <div class="recompensa">
+
+            <h3>
+                RECOMPENSAS
+            </h3>
+
+            <p>⭐ +25 XP</p>
+
+            <p>🪙 +10 MONEDAS</p>
+
+            <p>🏆 NUEVO LOGRO</p>
+
+            <strong>
+                «CON EL ESTÓMAGO LLENO»
+            </strong>
+
+        </div>
+
+
+        <button onclick="recogerRecompensaDesayuno()">
+            ✨ RECOGER RECOMPENSA
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     RETO LOL
+================================================== -->
+
+<div id="pantalla-reto-lol" class="pantalla">
+
+    <div class="contenedor">
+
+        <h1>
+            ⚔️ PRUEBA DE ACCESO
+        </h1>
+
+        <p class="mensaje-sistema">
+            SISTEMA DE SEGURIDAD ACTIVADO
+        </p>
+
+        <p>
+            Para desbloquear la primera misión
+            deberás demostrar tus conocimientos.
+        </p>
+
+        <h2>
+            🎮 LEAGUE OF LEGENDS
+        </h2>
+
+        <button onclick="iniciarRetoLol()">
+            INICIAR PRUEBA
+        </button>
+
+        <div class="navegacion-prueba">
+            <button class="boton-volver" onclick="abrirMapa()">
+                🗺️ VOLVER AL MAPA
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                ⌂ VOLVER AL MENÚ
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- LOL 1 -->
+
+<div id="pantalla-lol-1" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            PREGUNTA 01 / 03
+        </p>
+
+        <h2>
+            ¿Qué monstruo épico aparece
+            en la Grieta del Invocador
+            a partir del minuto 20?
+        </h2>
+
+        <div class="respuestas">
+
+            <button onclick="respuestaLol1(false)">
+                Dragón anciano
+            </button>
+
+            <button onclick="respuestaLol1(true)">
+                Barón Nashor
+            </button>
+
+            <button onclick="respuestaLol1(false)">
+                Heraldo de la Grieta
+            </button>
+
+            <button onclick="respuestaLol1(false)">
+                Atakhan
+            </button>
+
+        </div>
+
+        <div id="resultado-lol-1"></div>
+
+        <div class="navegacion-prueba">
+            <button class="boton-volver" onclick="abrirMapa()">
+                🗺️ VOLVER AL MAPA
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                ⌂ VOLVER AL MENÚ
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- LOL 2 -->
+
+<div id="pantalla-lol-2" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            PREGUNTA 02 / 03
+        </p>
+
+        <h2>
+            La Rosa Negra convirtió a Rell en un arma.
+            ¿Contra quién estaba destinada
+            especialmente a luchar?
+        </h2>
+
+        <div class="respuestas">
+
+            <button onclick="respuestaLol2(false)">
+                Swain
+            </button>
+
+            <button onclick="respuestaLol2(false)">
+                LeBlanc
+            </button>
+
+            <button onclick="respuestaLol2(true)">
+                Mordekaiser
+            </button>
+
+            <button onclick="respuestaLol2(false)">
+                Viego
+            </button>
+
+        </div>
+
+        <div id="resultado-lol-2"></div>
+
+        <div class="navegacion-prueba">
+            <button class="boton-volver" onclick="abrirMapa()">
+                🗺️ VOLVER AL MAPA
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                ⌂ VOLVER AL MENÚ
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- LOL 3 -->
+
+<div id="pantalla-lol-3" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            PREGUNTA 03 / 03
+        </p>
+
+        <h2>
+            Antes de cobrar vida, Gwen era una muñeca
+            creada por Isolde. ¿En qué se inspiró Isolde
+            al diseñar su vestido?
+        </h2>
+
+        <div class="respuestas">
+
+            <button onclick="respuestaLol3(false)">
+                En la moda de la corte de Camavor
+            </button>
+
+            <button onclick="respuestaLol3(false)">
+                En las flores de su pueblo
+            </button>
+
+            <button onclick="respuestaLol3(true)">
+                En los diseños de los barcos de guerra camavoranos
+            </button>
+
+            <button onclick="respuestaLol3(false)">
+                En la armadura de los caballeros
+            </button>
+
+        </div>
+
+        <div id="resultado-lol-3"></div>
+
+        <div class="navegacion-prueba">
+            <button class="boton-volver" onclick="abrirMapa()">
+                🗺️ VOLVER AL MAPA
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                ⌂ VOLVER AL MENÚ
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- LOL COMPLETADO -->
+
+<div id="pantalla-lol-completado" class="pantalla">
+
+    <div class="contenedor">
+
+        <h1>
+            ✂️ ÚLTIMA PUNTADA COMPLETADA
+        </h1>
+
+        <p>
+            ████████████ 100%
+        </p>
+
+        <p class="mensaje-sistema">
+            CONOCIMIENTO VERIFICADO
+        </p>
+
+        <p>
+            🏆 MAESTRÍA 23
+        </p>
+
+        <p>
+            🔓 MISIÓN 01 DESBLOQUEADA
+        </p>
+
+        <button onclick="finalizarRetoLol()">
+            CONTINUAR
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     MISIÓN 1
+================================================== -->
+
+<div id="pantalla-mision-1" class="pantalla">
+
+    <div class="contenedor">
+        <img
+    src="assets/iconos/mision disponible.png"
+    class="icono-estado-mision"
+    alt="Misión disponible"
+>
+
+        <p class="mensaje-sistema">
+            ❗ NUEVA MISIÓN
+        </p>
+
+        <h1>
+            MISIÓN 01
+        </h1>
+
+        <h2>
+            DESTINO DESCONOCIDO
+        </h2>
+
+        <p>
+            Se ha detectado una ubicación relacionada
+            con antiguas aventuras, mundos digitales
+            y muchas vidas extra.
+        </p>
+
+        <button onclick="comenzarMision1()">
+            DESCUBRIR DESTINO
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="pantalla-destino-1" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            📡 DESTINO LOCALIZADO
+        </p>
+
+        <h1>
+            🎮 OXO
+        </h1>
+
+        <h2>
+            MUSEO DEL VIDEOJUEGO
+        </h2>
+
+        <p>
+            📍 Madrid
+        </p>
+
+        <p>
+            Una misión entre consolas,
+            videojuegos y recuerdos.
+        </p>
+
+        <button onclick="aceptarMision1()">
+            ACEPTAR MISIÓN
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="pantalla-mision-1-curso" class="pantalla">
+
+    <div class="contenedor">
+
+        <h1>
+            🎮 OXO
+        </h1>
+
+        <p class="mensaje-sistema">
+            MISIÓN 01 EN CURSO
+        </p>
+
+        <p>
+            Explora el museo.
+        </p>
+
+        <p>
+            ⚔️ Nuevos retos secundarios disponibles.
+        </p>
+
+        <button onclick="completarMision1()">
+            ✓ COMPLETAR MISIÓN
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="pantalla-mision-1-completada" class="pantalla">
+
+    <div class="contenedor">
+        <img
+    src="assets/iconos/mision completada.png"
+    class="icono-estado-mision"
+    alt="Misión completada"
+>
+
+        <h1>
+            🎮 MISIÓN 01 COMPLETADA
+        </h1>
+
+        <div class="recompensa">
+
+            <p>
+                ⭐ +100 XP
+            </p>
+
+            <p>
+                🪙 +25
+            </p>
+
+        </div>
+
+        <button onclick="recogerRecompensa1()">
+            RECOGER RECOMPENSA
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     NIKKEI
+================================================== -->
+
+<div id="pantalla-reto-nikkei" class="pantalla">
+
+    <div class="contenedor">
+
+        <h1>
+            ⚠️ ESTADO DEL JUGADOR
+        </h1>
+
+        <p>
+            ENERGÍA: 23%
+        </p>
+
+        <p class="mensaje-sistema">
+            📡 TRANSMISIÓN INTERCEPTADA
+        </p>
+
+        <h2>
+            🇯🇵 TOKYO + 🇵🇪 LIMA
+        </h2>
+
+        <p>
+            Dos culturas.<br>
+            Dos tradiciones.<br>
+            Una misma cocina.
+        </p>
+
+        <h3>
+            ¿Cómo se llama esta fusión?
+        </h3>
+
+        <input
+            id="respuesta-nikkei"
+            type="text"
+            placeholder="Escribe tu respuesta..."
+            autocomplete="off"
+        >
+
+        <button onclick="comprobarNikkei()">
+            COMPROBAR
+        </button>
+
+        <div id="resultado-nikkei"></div>
+
+        <div class="navegacion-prueba">
+            <button class="boton-volver" onclick="abrirMapa()">
+                🗺️ VOLVER AL MAPA
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                ⌂ VOLVER AL MENÚ
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     MISIÓN 2
+================================================== -->
+
+<div id="pantalla-mision-2" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            ❗ MISIÓN 02
+        </p>
+
+        <h1>
+            FUENTE DE ENERGÍA LOCALIZADA
+        </h1>
+
+        <p>
+            Una señal procedente de dos culturas
+            diferentes ha sido detectada.
+        </p>
+
+        <button onclick="revelarGenko()">
+            DESCIFRAR COORDENADAS
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="pantalla-destino-2" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            📡 COORDENADAS DESCIFRADAS
+        </p>
+
+        <h1>
+            🍣 GENKO
+        </h1>
+
+        <h2>
+            COCINA NIKKEI
+        </h2>
+
+        <p>
+            📍 Madrid
+        </p>
+
+        <p>
+            🇯🇵 Japón + 🇵🇪 Perú
+        </p>
+
+        <button onclick="aceptarMision2()">
+            ACEPTAR MISIÓN
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="pantalla-mision-2-curso" class="pantalla">
+
+    <div class="contenedor">
+
+        <h1>
+            🍣 GENKO
+        </h1>
+
+        <p class="mensaje-sistema">
+            MISIÓN 02 EN CURSO
+        </p>
+
+        <p>
+            ⚡ ENERGÍA: 23%
+        </p>
+
+        <div id="zona-eleccion-genko"></div>
+
+        <button onclick="completarMision2()">
+            ✓ COMPLETAR MISIÓN
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="pantalla-mision-2-completada" class="pantalla">
+
+    <div class="contenedor">
+
+        <h1>
+            🍣 MISIÓN 02 COMPLETADA
+        </h1>
+
+        <p>
+            ⚡ ENERGÍA: 100%
+        </p>
+
+        <div class="recompensa">
+
+            <p>
+                ⭐ +75 XP
+            </p>
+
+            <p>
+                🪙 +50
+            </p>
+
+            <p>
+                🏆 ITADAKIMASU!
+            </p>
+
+        </div>
+
+        <button onclick="recogerRecompensa2()">
+            RECOGER RECOMPENSA
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     RETO LAVA
+================================================== -->
+
+<div id="pantalla-reto-lava" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            ⚠️ NUEVO SISTEMA DE SEGURIDAD
+        </p>
+
+        <h1>
+            🌋 TERRENO INESTABLE
+        </h1>
+
+        <p>
+            Una nueva zona ha sido detectada,
+            pero el camino hasta ella no es seguro.
+        </p>
+
+        <p>
+            Encuentra la ruta correcta
+            entre las plataformas.
+        </p>
+
+
+        <div class="archivo">
+
+            <p>
+                ⚠️ REGLAS
+            </p>
+
+            <p>
+                Solo puedes moverte arriba,
+                abajo, izquierda o derecha.
+            </p>
+
+            <p>
+                No puedes moverte en diagonal.
+            </p>
+
+            <p>
+                Una plataforma inestable
+                reiniciará la ruta.
+            </p>
+
+        </div>
+
+
+        <button onclick="iniciarRetoLava()">
+            🔥 ENTRAR EN LA ZONA
+        </button>
+
+        <div class="navegacion-prueba">
+            <button class="boton-volver" onclick="abrirMapa()">
+                🗺️ VOLVER AL MAPA
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                ⌂ VOLVER AL MENÚ
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TABLERO LAVA -->
+
+<div id="pantalla-tablero-lava" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            ⚠️ TERRENO INESTABLE
+        </p>
+
+        <h1>
+            🌋 EL SUELO ES LAVA
+        </h1>
+
+
+        <div class="estado-lava">
+
+            <p>
+                🔥 INTENTO:
+                <strong id="intentos-lava">1</strong>
+            </p>
+
+            <p>
+                👣 PASOS:
+                <strong id="pasos-lava">0</strong>
+            </p>
+
+        </div>
+
+
+        <div class="pistas-lava">
+
+            <p>
+                📡 SISTEMA DE PISTAS
+            </p>
+
+            <div>
+
+                <button onclick="mostrarPistaLava(1)">01</button>
+                <button onclick="mostrarPistaLava(2)">02</button>
+                <button onclick="mostrarPistaLava(3)">03</button>
+                <button onclick="mostrarPistaLava(4)">04</button>
+                <button onclick="mostrarPistaLava(5)">05</button>
+
+            </div>
+
+            <p id="texto-pista-lava">
+                Selecciona una pista si necesitas ayuda.
+            </p>
+
+        </div>
+
+
+        <div class="salida-lava">
+            🏁 SALIDA
+        </div>
+
+
+        <div class="tablero-lava-definitivo">
+
+            <button id="lava-A1" class="plataforma-lava" onclick="pulsarPlataformaLava('A1','verde')">🟩</button>
+            <button id="lava-A2" class="plataforma-lava" onclick="pulsarPlataformaLava('A2','amarillo')">🟨</button>
+            <button id="lava-A3" class="plataforma-lava" onclick="pulsarPlataformaLava('A3','azul')">🟦</button>
+            <button id="lava-A4" class="plataforma-lava" onclick="pulsarPlataformaLava('A4','morado')">🟪</button>
+            <button id="lava-A5" class="plataforma-lava" onclick="pulsarPlataformaLava('A5','amarillo')">🟨</button>
+
+            <button id="lava-B1" class="plataforma-lava" onclick="pulsarPlataformaLava('B1','azul')">🟦</button>
+            <button id="lava-B2" class="plataforma-lava" onclick="pulsarPlataformaLava('B2','morado')">🟪</button>
+            <button id="lava-B3" class="plataforma-lava" onclick="pulsarPlataformaLava('B3','verde')">🟩</button>
+            <button id="lava-B4" class="plataforma-lava" onclick="pulsarPlataformaLava('B4','amarillo')">🟨</button>
+            <button id="lava-B5" class="plataforma-lava" onclick="pulsarPlataformaLava('B5','azul')">🟦</button>
+
+            <button id="lava-C1" class="plataforma-lava" onclick="pulsarPlataformaLava('C1','amarillo')">🟨</button>
+            <button id="lava-C2" class="plataforma-lava" onclick="pulsarPlataformaLava('C2','azul')">🟦</button>
+            <button id="lava-C3" class="plataforma-lava" onclick="pulsarPlataformaLava('C3','morado')">🟪</button>
+            <button id="lava-C4" class="plataforma-lava" onclick="pulsarPlataformaLava('C4','verde')">🟩</button>
+            <button id="lava-C5" class="plataforma-lava" onclick="pulsarPlataformaLava('C5','morado')">🟪</button>
+
+            <button id="lava-D1" class="plataforma-lava" onclick="pulsarPlataformaLava('D1','morado')">🟪</button>
+            <button id="lava-D2" class="plataforma-lava" onclick="pulsarPlataformaLava('D2','verde')">🟩</button>
+            <button id="lava-D3" class="plataforma-lava" onclick="pulsarPlataformaLava('D3','amarillo')">🟨</button>
+            <button id="lava-D4" class="plataforma-lava" onclick="pulsarPlataformaLava('D4','azul')">🟦</button>
+            <button id="lava-D5" class="plataforma-lava" onclick="pulsarPlataformaLava('D5','verde')">🟩</button>
+
+            <button id="lava-E1" class="plataforma-lava" onclick="pulsarPlataformaLava('E1','azul')">🟦</button>
+            <button id="lava-E2" class="plataforma-lava" onclick="pulsarPlataformaLava('E2','amarillo')">🟨</button>
+            <button id="lava-E3" class="plataforma-lava" onclick="pulsarPlataformaLava('E3','morado')">🟪</button>
+            <button id="lava-E4" class="plataforma-lava" onclick="pulsarPlataformaLava('E4','verde')">🟩</button>
+            <button id="lava-E5" class="plataforma-lava" onclick="pulsarPlataformaLava('E5','amarillo')">🟨</button>
+
+        </div>
+
+
+        <div class="inicio-lava">
+            👟 INICIO
+        </div>
+
+
+        <div id="resultado-lava" class="mensaje-lava">
+            Analiza el terreno.
+        </div>
+
+
+        <button class="boton-secundario" onclick="reiniciarRutaLava()">
+            🔄 REINICIAR RUTA
+        </button>
+
+        <div class="navegacion-prueba">
+            <button class="boton-volver" onclick="abrirMapa()">
+                🗺️ VOLVER AL MAPA
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                ⌂ VOLVER AL MENÚ
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="pantalla-lava-superada" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            🔥 TERRENO SUPERADO
+        </p>
+
+        <h1>
+            🏁 RUTA COMPLETADA
+        </h1>
+
+        <p>
+            📡 NUEVA UBICACIÓN DETECTADA...
+        </p>
+
+        <button onclick="desbloquearMision3()">
+            DESCUBRIR DESTINO
+        </button>
+
+        <div class="navegacion-prueba">
+            <button class="boton-volver" onclick="abrirMapa()">
+                🗺️ VOLVER AL MAPA
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                ⌂ VOLVER AL MENÚ
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     MISIÓN 3
+================================================== -->
+
+<div id="pantalla-mision-3" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            ❗ MISIÓN 03 DESBLOQUEADA
+        </p>
+
+        <h1>
+            🌋 EL SUELO ES LAVA
+        </h1>
+
+        <p>
+            📍 Pixel Games
+        </p>
+
+        <p>
+            Sobrevive al terreno
+            y completa la misión.
+        </p>
+
+        <button onclick="aceptarMision3()">
+            ACEPTAR MISIÓN
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="pantalla-mision-3-curso" class="pantalla">
+
+    <div class="contenedor">
+
+        <h1>
+            🌋 EL SUELO ES LAVA
+        </h1>
+
+        <p class="mensaje-sistema">
+            MISIÓN 03 EN CURSO
+        </p>
+
+        <p>
+            ⚠️ El suelo no es seguro.
+        </p>
+
+        <button onclick="completarMision3()">
+            ✓ COMPLETAR MISIÓN
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="pantalla-mision-3-completada" class="pantalla">
+
+    <div class="contenedor">
+
+        <h1>
+            🌋 MISIÓN 03 COMPLETADA
+        </h1>
+
+        <div class="recompensa">
+
+            <p>
+                ⭐ +150 XP
+            </p>
+
+            <p>
+                🪙 +40
+            </p>
+
+        </div>
+
+        <button onclick="recogerRecompensa3()">
+            RECOGER RECOMPENSA
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     RETOS
+================================================== -->
+
+<!-- ==================================================
+     RETOS SECUNDARIOS · RPG
+================================================== -->
+
+<div id="pantalla-retos" class="pantalla pantalla-libro-rpg">
+
+    <div class="libro-rpg libro-retos-rpg">
+
+
+        <!-- CABECERA -->
+
+        <div class="libro-rpg-cabecera">
+
+            <div>
+
+                <span class="libro-rpg-icono">
+                    ⚔️
+                </span>
+
+                <h1>
+                    RETOS
+                </h1>
+
+                <p>
+                    MISIONES OPCIONALES DE LA AVENTURA
+                </p>
+
+            </div>
+
+
+            <div class="contador-logros-rpg saldo-retos-libro">
+
+                <span>
+                    SALDO
+                </span>
+
+                <strong>
+                    🪙
+                    <span id="monedas-retos">
+                        0
+                    </span>
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEPARADOR -->
+
+        <div class="barra-logros-rpg barra-retos-rpg">
+
+            <div class="barra-retos-decoracion"></div>
+
+        </div>
+
+
+        <!-- LIBRO -->
+
+        <div class="libro-rpg-paginas">
+
+
+            <!-- PÁGINA IZQUIERDA -->
+
+            <section class="pagina-rpg pagina-retos-lista">
+
+                <div class="titulo-pagina-rpg">
+
+                    <span>✦</span>
+
+                    <h2>
+                        DESAFÍOS
+                    </h2>
+
+                    <span>✦</span>
+
+                </div>
+
+
+                <p class="subtitulo-pagina-rpg">
+                    CADA RETO ESCONDE UNA RECOMPENSA
+                </p>
+
+
+                <div
+                    id="lista-retos"
+                    class="lista-retos-rpg"
+                ></div>
+
+            </section>
+
+
+            <!-- PÁGINA DERECHA -->
+
+            <section
+                id="detalle-reto"
+                class="pagina-rpg pagina-reto-detalle"
+            >
+
+                <div class="detalle-logro-vacio">
+
+                    <div class="detalle-logro-simbolo">
+                        ⚔️
+                    </div>
+
+                    <h2>
+                        REGISTRO DE RETOS
+                    </h2>
+
+                    <p>
+                        Selecciona un desafío para consultar
+                        sus objetivos y recompensa.
+                    </p>
+
+                    <div class="detalle-logro-estrellas">
+                        ✦　✧　✦
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- PIE -->
+
+        <div class="libro-rpg-pie">
+
+      <button
+    class="boton-volver boton-rpg-secundario boton-con-icono"
+    onclick="volverJuego()"
+>
+    <img
+        src="assets/iconos/volver.png"
+        class="icono-boton-rpg"
+        alt=""
+    >
+
+    <span>VOLVER</span>
+</button>
+                ✦ MISIONES OPCIONALES ✦
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==================================================
+     TIENDA
+================================================== -->
+
+<!-- ==================================================
+     TIENDA · RPG
+================================================== -->
+
+<!-- ==================================================
+     RASCA Y GANA
+================================================== -->
+
+<div id="pantalla-rasca" class="pantalla pantalla-rpg">
+
+    <div class="fondo-pantalla-rpg"></div>
+
+    <div class="contenedor-seccion-rpg rasca-shell">
+
+        <header class="cabecera-seccion-rpg">
+            <button class="boton-atras-rpg" onclick="volverTiendaDesdeRasca()" aria-label="Volver">←</button>
+
+            <div class="titulo-seccion-rpg">
+                <small>NIVEL 23 · JUEGO DE AZAR</small>
+                <h1><span>🎟️</span> RASCA Y GANA</h1>
+                <p>Rasca la zona plateada para descubrir tu premio.</p>
+            </div>
+        </header>
+
+        <div class="separador-rpg-seccion"><span></span><b>✦</b><span></span></div>
+
+        <section class="boleto-rasca">
+            <div class="boleto-cabecera">
+                <small>BOLETO OFICIAL</small>
+                <strong>NIVEL 23</strong>
+            </div>
+
+            <div id="zona-rasca" class="zona-rasca">
+                <div id="premio-rasca" class="premio-rasca">🪙 +0</div>
+                <canvas id="canvas-rasca" aria-label="Rasca para descubrir tu premio"></canvas>
+            </div>
+
+            <p id="estado-rasca" class="estado-rasca">
+                Mantén pulsado y mueve el ratón, o desliza el dedo.
+            </p>
+
+            <button id="cobrar-rasca" class="boton-cobrar-rasca" onclick="cobrarRasca()" disabled>
+                DESCUBRE EL PREMIO
+            </button>
+        </section>
+
+    </div>
+
+</div>
+
+
+<div id="pantalla-tienda" class="pantalla pantalla-libro-rpg">
+
+    <div class="libro-rpg libro-tienda-rpg">
+
+        <!-- CABECERA -->
+
+        <div class="libro-rpg-cabecera">
+
+            <div>
+
+                <span class="libro-rpg-icono">
+                    🛒
+                </span>
+
+                <h1>
+                    TIENDA
+                </h1>
+
+                <p>
+                    MERCADO DEL NIVEL 23
+                </p>
+
+            </div>
+
+
+            <div class="contador-logros-rpg saldo-tienda-libro">
+
+                <span>
+                    SALDO
+                </span>
+
+                <strong>
+                    🪙
+                    <span id="monedas-tienda">
+                        0
+                    </span>
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEPARADOR -->
+
+        <div class="barra-logros-rpg barra-tienda-rpg">
+            <div></div>
+        </div>
+
+
+        <!-- CATÁLOGO -->
+
+        <div class="catalogo-tienda-libro">
+
+            <div class="cabecera-catalogo-tienda">
+
+                <div>
+
+                    <span>
+                        ✦
+                    </span>
+
+                    <h2>
+                        INVENTARIO DEL MERCADER
+                    </h2>
+
+                    <span>
+                        ✦
+                    </span>
+
+                </div>
+
+                <p>
+                    OBJETOS PARA CONTINUAR LA AVENTURA
+                </p>
+
+            </div>
+
+
+            <section class="grid-tienda-rpg tienda-grid-definitiva">
+
+
+                <!-- VIDA EXTRA -->
+
+                <article class="producto producto-rpg">
+
+                    <div class="icono-producto-rpg">
+                        ❤️
+                    </div>
+
+                    <div class="tipo-producto-rpg">
+                        CONSUMIBLE
+                    </div>
+
+                    <h3>
+                        VIDA EXTRA
+                    </h3>
+
+                    <p>
+                        Recupera una vida perdida.
+                    </p>
+
+                    <div class="producto-rpg-inferior">
+
+                        <strong>
+                            15 🪙
+                        </strong>
+
+                        <button onclick="comprarVida()">
+                            COMPRAR
+                        </button>
+
+                    </div>
+
+                </article>
+
+<!-- SEGUNDO INTENTO -->
+
+<article class="producto producto-rpg producto-segundo-intento">
+
+    <div class="icono-producto-rpg">
+        🔄
+    </div>
+
+    <div class="tipo-producto-rpg">
+        CONSUMIBLE
+    </div>
+
+    <h3>
+        SEGUNDO INTENTO
+    </h3>
+
+    <p>
+        Evita perder una vida cuando falles una prueba.
+    </p>
+
+    <div class="producto-rpg-inferior">
+
+        <strong>
+            10 🪙
+        </strong>
+
+        <button onclick="comprarSegundoIntento()">
+            COMPRAR
+        </button>
+
+    </div>
+
+</article>
+                <!-- RASCA -->
+
+                <article class="producto producto-rpg producto-rasca">
+
+                    <div class="icono-producto-rpg">
+                        🎟️
+                    </div>
+
+                    <div class="tipo-producto-rpg">
+                        JUEGO DE AZAR
+                    </div>
+
+                    <h3>
+                        RASCA Y GANA
+                    </h3>
+
+                    <p>
+                        Prueba tu suerte. Puedes ganar entre 0 y 100 monedas.
+                    </p>
+
+                    <div class="intentos-rasca-tienda">
+                        INTENTOS:
+                        <strong id="intentos-rasca">
+                            0 / 3
+                        </strong>
+                    </div>
+
+                    <div class="producto-rpg-inferior">
+
+                        <strong>
+                            10 🪙
+                        </strong>
+
+                        <button
+                            id="comprar-rasca"
+                            onclick="comprarRasca()"
+                        >
+                            COMPRAR BOLETO
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ELECCIÓN -->
+
+                <article class="producto producto-rpg producto-especial">
+
+                    <div class="icono-producto-rpg">
+                        👑
+                    </div>
+
+                    <div class="tipo-producto-rpg">
+                        OBJETO ESPECIAL
+                    </div>
+
+                    <h3>
+                        ELECCIÓN DEL JUGADOR
+                    </h3>
+
+                    <p>
+                        Arrebata una decisión al Game Master.
+                    </p>
+
+                    <div class="producto-rpg-inferior">
+
+                        <strong>
+                            20 🪙
+                        </strong>
+
+                        <button
+                            id="comprar-eleccion"
+                            onclick="comprarEleccionJugador()"
+                        >
+                            COMPRAR
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MENSAJE -->
+
+                <article class="producto producto-rpg producto-archivo">
+
+                    <div class="icono-producto-rpg">
+                        💌
+                    </div>
+
+                    <div class="tipo-producto-rpg">
+                        ARCHIVO
+                    </div>
+
+                    <h3>
+                        MENSAJE SECRETO
+                    </h3>
+
+                    <p>
+                        Desbloquea un archivo personal.
+                    </p>
+
+                    <div class="producto-rpg-inferior">
+
+                        <strong>
+                            30 🪙
+                        </strong>
+
+                        <button
+                            id="comprar-mensaje"
+                            onclick="comprarMensajeSecreto()"
+                        >
+                            COMPRAR
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- LLAVE CENA -->
+
+                <article
+                    id="producto-llave-cena"
+                    class="producto producto-rpg producto-secreto zona-oculta"
+                >
+
+                    <div class="icono-producto-rpg">
+                        🔑
+                    </div>
+
+                    <div class="tipo-producto-rpg">
+                        OBJETO SECRETO
+                    </div>
+
+                    <h3>
+                        LLAVE SECRETA
+                    </h3>
+
+                    <p>
+                        Abre una zona que no aparece en ningún mapa conocido.
+                    </p>
+
+                    <div class="producto-rpg-inferior">
+
+                        <strong>
+                            100 🪙
+                        </strong>
+
+                        <button
+                            id="comprar-llave-cena"
+                            onclick="comprarLlaveCena()"
+                        >
+                            COMPRAR
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- LLAVE NIVEL 23 -->
+
+                <article
+                    id="producto-llave-23"
+                    class="producto producto-rpg producto-legendario zona-oculta"
+                >
+
+                    <div class="icono-producto-rpg">
+                        🗝️
+                    </div>
+
+                    <div class="tipo-producto-rpg">
+                        LEGENDARIO
+                    </div>
+
+                    <h3>
+                        LLAVE DEL NIVEL 23
+                    </h3>
+
+                    <p>
+                        Hay cosas que solo pueden desbloquearse al llegar lo suficientemente lejos.
+                    </p>
+
+                    <div class="producto-rpg-inferior">
+
+                        <strong>
+                            200 🪙
+                        </strong>
+
+                        <button
+                            id="comprar-llave-23"
+                            onclick="comprarLlave23()"
+                        >
+                            COMPRAR
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+        </div>
+
+
+        <!-- MENSAJES DE LA TIENDA -->
+
+        <div
+            id="resultado-tienda"
+            class="resultado-tienda-rpg"
+        ></div>
+
+
+        <!-- PIE -->
+
+        <div class="libro-rpg-pie">
+
+      <button
+    class="boton-volver boton-rpg-secundario boton-con-icono"
+    onclick="volverJuego()"
+>
+    <img
+        src="assets/iconos/volver.png"
+        class="icono-boton-rpg"
+        alt=""
+    >
+
+    <span>VOLVER</span>
+</button>
+                ✦ GASTA CON SABIDURÍA ✦
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ==================================================
+     LOGROS
+================================================== -->
+
+<div id="pantalla-logros" class="pantalla pantalla-libro-rpg">
+
+    <div class="libro-rpg">
+
+        <!-- CABECERA DEL LIBRO -->
+
+        <div class="libro-rpg-cabecera">
+
+            <div>
+                <span class="libro-rpg-icono">
+                    🏆
+                </span>
+
+                <h1>
+                    LOGROS
+                </h1>
+
+                <p>
+                    RECUERDOS DE LA AVENTURA
+                </p>
+            </div>
+
+
+            <div class="contador-logros-rpg">
+
+                <span>
+                    DESBLOQUEADOS
+                </span>
+
+                <strong id="contador-logros">
+                    0 / 14
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- BARRA DE PROGRESO -->
+
+        <div class="barra-logros-rpg">
+
+            <div
+                id="barra-logros-relleno"
+                class="barra-logros-rpg-relleno"
+            ></div>
+
+        </div>
+
+
+        <!-- LIBRO ABIERTO -->
+
+        <div class="libro-rpg-paginas">
+
+
+            <!-- PÁGINA IZQUIERDA -->
+
+            <section class="pagina-rpg pagina-logros-lista">
+
+                <div class="titulo-pagina-rpg">
+
+                    <span>✦</span>
+
+                    <h2>
+                        COLECCIÓN
+                    </h2>
+
+                    <span>✦</span>
+
+                </div>
+
+
+                <p class="subtitulo-pagina-rpg">
+                    DESCUBRE LOS SECRETOS DE LA AVENTURA
+                </p>
+
+
+                <div id="lista-logros"></div>
+
+            </section>
+
+
+            <!-- PÁGINA DERECHA -->
+
+            <section
+                id="detalle-logro"
+                class="pagina-rpg pagina-logro-detalle"
+            >
+
+                <div class="detalle-logro-vacio">
+
+                    <div class="detalle-logro-simbolo">
+                        🏆
+                    </div>
+
+                    <h2>
+                        ARCHIVO DE LOGROS
+                    </h2>
+
+                    <p>
+                        Selecciona un logro para consultar
+                        los detalles de este recuerdo.
+                    </p>
+
+                    <div class="detalle-logro-estrellas">
+                        ✦　✧　✦
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- PIE -->
+
+        <div class="libro-rpg-pie">
+
+         <button
+    class="boton-volver boton-rpg-secundario"
+    onclick="volverJuego()"
+>
+    <img
+        src="assets/iconos/volver.png"
+        class="icono-volver-rpg"
+        alt=""
+    >
+    <span>VOLVER</span>
+</button>
+                ✦ NIVEL 23 ✦
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     ARCHIVOS
+================================================== -->
+
+<div id="pantalla-archivos" class="pantalla pantalla-libro-rpg">
+
+    <div class="libro-rpg libro-archivos-rpg">
+
+        <!-- CABECERA -->
+
+        <div class="libro-rpg-cabecera">
+
+            <div>
+
+                <span class="libro-rpg-icono">
+                    📖
+                </span>
+
+                <h1>
+                    ARCHIVOS
+                </h1>
+
+                <p>
+                    REGISTROS DE LA AVENTURA
+                </p>
+
+            </div>
+
+
+            <div class="contador-logros-rpg contador-archivos-rpg">
+
+                <span>
+                    ARCHIVOS
+                </span>
+
+                <strong id="contador-archivos">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEPARADOR -->
+
+        <div class="barra-logros-rpg barra-archivos-rpg">
+            <div></div>
+        </div>
+
+
+        <!-- LIBRO -->
+
+        <div class="libro-rpg-paginas">
+
+
+            <!-- IZQUIERDA -->
+
+            <section class="pagina-rpg pagina-archivos-lista">
+
+                <div class="titulo-pagina-rpg">
+
+                    <span>✦</span>
+
+                    <h2>
+                        REGISTROS
+                    </h2>
+
+                    <span>✦</span>
+
+                </div>
+
+
+                <p class="subtitulo-pagina-rpg">
+                    RECUERDOS ENCONTRADOS DURANTE EL VIAJE
+                </p>
+
+
+                <div
+                    id="lista-archivos"
+                    class="lista-archivos-rpg"
+                ></div>
+
+            </section>
+
+
+            <!-- DERECHA -->
+
+            <section
+                id="detalle-archivo"
+                class="pagina-rpg pagina-archivo-detalle"
+            >
+
+                <div class="detalle-archivo-vacio">
+
+                    <div class="detalle-archivo-icono">
+                        📜
+                    </div>
+
+                    <p class="detalle-archivo-tipo">
+                        ✦ ARCHIVO DE AVENTURA ✦
+                    </p>
+
+                    <h2>
+                        REGISTROS ENCONTRADOS
+                    </h2>
+
+                    <p>
+                        Selecciona un archivo para consultar
+                        la información almacenada.
+                    </p>
+
+                    <div class="detalle-logro-estrellas">
+                        ✦　✧　✦
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- PIE -->
+
+        <div class="libro-rpg-pie">
+
+         <button
+    class="boton-volver boton-rpg-secundario"
+    onclick="volverJuego()"
+>
+    <img
+        src="assets/iconos/volver.png"
+        class="icono-volver-rpg"
+        alt=""
+    >
+    <span>VOLVER</span>
+</button>
+                ✦ ARCHIVO NIVEL 23 ✦
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="pantalla-mensaje-secreto" class="pantalla pantalla-carta-rpg">
+
+    <div class="fondo-carta-rpg"></div>
+
+    <div class="contenedor-carta-rpg">
+
+        <!-- CABECERA -->
+
+        <header class="cabecera-carta-rpg">
+
+            <button
+                class="boton-atras-carta-rpg"
+                onclick="abrirArchivos()"
+                aria-label="Volver"
+            >
+                ←
+            </button>
+
+            <div>
+
+                <small>
+                    💌 ARCHIVO PERSONAL
+                </small>
+
+                <h1>
+                    MENSAJE SECRETO
+                </h1>
+
+                <p>
+                    REGISTRO PRIVADO · NIVEL 23
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- CARTA -->
+
+        <main class="zona-carta-rpg">
+
+            <div class="decoracion-carta-superior">
+                ✦ ────── 💜 ────── ✦
+            </div>
+
+
+            <article class="carta-secreta-rpg">
+
+                <div class="sello-carta-rpg">
+                    💌
+                </div>
+
+
+                <p class="carta-clasificacion-rpg">
+                    ✦ ARCHIVO DESBLOQUEADO ✦
+                </p>
+
+
+                <h2>
+                    PARA AIMAR
+                </h2>
+
+
+                <div class="separador-carta-rpg">
+                    <span></span>
+                    <b>✦</b>
+                    <span></span>
+                </div>
+
+
+                <div class="texto-carta-rpg">
+
+                    <p>
+                        Aquí irá tu mensaje personal definitivo para él.
+                    </p>
+
+                    <p>
+                        Este espacio puede contener una carta más larga,
+                        varios párrafos y todo lo que quieras decirle
+                        al llegar a este punto de la aventura.
+                    </p>
+
+                </div>
+
+
+                <div class="firma-carta-rpg">
+
+                    <span>
+                        PLAYER 2
+                    </span>
+
+                    <strong>
+                        ISA 💜
+                    </strong>
+
+                </div>
+
+
+                <div class="ornamento-carta-rpg">
+                    ✧　✦　✧
+                </div>
+
+            </article>
+
+
+            <div class="mensaje-archivo-carta-rpg">
+                🔒 ARCHIVO PERSONAL · SOLO PARA EL JUGADOR
+            </div>
+
+        </main>
+
+
+        <!-- PIE -->
+
+        <footer class="pie-carta-rpg">
+
+            <button
+                onclick="abrirArchivos()"
+                class="boton-volver-carta-rpg"
+            >
+                <img src="assets/iconos/volver.png" class="icono-volver-rpg" alt=""> <span>VOLVER</span> A ARCHIVOS
+            </button>
+
+            <span>
+                ✦ NIVEL 23 ✦
+            </span>
+
+        </footer>
+
+    </div>
+
+</div>
+
+
+<div id="pantalla-archivo-23" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            🗝️ ARCHIVO LEGENDARIO
+        </p>
+
+        <h1>
+            NIVEL 23
+        </h1>
+
+        <div class="archivo-secreto">
+
+            <p>
+                🎬 ARCHIVO DE VÍDEO DETECTADO
+            </p>
+
+            <p>
+                Aquí irá tu vídeo especial.
+            </p>
+
+        </div>
+
+        <button onclick="abrirArchivos()">
+            <img src="assets/iconos/volver.png" class="icono-volver-rpg" alt=""> <span>VOLVER</span>
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     EASTER EGG
+================================================== -->
+
+<div id="pantalla-easter-egg" class="pantalla">
+
+    <div class="contenedor">
+
+        <p class="mensaje-sistema">
+            ⚠️ COMANDO OCULTO DETECTADO
+        </p>
+
+        <h1>
+            🥚 ARCHIVO 23
+        </h1>
+
+        <p>
+            ¿De verdad pensabas que un juego
+            hecho para ti no tendría secretos?
+        </p>
+
+        <p>
+            🏆 Logro secreto desbloqueado.
+        </p>
+
+        <button onclick="volverJuego()">
+            CONTINUAR
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     PROGRESO
+================================================== -->
+
+<div id="pantalla-progreso" class="pantalla pantalla-libro-rpg">
+
+    <div class="libro-rpg libro-progreso-rpg">
+
+        <!-- CABECERA -->
+
+        <div class="libro-rpg-cabecera">
+
+            <div>
+
+                <span class="libro-rpg-icono">
+                    📊
+                </span>
+
+                <h1>
+                    PROGRESO
+                </h1>
+
+                <p>
+                    REGISTRO DE LA AVENTURA
+                </p>
+
+            </div>
+
+
+            <div class="contador-logros-rpg contador-progreso-rpg">
+
+                <span>
+                    PROGRESO TOTAL
+                </span>
+
+                <strong id="porcentaje-total">
+                    0%
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEPARADOR -->
+
+        <div class="barra-logros-rpg barra-progreso-rpg">
+            <div></div>
+        </div>
+
+
+        <!-- CONTENIDO -->
+
+        <div class="contenido-progreso-rpg">
+
+
+            <!-- XP -->
+
+            <section class="panel-xp-rpg">
+
+                <div class="xp-rpg-cabecera">
+
+                    <div>
+
+                        <small>
+                            ✦ EXPERIENCIA DEL JUGADOR
+                        </small>
+
+                        <h2>
+                            NIVEL 23
+                        </h2>
+
+                    </div>
+
+
+                    <div class="xp-rpg-numero">
+
+                        ⭐
+
+                        <strong id="progreso-xp">
+                            0
+                        </strong>
+
+                        <span>
+                            / 350 XP
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="barra-xp-rpg-fondo">
+
+                    <div
+                        id="barra-xp-progreso"
+                        class="barra-xp-rpg"
+                    ></div>
+
+                </div>
+
+
+                <div class="xp-rpg-extremos">
+
+                    <span>INICIO</span>
+
+                    <span>
+                        ✦ AVENTURA EN CURSO ✦
+                    </span>
+
+                    <span>350 XP</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- ESTADÍSTICAS -->
+
+            <section class="grid-progreso-rpg">
+
+
+                <!-- MISIONES -->
+
+                <article class="estadistica-progreso-rpg">
+
+                    <div class="estadistica-icono-rpg">
+                        🗺️
+                    </div>
+
+                    <small>
+                        HISTORIA PRINCIPAL
+                    </small>
+
+                    <h3>
+                        MISIONES
+                    </h3>
+
+                    <strong id="progreso-misiones">
+                        0 / 5
+                    </strong>
+
+                </article>
+
+
+                <!-- RETOS -->
+
+                <article class="estadistica-progreso-rpg">
+
+                    <div class="estadistica-icono-rpg">
+                        ⚔️
+                    </div>
+
+                    <small>
+                        MISIONES OPCIONALES
+                    </small>
+
+                    <h3>
+                        RETOS
+                    </h3>
+
+                    <strong id="progreso-retos">
+                        0 / 9
+                    </strong>
+
+                </article>
+
+
+                <!-- LOGROS -->
+
+                <article class="estadistica-progreso-rpg">
+
+                    <div class="estadistica-icono-rpg">
+                        🏆
+                    </div>
+
+                    <small>
+                        COLECCIÓN
+                    </small>
+
+                    <h3>
+                        LOGROS
+                    </h3>
+
+                    <strong id="progreso-logros">
+                        0 / 14
+                    </strong>
+
+                </article>
+
+
+                <!-- MONEDAS CONSEGUIDAS -->
+
+                <article class="estadistica-progreso-rpg">
+
+                    <div class="estadistica-icono-rpg">
+                        🪙
+                    </div>
+
+                    <small>
+                        BOTÍN TOTAL
+                    </small>
+
+                    <h3>
+                        CONSEGUIDAS
+                    </h3>
+
+                    <strong id="progreso-monedas">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <!-- MONEDAS GASTADAS -->
+
+                <article class="estadistica-progreso-rpg">
+
+                    <div class="estadistica-icono-rpg">
+                        🛒
+                    </div>
+
+                    <small>
+                        MERCADO
+                    </small>
+
+                    <h3>
+                        GASTADAS
+                    </h3>
+
+                    <strong id="progreso-gastadas">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <!-- PROGRESO TOTAL -->
+
+                <article class="estadistica-progreso-rpg estadistica-total-rpg">
+
+                    <div class="estadistica-icono-rpg">
+                        ✦
+                    </div>
+
+                    <small>
+                        AVENTURA
+                    </small>
+
+                    <h3>
+                        COMPLETADO
+                    </h3>
+
+                    <strong id="porcentaje-total-tarjeta">
+                        0%
+                    </strong>
+
+                </article>
+
+
+            </section>
+
+
+            <!-- MENSAJE -->
+
+            <div class="mensaje-progreso-rpg">
+
+                <span>✦</span>
+
+                <p>
+                    CADA MISIÓN TE ACERCA UN POCO MÁS AL FINAL DE LA AVENTURA
+                </p>
+
+                <span>✦</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- PIE -->
+
+        <div class="libro-rpg-pie">
+
+           <button
+    class="boton-volver boton-rpg-secundario"
+    onclick="volverJuego()"
+>
+    <img
+        src="assets/iconos/volver.png"
+        class="icono-volver-rpg"
+        alt=""
+    >
+    <span>VOLVER</span>
+</button>
+            <span>
+                ✦ NIVEL 23 ✦
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==================================================
+     CENA SECRETA
+================================================== -->
+
+<<!-- ==================================================
+     PUERTA SECRETA · CENA
+================================================== -->
+
+<div id="pantalla-puerta-cena" class="pantalla pantalla-cena-rpg">
+
+    <div class="fondo-cena-rpg"></div>
+
+    <div class="cena-panel-rpg">
+
+        <button
+            class="boton-atras-rpg"
+            onclick="abrirMapa()"
+            aria-label="Volver"
+        >
+            ←
+        </button>
+
+        <div class="cena-icono-grande">
+            🔐
+        </div>
+
+        <p class="cena-etiqueta">
+            UBICACIÓN SECRETA
+        </p>
+
+        <h1>
+            ACCESO BLOQUEADO
+        </h1>
+
+        <div class="separador-cena">
+            <span></span>
+            <b>✦</b>
+            <span></span>
+        </div>
+
+        <p class="cena-texto">
+            Has encontrado una zona que no aparecía
+            en ningún mapa conocido.
+        </p>
+
+        <p class="cena-pista">
+            Parece que uno de los objetos de tu
+            inventario podría abrir el camino...
+        </p>
+
+        <button
+            class="boton-cena-principal"
+            onclick="usarLlaveCena()"
+        >
+            🔑 USAR LLAVE SECRETA
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     CENA DESBLOQUEADA
+================================================== -->
+
+<div id="pantalla-cena" class="pantalla pantalla-cena-rpg">
+
+    <div class="fondo-cena-rpg"></div>
+
+    <div class="cena-panel-rpg">
+
+        <div class="cena-icono-grande">
+            🍽️
+        </div>
+
+        <p class="cena-etiqueta">
+            ✦ MISIÓN SECRETA DESBLOQUEADA ✦
+        </p>
+
+        <h1>
+            RECARGA NOCTURNA
+        </h1>
+
+        <div class="separador-cena">
+            <span></span>
+            <b>✦</b>
+            <span></span>
+        </div>
+
+        <div class="cena-objetivo">
+
+            <small>OBJETIVO</small>
+
+            <p>
+                Recuperar energía después de
+                un largo día de aventura.
+            </p>
+
+        </div>
+
+        <div class="cena-destino">
+            📍 DESTINO DESCONOCIDO
+        </div>
+
+        <p class="cena-pista">
+            Los detalles de esta misión
+            se revelarán cuando llegue el momento.
+        </p>
+
+        <button
+            class="boton-cena-principal"
+            onclick="aceptarCena()"
+        >
+            ACEPTAR MISIÓN
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     CENA EN CURSO
+================================================== -->
+
+<div id="pantalla-cena-curso" class="pantalla pantalla-cena-rpg">
+
+    <div class="fondo-cena-rpg"></div>
+
+    <div class="cena-panel-rpg">
+
+        <div class="cena-icono-grande">
+            🌙
+        </div>
+
+        <p class="cena-etiqueta">
+            MISIÓN SECRETA EN CURSO
+        </p>
+
+        <h1>
+            RECARGA NOCTURNA
+        </h1>
+
+        <div class="separador-cena">
+            <span></span>
+            <b>✦</b>
+            <span></span>
+        </div>
+
+        <p class="cena-texto">
+            La aventura está llegando
+            a su tramo final.
+        </p>
+
+        <div class="cena-objetivo">
+            <small>OBJETIVO ACTUAL</small>
+
+            <p>
+                Disfrutar de la última parada
+                antes de continuar la aventura.
+            </p>
+        </div>
+
+        <button
+            class="boton-cena-principal"
+            onclick="completarCena()"
+        >
+            ✓ COMPLETAR MISIÓN
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     CENA COMPLETADA
+================================================== -->
+
+<div id="pantalla-cena-completada" class="pantalla pantalla-cena-rpg">
+
+    <div class="fondo-cena-rpg"></div>
+
+    <div class="cena-panel-rpg cena-panel-completado">
+
+        <div class="cena-icono-grande">
+            🏆
+        </div>
+
+        <p class="cena-etiqueta">
+            MISIÓN SECRETA COMPLETADA
+        </p>
+
+        <h1>
+            RECARGA NOCTURNA
+        </h1>
+
+        <div class="separador-cena">
+            <span></span>
+            <b>✦</b>
+            <span></span>
+        </div>
+
+        <p class="cena-frase-final">
+            UNA AVENTURA NO TERMINA<br>
+            CON EL ESTÓMAGO VACÍO
+        </p>
+
+        <div class="cena-check">
+            ✓ MISIÓN COMPLETADA
+        </div>
+
+        <button
+            class="boton-cena-principal"
+            onclick="finalizarCena()"
+        >
+            CONTINUAR AVENTURA
+        </button>
+
+    </div>
+
+</div>
+<!-- ==================================================
+     FINAL
+================================================== -->
+
+<!-- ==================================================
+     CASTILLO · FINAL DEL NIVEL 23
+================================================== -->
+
+<div id="pantalla-final" class="pantalla pantalla-final-rpg">
+
+    <div class="fondo-final-rpg"></div>
+
+    <div class="panel-final-rpg">
+
+        <button
+            class="boton-atras-rpg"
+            onclick="volverDelCastillo()"
+            aria-label="Volver al mapa"
+        >
+            ←
+        </button>
+
+
+        <div class="icono-castillo-final">
+            🏰
+        </div>
+
+
+        <p class="etiqueta-final-rpg">
+            ✦ DESTINO FINAL ✦
+        </p>
+
+
+        <h1>
+            NIVEL 23 COMPLETADO
+        </h1>
+
+
+        <p class="subtitulo-final-rpg">
+            Has llegado al final de la aventura.
+        </p>
+
+
+        <div class="separador-final-rpg">
+            <span></span>
+            <b>✦</b>
+            <span></span>
+        </div>
+
+
+        <!-- RESUMEN -->
+
+        <div class="resumen-final-rpg">
+
+            <div class="estadistica-final-rpg">
+
+                <span>⭐</span>
+
+                <small>
+                    EXPERIENCIA
+                </small>
+
+                <strong id="final-xp">
+                    0 / 350
+                </strong>
+
+            </div>
+
+
+            <div class="estadistica-final-rpg">
+
+                <span>⚔️</span>
+
+                <small>
+                    RETOS
+                </small>
+
+                <strong id="final-retos">
+                    0 / 9
+                </strong>
+
+            </div>
+
+
+            <div class="estadistica-final-rpg">
+
+                <span>🏆</span>
+
+                <small>
+                    LOGROS
+                </small>
+
+                <strong id="final-logros">
+                    0 / 14
+                </strong>
+
+            </div>
+
+
+            <div class="estadistica-final-rpg">
+
+                <span>🪙</span>
+
+                <small>
+                    MONEDAS CONSEGUIDAS
+                </small>
+
+                <strong id="final-monedas">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="separador-final-rpg">
+            <span></span>
+            <b>✦</b>
+            <span></span>
+        </div>
+
+
+        <!--
+            JS coloca aquí:
+            - archivo secreto disponible
+            - o archivo final bloqueado
+        -->
+
+        <div id="final-archivo"></div>
+
+
+        <p class="mensaje-final-aventura">
+            — AVENTURA COMPLETADA —
+        </p>
+
+
+        <button
+            class="boton-final-volver"
+            onclick="volverDelCastillo()"
+        >
+            <img src="assets/iconos/volver.png" class="icono-volver-rpg" alt=""> <span>VOLVER</span> AL MAPA
+        </button>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
