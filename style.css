@@ -13928,3 +13928,34 @@ p {
         letter-spacing: 0.06em;
     }
 }
+/* ==================================================
+   PORTADA · PERSONAJES COMPLETOS EN MÓVIL
+================================================== */
+
+@media (max-width: 600px) {
+
+    .portada-personajes-imagen {
+        width: 100%;
+        max-width: 100%;
+        margin: 10px auto 20px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        overflow: visible;
+    }
+
+    .imagen-personajes-portada {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+
+        margin-left: 0;
+
+        object-fit: contain;
+        object-position: center;
+
+        display: block;
+    }
+}
