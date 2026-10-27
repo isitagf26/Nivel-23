@@ -1073,6 +1073,9 @@ let intentosLava = 1;
 
 let bloqueoLava = false;
 
+// Evento secreto: jugadores detectados tras El Suelo es Lava
+let partyLavaDesbloqueada = false;
+
 
 // ==================================================
 // PANTALLAS
@@ -1295,6 +1298,8 @@ function abrirPersonajes() {
             monedas;
     }
 
+
+    actualizarPartyPersonajes();
 
     mostrarPantalla(
         "pantalla-personajes"
@@ -3710,24 +3715,16 @@ function completarDesayuno() {
 
 function recogerRecompensaDesayuno() {
 
-    if (estado.recompensaDesayunoRecogida) {
-        mostrarOpcionesPostRecompensa("desayuno");
-        return;
-    }
-
-    estado.recompensaDesayunoRecogida = true;
-
-    estado.xp += 25;
-    estado.monedas += 10;
-
-    if (!estado.logros.includes("Con el estómago lleno")) {
-        estado.logros.push("Con el estómago lleno");
+    if (!recompensaDesayunoRecogida) {
+        experiencia += 25;
+        darMonedas(10);
+        recompensaDesayunoRecogida = true;
+        desbloquearLogro("desayuno");
     }
 
     guardarPartida();
     actualizarTodo();
-
-    mostrarOpcionesPostRecompensa("desayuno");
+    mostrarPantalla("pantalla-reto-lol");
 }
 
 // ==================================================
@@ -3952,20 +3949,15 @@ function completarMision1() {
 
 function recogerRecompensa1() {
 
-    if (estado.recompensa1Recogida) {
-        mostrarOpcionesPostRecompensa("oxo");
-        return;
+    if (!recompensaMision1Recogida) {
+        experiencia += 100;
+        darMonedas(25);
+        recompensaMision1Recogida = true;
     }
-
-    estado.recompensa1Recogida = true;
-
-    estado.xp += 100;
-    estado.monedas += 25;
 
     guardarPartida();
     actualizarTodo();
-
-    mostrarOpcionesPostRecompensa("oxo");
+    mostrarPantalla("pantalla-reto-nikkei");
 }
 
 
@@ -4219,20 +4211,15 @@ function completarMision2() {
 
 function recogerRecompensa2() {
 
-    if (estado.recompensa2Recogida) {
-        mostrarOpcionesPostRecompensa("genko");
-        return;
+    if (!recompensaMision2Recogida) {
+        experiencia += 75;
+        darMonedas(50);
+        recompensaMision2Recogida = true;
     }
-
-    estado.recompensa2Recogida = true;
-
-    estado.xp += 75;
-    estado.monedas += 50;
 
     guardarPartida();
     actualizarTodo();
-
-    mostrarOpcionesPostRecompensa("genko");
+    mostrarPantalla("pantalla-reto-lava");
 }
 // ==================================================
 // LAVA
@@ -4789,9 +4776,88 @@ function completarMision3() {
     guardarPartida();
 
 
-    mostrarPantalla(
-        "pantalla-mision-3-completada"
-    );
+    if (!partyLavaDesbloqueada) {
+        iniciarEscanerPartyLava();
+    }
+    else {
+        mostrarPantalla("pantalla-mision-3-completada");
+    }
+}
+
+function iniciarEscanerPartyLava() {
+    mostrarPantalla("pantalla-party-detectada");
+
+    const orden = [
+        ["jorge", "JORGE", "JUGADOR 03 DETECTADO"],
+        ["ossama", "OSSAMA", "JUGADOR 04 DETECTADO"],
+        ["alvaro", "ÁLVARO", "JUGADOR 05 DETECTADO"],
+        ["manu", "MANU", "JUGADOR 06 DETECTADO"]
+    ];
+
+    const estadoEscaner = document.getElementById("party-estado-escaner");
+    const finalEscaner = document.getElementById("party-final-escaner");
+
+    orden.forEach(function(datos) {
+        const tarjeta = document.getElementById("party-senal-" + datos[0]);
+        if (tarjeta) {
+            tarjeta.classList.remove("reconocido");
+            const nombre = tarjeta.querySelector("strong");
+            if (nombre) nombre.textContent = "????";
+        }
+    });
+
+    if (finalEscaner) {
+        finalEscaner.className = "party-final-oculto";
+    }
+
+    if (estadoEscaner) {
+        estadoEscaner.textContent = "2 JUGADORES REGISTRADOS · BUSCANDO OTRAS SEÑALES...";
+    }
+
+    setTimeout(function() {
+        if (estadoEscaner) estadoEscaner.textContent = "⚠ ANOMALÍA DETECTADA · 4 SEÑALES ADICIONALES";
+    }, 1300);
+
+    orden.forEach(function(datos, indice) {
+        setTimeout(function() {
+            const tarjeta = document.getElementById("party-senal-" + datos[0]);
+            if (tarjeta) {
+                tarjeta.classList.add("reconocido");
+                const nombre = tarjeta.querySelector("strong");
+                if (nombre) nombre.textContent = datos[1];
+            }
+            if (estadoEscaner) estadoEscaner.textContent = datos[2] + " · " + datos[1];
+        }, 2600 + (indice * 1500));
+    });
+
+    setTimeout(function() {
+        partyLavaDesbloqueada = true;
+        actualizarPartyPersonajes();
+        guardarPartida();
+        if (estadoEscaner) estadoEscaner.textContent = "✓ IDENTIFICACIÓN FINALIZADA";
+        if (finalEscaner) finalEscaner.className = "party-final-visible";
+    }, 2600 + (orden.length * 1500));
+}
+
+function confirmarPartyLava() {
+    partyLavaDesbloqueada = true;
+    actualizarPartyPersonajes();
+    guardarPartida();
+    mostrarPantalla("pantalla-mision-3-completada");
+}
+
+function actualizarPartyPersonajes() {
+    const amigos = document.getElementById("amigos-party-lava");
+    const contador = document.getElementById("contador-grupo-personajes");
+
+    if (amigos) {
+        if (partyLavaDesbloqueada) amigos.classList.remove("zona-oculta");
+        else amigos.classList.add("zona-oculta");
+    }
+
+    if (contador) {
+        contador.textContent = partyLavaDesbloqueada ? "6 / 6" : "2 / 2";
+    }
 }
 
 
@@ -7467,6 +7533,8 @@ function guardarPartida() {
         recompensaMision2Recogida,
         recompensaMision3Recogida,
 
+        partyLavaDesbloqueada,
+
        segundosIntentos,
 
 eleccionJugador,
@@ -7577,6 +7645,11 @@ function cargarPartida() {
             partida.recompensaMision3Recogida ??
             false;
 
+        partyLavaDesbloqueada =
+            partida.partyLavaDesbloqueada ??
+            false;
+
+        actualizarPartyPersonajes();
 
         segundosIntentos =
             partida.segundosIntentos ?? 0;
@@ -7788,74 +7861,3 @@ document.addEventListener("visibilitychange", function () {
 window.addEventListener("pagehide", autoguardarPartida);
 window.addEventListener("beforeunload", autoguardarPartida);
 setInterval(autoguardarPartida, 5000);
-function mostrarOpcionesPostRecompensa(mision) {
-
-    const configuracion = {
-        desayuno: {
-            pantalla: "pantalla-desayuno-completado",
-            siguiente: "pantalla-reto-lol"
-        },
-
-        oxo: {
-            pantalla: "pantalla-mision-1-completada",
-            siguiente: "pantalla-reto-nikkei"
-        },
-
-        genko: {
-            pantalla: "pantalla-mision-2-completada",
-            siguiente: "pantalla-reto-lava"
-        }
-    };
-
-    const datos = configuracion[mision];
-
-    if (!datos) return;
-
-    const pantalla = document.getElementById(datos.pantalla);
-
-    if (!pantalla) return;
-
-    const botonRecompensa = pantalla.querySelector(
-        'button[onclick*="recogerRecompensa"]'
-    );
-
-    if (botonRecompensa) {
-        botonRecompensa.style.display = "none";
-    }
-
-    let opciones = pantalla.querySelector(".opciones-post-recompensa");
-
-    if (!opciones) {
-
-        opciones = document.createElement("div");
-        opciones.className = "opciones-post-recompensa";
-
-        opciones.innerHTML = `
-            <button onclick="mostrarPantalla('${datos.siguiente}')">
-                ⚔ CONTINUAR A LA SIGUIENTE PRUEBA
-            </button>
-
-            <button class="boton-volver" onclick="abrirMapa()">
-                <img
-                    src="assets/iconos/volver.png"
-                    class="icono-volver-rpg"
-                    alt=""
-                >
-                <span>VOLVER AL MAPA</span>
-            </button>
-
-            <button class="boton-volver" onclick="volverJuego()">
-                <img
-                    src="assets/iconos/volver.png"
-                    class="icono-volver-rpg"
-                    alt=""
-                >
-                <span>VOLVER AL MENÚ</span>
-            </button>
-        `;
-
-        pantalla.querySelector(".contenedor").appendChild(opciones);
-    }
-
-    opciones.style.display = "flex";
-}

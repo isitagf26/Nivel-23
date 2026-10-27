@@ -101,6 +101,22 @@
 .cena-icono-grande .icono-mision-personalizado {
     margin: 0 auto;
 }
+
+/* ESCÁNER DE JUGADORES · LAVA */
+.party-escaner-estado{font-family:var(--fuente-ui,"Silkscreen",monospace);font-size:.82rem;letter-spacing:.08em;color:#d8c5ff;margin:16px 0;}
+.party-senales{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:24px auto;max-width:620px;}
+.party-senal{min-height:150px;padding:12px 8px;border:1px solid rgba(190,155,255,.45);border-radius:14px;background:rgba(28,17,55,.78);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;overflow:hidden;}
+.party-senal img{width:82px;height:82px;object-fit:contain;image-rendering:pixelated;filter:brightness(0);opacity:.42;transition:filter .55s ease,opacity .55s ease,transform .55s ease;}
+.party-senal strong{font-family:var(--fuente-rpg,"Pixelify Sans",sans-serif);font-size:1rem;color:#d8c5ff;}
+.party-senal.reconocido{border-color:rgba(241,211,126,.75);box-shadow:0 0 24px rgba(177,120,255,.22);}
+.party-senal.reconocido img{filter:none;opacity:1;transform:scale(1.08);}
+.party-senal.reconocido strong{color:#f1d37e;}
+.party-final-oculto{display:none;}
+.party-final-visible{display:block;animation:partyEntrada .55s ease both;}
+.personaje-amigo-rpg{cursor:default;}
+@keyframes partyEntrada{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:600px){.party-senales{grid-template-columns:repeat(2,minmax(0,1fr));}.party-senal{min-height:135px}.party-senal img{width:72px;height:72px}}
+
 </style>
 
 </head>
@@ -1172,7 +1188,7 @@
                     GRUPO
                 </span>
 
-                <strong>
+                <strong id="contador-grupo-personajes">
                     2 / 2
                 </strong>
 
@@ -1336,6 +1352,25 @@
                     </div>
 
                 </button>
+
+                <div id="amigos-party-lava" class="party-amigos-grid zona-oculta" style="display:contents;">
+                    <div class="personaje-seleccion-rpg personaje-amigo-rpg">
+                        <div class="personaje-marco-rpg"><div class="personaje-retrato-rpg"><img src="assets/personajes/jorge.png" alt="Jorge"></div></div>
+                        <div class="personaje-info-rpg"><span class="personaje-tipo-rpg">🎮 JUGADOR 3</span><h2>JORGE</h2><p>MIEMBRO DE LA PARTY</p></div>
+                    </div>
+                    <div class="personaje-seleccion-rpg personaje-amigo-rpg">
+                        <div class="personaje-marco-rpg"><div class="personaje-retrato-rpg"><img src="assets/personajes/ossama.png" alt="Ossama"></div></div>
+                        <div class="personaje-info-rpg"><span class="personaje-tipo-rpg">🎮 JUGADOR 4</span><h2>OSSAMA</h2><p>MIEMBRO DE LA PARTY</p></div>
+                    </div>
+                    <div class="personaje-seleccion-rpg personaje-amigo-rpg">
+                        <div class="personaje-marco-rpg"><div class="personaje-retrato-rpg"><img src="assets/personajes/alvaro.png" alt="Álvaro"></div></div>
+                        <div class="personaje-info-rpg"><span class="personaje-tipo-rpg">🎮 JUGADOR 5</span><h2>ÁLVARO</h2><p>MIEMBRO DE LA PARTY</p></div>
+                    </div>
+                    <div class="personaje-seleccion-rpg personaje-amigo-rpg">
+                        <div class="personaje-marco-rpg"><div class="personaje-retrato-rpg"><img src="assets/personajes/manu.png" alt="Manu"></div></div>
+                        <div class="personaje-info-rpg"><span class="personaje-tipo-rpg">🎮 JUGADOR 6</span><h2>MANU</h2><p>MIEMBRO DE LA PARTY</p></div>
+                    </div>
+                </div>
 
             </div>
 
@@ -1965,22 +2000,7 @@
         <button onclick="recogerRecompensaDesayuno()">
             ✨ RECOGER RECOMPENSA
         </button>
-
-        <div class="navegacion-prueba">
-            <button onclick="recogerRecompensaDesayuno(); abrirPruebaPendiente()">
-                ⚔️ RECOGER Y SEGUIR A LA SIGUIENTE PRUEBA
-            </button>
-
-            <button class="boton-volver" onclick="abrirMapa()">
-                🗺️ VOLVER AL MAPA
-            </button>
-
-            <button class="boton-volver" onclick="volverJuego()">
-                ⌂ VOLVER AL MENÚ
-            </button>
-        </div>
-
-    </div>
+</div>
 
 </div>
 
@@ -2354,22 +2374,7 @@
         <button onclick="recogerRecompensa1()">
             RECOGER RECOMPENSA
         </button>
-
-        <div class="navegacion-prueba">
-            <button onclick="recogerRecompensa1(); abrirPruebaPendiente()">
-                ⚔️ RECOGER Y SEGUIR A LA SIGUIENTE PRUEBA
-            </button>
-
-            <button class="boton-volver" onclick="abrirMapa()">
-                🗺️ VOLVER AL MAPA
-            </button>
-
-            <button class="boton-volver" onclick="volverJuego()">
-                ⌂ VOLVER AL MENÚ
-            </button>
-        </div>
-
-    </div>
+</div>
 
 </div>
 
@@ -2561,22 +2566,7 @@
         <button onclick="recogerRecompensa2()">
             RECOGER RECOMPENSA
         </button>
-
-        <div class="navegacion-prueba">
-            <button onclick="recogerRecompensa2(); abrirPruebaPendiente()">
-                ⚔️ RECOGER Y SEGUIR A LA SIGUIENTE PRUEBA
-            </button>
-
-            <button class="boton-volver" onclick="abrirMapa()">
-                🗺️ VOLVER AL MAPA
-            </button>
-
-            <button class="boton-volver" onclick="volverJuego()">
-                ⌂ VOLVER AL MENÚ
-            </button>
-        </div>
-
-    </div>
+</div>
 
 </div>
 
@@ -2860,16 +2850,7 @@
         </p>
 
         <button
-            id="boton-llegada-party"
-            class="boton-party-llegada"
-            onclick="detectarPartyLava()"
-        >
-            📡 HEMOS LLEGADO
-        </button>
-
-        <button
             id="boton-completar-lava-real"
-            class="zona-oculta"
             onclick="completarMision3()"
         >
             ✓ COMPLETAR MISIÓN
@@ -2886,38 +2867,27 @@
 
 <div id="pantalla-party-detectada" class="pantalla pantalla-party-evento">
     <div class="contenedor party-evento-contenedor">
-        <p class="mensaje-sistema party-alerta">⚠ ACTIVIDAD INUSUAL DETECTADA</p>
+        <p class="mensaje-sistema party-alerta">📡 DISPOSITIVO DE RASTREO ACTIVADO</p>
         <div class="party-radar">
             <span class="party-radar-centro">✦</span>
-            <span class="party-radar-punto punto-1"></span>
-            <span class="party-radar-punto punto-2"></span>
-            <span class="party-radar-punto punto-3"></span>
+            <span class="party-radar-punto punto-1"></span><span class="party-radar-punto punto-2"></span><span class="party-radar-punto punto-3"></span>
         </div>
-        <h1>ANALIZANDO JUGADORES CERCANOS...</h1>
-        <p class="party-texto-sistema">Se han detectado nuevas señales en la zona.</p>
-        <button onclick="revelarPartyLava()">CONTINUAR ANÁLISIS</button>
+        <h1 id="party-titulo-escaner">ESCANEANDO LA ZONA...</h1>
+        <p id="party-estado-escaner" class="party-escaner-estado">2 JUGADORES REGISTRADOS · BUSCANDO OTRAS SEÑALES...</p>
+        <div class="party-senales">
+            <div id="party-senal-jorge" class="party-senal"><img src="assets/personajes/jorge.png" alt="Señal desconocida"><strong>????</strong></div>
+            <div id="party-senal-ossama" class="party-senal"><img src="assets/personajes/ossama.png" alt="Señal desconocida"><strong>????</strong></div>
+            <div id="party-senal-alvaro" class="party-senal"><img src="assets/personajes/alvaro.png" alt="Señal desconocida"><strong>????</strong></div>
+            <div id="party-senal-manu" class="party-senal"><img src="assets/personajes/manu.png" alt="Señal desconocida"><strong>????</strong></div>
+        </div>
+        <div id="party-final-escaner" class="party-final-oculto">
+            <p class="mensaje-sistema party-exito">✓ ESCANEO COMPLETADO · 6 JUGADORES REGISTRADOS</p>
+            <div class="party-logro"><small>🏆 LOGRO SECRETO DESBLOQUEADO</small><strong>LA PARTY ESTÁ COMPLETA</strong></div>
+            <p class="party-aviso-personajes">Los nuevos jugadores han sido registrados en PERSONAJES.</p>
+            <button onclick="confirmarPartyLava()">⚔ CONTINUAR</button>
+        </div>
     </div>
 </div>
-
-<div id="pantalla-party-revelada" class="pantalla pantalla-party-evento">
-    <div class="contenedor party-evento-contenedor">
-        <p class="mensaje-sistema party-exito">👥 NUEVOS MIEMBROS DEL GRUPO DETECTADOS</p>
-        <div class="party-siluetas" aria-label="Nuevos miembros de la party">
-            <div class="party-silueta">?</div>
-            <div class="party-silueta party-silueta-central">+</div>
-            <div class="party-silueta">?</div>
-        </div>
-        <h1>LA PARTY HA CRECIDO</h1>
-        <p>La misión ya no pertenece solo a dos jugadores.</p>
-        <div class="party-logro">
-            <small>🏆 LOGRO SECRETO DESBLOQUEADO</small>
-            <strong>LA PARTY ESTÁ COMPLETA</strong>
-        </div>
-        <p class="party-aviso-personajes">Nuevos compañeros disponibles en PERSONAJES.</p>
-        <button onclick="confirmarPartyLava()">⚔ CONTINUAR MISIÓN</button>
-    </div>
-</div>
-
 
 <div id="pantalla-mision-3-completada" class="pantalla">
 
