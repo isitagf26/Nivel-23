@@ -2862,8 +2862,6 @@
 
     <div class="contenedor">
 
-        <img src="assets/iconos/lava.png" alt="El Suelo es Lava - misión descubierta" class="icono-mision-personalizado">
-
         <p class="mensaje-sistema">
             ❗ MISIÓN 03 DESBLOQUEADA
         </p>
@@ -4777,26 +4775,75 @@ function partyLavaDesbloqueada(){
 
 function detectarPartyLava(){
     if (partyLavaDesbloqueada()) {
-        confirmarPartyLava();
+        finalizarPartyLava();
         return;
     }
+
     mostrarPantalla("pantalla-party-detectada");
+
+    const titulo = document.getElementById("party-titulo-escaner");
+    const estado = document.getElementById("party-estado-escaner");
+    const final = document.getElementById("party-final-escaner");
+    const miembros = [
+        ["jorge", "JORGE"],
+        ["ossama", "OSSAMA"],
+        ["alvaro", "ÁLVARO"],
+        ["manu", "MANU"]
+    ];
+
+    if (final) final.className = "party-final-oculto";
+    miembros.forEach(([id]) => {
+        const tarjeta = document.getElementById("party-senal-" + id);
+        if (tarjeta) {
+            tarjeta.classList.remove("reconocido");
+            const nombre = tarjeta.querySelector("strong");
+            if (nombre) nombre.textContent = "????";
+        }
+    });
+
+    if (titulo) titulo.textContent = "ESCANEANDO LA ZONA...";
+    if (estado) estado.textContent = "2 JUGADORES REGISTRADOS · BUSCANDO OTRAS SEÑALES...";
+
+    window.setTimeout(() => {
+        if (estado) estado.textContent = "⚠ ANOMALÍA DETECTADA · 4 SEÑALES ADICIONALES";
+    }, 1200);
+
+    miembros.forEach(([id, nombre], indice) => {
+        window.setTimeout(() => {
+            const tarjeta = document.getElementById("party-senal-" + id);
+            if (tarjeta) {
+                tarjeta.classList.add("reconocido");
+                const texto = tarjeta.querySelector("strong");
+                if (texto) texto.textContent = nombre;
+            }
+            if (estado) estado.textContent = `JUGADOR 0${indice + 3} DETECTADO · ${nombre}`;
+        }, 2400 + indice * 1200);
+    });
+
+    window.setTimeout(() => {
+        if (titulo) titulo.textContent = "PARTY IDENTIFICADA";
+        if (estado) estado.textContent = "✓ 6 JUGADORES REGISTRADOS";
+        if (final) final.className = "party-final-visible";
+    }, 2400 + miembros.length * 1200 + 500);
 }
 
 function revelarPartyLava(){
-    mostrarPantalla("pantalla-party-revelada");
+    detectarPartyLava();
 }
 
 function confirmarPartyLava(){
-    const eraNueva = !partyLavaDesbloqueada();
     localStorage.setItem(CLAVE_PARTY_LAVA,"1");
     actualizarEstadoPartyLava();
+    finalizarPartyLava();
+}
 
-    if (eraNueva && typeof mostrarNotificacion === "function") {
-        try { mostrarNotificacion("🏆 LOGRO SECRETO", "LA PARTY ESTÁ COMPLETA"); } catch(e) {}
+function finalizarPartyLava(){
+    // El logro y el reto de Lava se conceden SOLO después de completar
+    // la misión y de que el dispositivo haya reconocido a la party.
+    if (typeof concederSupervivienteTrasParty === "function") {
+        concederSupervivienteTrasParty();
     }
-
-    mostrarPantalla("pantalla-mision-3-curso");
+    mostrarPantalla("pantalla-mision-3-completada");
 }
 
 function actualizarEstadoPartyLava(){

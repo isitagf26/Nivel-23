@@ -4744,39 +4744,36 @@ function completarMision3() {
     estadoMision3 =
         "completada";
 
+    guardarPartida();
 
-    // Completar automáticamente el reto SUPERVIVIENTE
+    // Primero aparece el dispositivo de rastreo y se descubren
+    // los nuevos jugadores. La recompensa/logro de Lava se concede
+    // al terminar esa revelación, no antes.
+    if (typeof detectarPartyLava === "function") {
+        detectarPartyLava();
+    } else {
+        concederSupervivienteTrasParty();
+        mostrarPantalla("pantalla-mision-3-completada");
+    }
+}
+
+function concederSupervivienteTrasParty() {
+
     if (
         retos.lavaSinAbandonar.desbloqueado &&
         !retos.lavaSinAbandonar.completado
     ) {
-
-        retos.lavaSinAbandonar.completado =
-            true;
-
-        darMonedas(
-            retos.lavaSinAbandonar.recompensa
-        );
-
-        desbloquearLogro(
-            "superviviente"
-        );
-
-
+        retos.lavaSinAbandonar.completado = true;
+        darMonedas(retos.lavaSinAbandonar.recompensa);
+        desbloquearLogro("superviviente");
         notificar(
             "🌋",
             "SUPERVIVIENTE",
-            "Has completado El Suelo es Lava. +200 monedas."
+            "Has completado El Suelo es Lava sin abandonar. +200 monedas."
         );
     }
 
-
     guardarPartida();
-
-
-    mostrarPantalla(
-        "pantalla-mision-3-completada"
-    );
 }
 
 
@@ -5922,7 +5919,7 @@ function abrirLogros() {
 
             if (
                 id === "superviviente" &&
-                estadoMision3 === "bloqueada"
+                !logro.desbloqueado
             ) {
                 visible = false;
             }
