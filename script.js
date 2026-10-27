@@ -69,7 +69,7 @@ let objetosStarter = [];
 let retos = {
 
     fotoJuntos: {
-        nombre: "📸 RECUERDO DE LA AVENTURA",
+        nombre: "RECUERDO DE LA AVENTURA",
         descripcion: "Haz una foto juntos durante la aventura.",
         recompensa: 5,
         desbloqueado: true,
@@ -77,7 +77,7 @@ let retos = {
     },
 
     videojuegoCalle: {
-        nombre: "🎮 OBJETO FUERA DE SU MUNDO",
+        nombre: "OBJETO FUERA DE SU MUNDO",
         descripcion: "Encuentra algo relacionado con videojuegos por la calle.",
         recompensa: 15,
         desbloqueado: true,
@@ -85,7 +85,7 @@ let retos = {
     },
 
     objetoRosa: {
-        nombre: "🩷 TODO DE ROSA",
+        nombre: "TODO DE ROSA",
         descripcion: "Encuentra un objeto rosa y hazle una foto.",
         recompensa: 10,
         desbloqueado: true,
@@ -93,7 +93,7 @@ let retos = {
     },
 
     tripleA: {
-        nombre: "🔤 TRIPLE A",
+        nombre: "TRIPLE A",
         descripcion: "Encuentra 3 objetos que empiecen por la letra A.",
         recompensa: 30,
         desbloqueado: true,
@@ -101,7 +101,7 @@ let retos = {
     },
 
     juegoInfancia: {
-        nombre: "🕹️ VIAJE AL PASADO",
+        nombre: "VIAJE AL PASADO",
         descripcion: "Encuentra en OXO un videojuego al que jugaras de pequeño.",
         recompensa: 15,
         desbloqueado: false,
@@ -109,7 +109,7 @@ let retos = {
     },
 
     japon: {
-        nombre: "🇯🇵 CAMINO A JAPÓN",
+        nombre: "CAMINO A JAPÓN",
         descripcion: "Encuentra algo relacionado con Japón.",
         recompensa: 20,
         desbloqueado: false,
@@ -117,7 +117,7 @@ let retos = {
     },
 
     peru: {
-        nombre: "🇵🇪 CONEXIÓN PERUANA",
+        nombre: "CONEXIÓN PERUANA",
         descripcion: "Encuentra algo relacionado con Perú.",
         recompensa: 30,
         desbloqueado: false,
@@ -125,7 +125,7 @@ let retos = {
     },
 
     platoGenko: {
-        nombre: "🍣 CRÍTICO GASTRONÓMICO",
+        nombre: "CRÍTICO GASTRONÓMICO",
         descripcion: "Elige tu plato favorito de Genko.",
         recompensa: 10,
         desbloqueado: false,
@@ -133,7 +133,7 @@ let retos = {
     },
 
     lavaSinAbandonar: {
-        nombre: "🌋 SUPERVIVIENTE",
+        nombre: "SUPERVIVIENTE",
         descripcion: "Completa El Suelo es Lava sin abandonar.",
         recompensa: 200,
         desbloqueado: false,
@@ -3710,29 +3710,25 @@ function completarDesayuno() {
 
 function recogerRecompensaDesayuno() {
 
-    if (
-        !recompensaDesayunoRecogida
-    ) {
-
-        experiencia += 25;
-
-        darMonedas(10);
-
-        recompensaDesayunoRecogida =
-            true;
-
-        desbloquearLogro(
-            "desayuno"
-        );
-
+    if (estado.recompensaDesayunoRecogida) {
+        mostrarOpcionesPostRecompensa("desayuno");
+        return;
     }
 
+    estado.recompensaDesayunoRecogida = true;
+
+    estado.xp += 25;
+    estado.monedas += 10;
+
+    if (!estado.logros.includes("Con el estómago lleno")) {
+        estado.logros.push("Con el estómago lleno");
+    }
 
     guardarPartida();
+    actualizarTodo();
 
-    mostrarPantalla("pantalla-reto-lol");
+    mostrarOpcionesPostRecompensa("desayuno");
 }
-
 
 // ==================================================
 // LOL
@@ -3956,25 +3952,20 @@ function completarMision1() {
 
 function recogerRecompensa1() {
 
-    if (
-        !recompensaMision1Recogida
-    ) {
-
-        experiencia += 100;
-
-        darMonedas(25);
-
-        recompensaMision1Recogida =
-            true;
+    if (estado.recompensa1Recogida) {
+        mostrarOpcionesPostRecompensa("oxo");
+        return;
     }
 
+    estado.recompensa1Recogida = true;
+
+    estado.xp += 100;
+    estado.monedas += 25;
 
     guardarPartida();
+    actualizarTodo();
 
-
-    mostrarPantalla(
-        "pantalla-reto-nikkei"
-    );
+    mostrarOpcionesPostRecompensa("oxo");
 }
 
 
@@ -4228,30 +4219,20 @@ function completarMision2() {
 
 function recogerRecompensa2() {
 
-    if (
-        !recompensaMision2Recogida
-    ) {
-
-        experiencia += 75;
-
-        darMonedas(50);
-
-        recompensaMision2Recogida =
-            true;
-
-
-        // Nuevo reto secundario
-        retos.peru.desbloqueado =
-            true;
+    if (estado.recompensa2Recogida) {
+        mostrarOpcionesPostRecompensa("genko");
+        return;
     }
 
+    estado.recompensa2Recogida = true;
+
+    estado.xp += 75;
+    estado.monedas += 50;
 
     guardarPartida();
+    actualizarTodo();
 
-
-    mostrarPantalla(
-        "pantalla-reto-lava"
-    );
+    mostrarOpcionesPostRecompensa("genko");
 }
 // ==================================================
 // LAVA
@@ -4841,34 +4822,27 @@ function recogerRecompensa3() {
 
 const iconosRetos = {
 
-    fotoJuntos:
-        "assets/retos/reto-recuerdo.png",
+    fotoJuntos: "./assets/retos/reto-recuerdo.png",
 
-    videojuegoCalle:
-        "assets/retos/reto-videojuego.png",
+    videojuegoCalle: "./assets/retos/reto-videojuego.png",
 
-    objetoRosa:
-        "assets/retos/reto-rosa.png",
+    objetoRosa: "./assets/retos/reto-rosa.png",
 
-    tripleA:
-        "assets/retos/reto-triple-a.png",
+    tripleA: "./assets/retos/reto-triple-a.png",
 
-    juegoInfancia:
-        "assets/retos/reto-pasado.png",
+    juegoInfancia: "./assets/retos/reto-pasado.png",
 
-    japon:
-        "assets/retos/reto-japon.png",
+    japon: "./assets/retos/reto-japon.png",
 
-    peru:
-        "assets/retos/reto-peru.png",
+    peru: "./assets/retos/reto-peru.png",
 
-    platoGenko:
-        "assets/retos/reto-gastronomico.png",
+    platoGenko: "./assets/retos/reto-gastronomico.png",
 
-    lavaSinAbandonar:
-        "assets/retos/reto-superviviente.png"
+    lavaSinAbandonar: "./assets/retos/reto-superviviente.png"
 
 };
+
+
 function abrirRetos() {
 
     renderizarRetos();
@@ -7814,3 +7788,74 @@ document.addEventListener("visibilitychange", function () {
 window.addEventListener("pagehide", autoguardarPartida);
 window.addEventListener("beforeunload", autoguardarPartida);
 setInterval(autoguardarPartida, 5000);
+function mostrarOpcionesPostRecompensa(mision) {
+
+    const configuracion = {
+        desayuno: {
+            pantalla: "pantalla-desayuno-completado",
+            siguiente: "pantalla-reto-lol"
+        },
+
+        oxo: {
+            pantalla: "pantalla-mision-1-completada",
+            siguiente: "pantalla-reto-nikkei"
+        },
+
+        genko: {
+            pantalla: "pantalla-mision-2-completada",
+            siguiente: "pantalla-reto-lava"
+        }
+    };
+
+    const datos = configuracion[mision];
+
+    if (!datos) return;
+
+    const pantalla = document.getElementById(datos.pantalla);
+
+    if (!pantalla) return;
+
+    const botonRecompensa = pantalla.querySelector(
+        'button[onclick*="recogerRecompensa"]'
+    );
+
+    if (botonRecompensa) {
+        botonRecompensa.style.display = "none";
+    }
+
+    let opciones = pantalla.querySelector(".opciones-post-recompensa");
+
+    if (!opciones) {
+
+        opciones = document.createElement("div");
+        opciones.className = "opciones-post-recompensa";
+
+        opciones.innerHTML = `
+            <button onclick="mostrarPantalla('${datos.siguiente}')">
+                ⚔ CONTINUAR A LA SIGUIENTE PRUEBA
+            </button>
+
+            <button class="boton-volver" onclick="abrirMapa()">
+                <img
+                    src="assets/iconos/volver.png"
+                    class="icono-volver-rpg"
+                    alt=""
+                >
+                <span>VOLVER AL MAPA</span>
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                <img
+                    src="assets/iconos/volver.png"
+                    class="icono-volver-rpg"
+                    alt=""
+                >
+                <span>VOLVER AL MENÚ</span>
+            </button>
+        `;
+
+        pantalla.querySelector(".contenedor").appendChild(opciones);
+    }
+
+    opciones.style.display = "flex";
+}

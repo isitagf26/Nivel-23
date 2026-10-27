@@ -67,6 +67,42 @@
         content="#08051a"
     >
 
+
+<style>
+/* ==================================================
+   NIVEL 23 · EVENTO SORPRESA PARTY
+================================================== */
+.pantalla-party-evento .party-evento-contenedor{max-width:720px;text-align:center;}
+.party-alerta{animation:partyParpadeo 1.1s steps(2,end) infinite;}
+.party-radar{position:relative;width:180px;height:180px;margin:28px auto;border:2px solid rgba(186,145,255,.65);border-radius:50%;box-shadow:0 0 35px rgba(126,70,255,.28),inset 0 0 30px rgba(126,70,255,.18);background:radial-gradient(circle,rgba(149,91,255,.18) 0 3%,transparent 4% 34%,rgba(149,91,255,.16) 35% 36%,transparent 37% 65%,rgba(149,91,255,.13) 66% 67%,transparent 68%);overflow:hidden;}
+.party-radar::after{content:"";position:absolute;left:50%;top:50%;width:50%;height:2px;transform-origin:left center;background:linear-gradient(90deg,rgba(210,184,255,.9),transparent);animation:partyRadar 2s linear infinite;}
+.party-radar-centro{position:absolute;inset:0;display:grid;place-items:center;font-size:2rem;color:#f0d58b;text-shadow:0 0 14px #b178ff;}
+.party-radar-punto{position:absolute;width:10px;height:10px;border-radius:50%;background:#e7d3ff;box-shadow:0 0 12px #b36cff;animation:partyPunto 1.4s ease-in-out infinite alternate;}
+.party-radar .punto-1{left:28%;top:32%;}.party-radar .punto-2{right:23%;top:46%;animation-delay:.35s}.party-radar .punto-3{left:45%;bottom:18%;animation-delay:.7s}
+.party-siluetas{display:flex;justify-content:center;align-items:center;gap:14px;margin:26px auto;}
+.party-silueta{display:grid;place-items:center;width:86px;height:110px;border:2px solid rgba(194,158,255,.65);border-radius:18px;background:linear-gradient(180deg,rgba(94,56,148,.75),rgba(24,15,48,.95));font-family:var(--fuente-rpg,"Pixelify Sans",sans-serif);font-size:2.5rem;color:#e7d6ff;box-shadow:0 0 22px rgba(137,80,255,.25);}
+.party-silueta-central{width:64px;height:64px;border-radius:50%;color:#f1d37e;}
+.party-logro{margin:26px auto;padding:18px;border:1px solid rgba(241,211,126,.65);border-radius:14px;background:rgba(63,42,17,.35);box-shadow:0 0 24px rgba(241,211,126,.12);}
+.party-logro small,.party-logro strong{display:block}.party-logro strong{margin-top:8px;font-family:var(--fuente-rpg,"Pixelify Sans",sans-serif);font-size:1.45rem;color:#f1d37e;}
+.party-aviso-personajes{opacity:.85}.party-miembro-desbloqueado{margin-top:22px;padding:18px;border:1px dashed rgba(190,155,255,.6);border-radius:14px;text-align:center;background:rgba(79,45,125,.16);}
+.party-miembro-desbloqueado strong,.party-miembro-desbloqueado small{display:block}.party-miembro-desbloqueado strong{margin:6px 0;color:#e7d6ff}.party-miembro-desbloqueado small{opacity:.75}
+@keyframes partyRadar{to{transform:rotate(360deg)}}@keyframes partyPunto{to{transform:scale(1.55);opacity:.55}}@keyframes partyParpadeo{50%{opacity:.55}}
+@media(max-width:600px){.party-radar{width:145px;height:145px}.party-silueta{width:72px;height:94px}.party-silueta-central{width:52px;height:52px}.party-logro strong{font-size:1.15rem}}
+
+/* ICONOS PERSONALIZADOS · DESCUBRIR / COMPLETAR MISIONES */
+.icono-mision-personalizado {
+    display: block;
+    width: clamp(110px, 18vw, 180px);
+    height: clamp(110px, 18vw, 180px);
+    object-fit: contain;
+    margin: 18px auto 24px;
+    image-rendering: pixelated;
+}
+.cena-icono-grande .icono-mision-personalizado {
+    margin: 0 auto;
+}
+</style>
+
 </head>
 
 <body>
@@ -1600,7 +1636,7 @@
                 data-objeto="☕"
                 onclick="seleccionarObjetoStarter(this)"
             >
-                <span class="emoji-objeto">☕</span>
+                <img src="assets/starter/cafe.png" alt="Café" class="imagen-objeto-starter">
                 <small>CAFÉ</small>
             </button>
 
@@ -1610,7 +1646,7 @@
                 data-objeto="🥐"
                 onclick="seleccionarObjetoStarter(this)"
             >
-                <span class="emoji-objeto">🥐</span>
+                <img src="assets/starter/provisiones.png" alt="Provisiones" class="imagen-objeto-starter">
                 <small>PROVISIONES</small>
             </button>
 
@@ -1620,7 +1656,7 @@
                 data-objeto="📱"
                 onclick="seleccionarObjetoStarter(this)"
             >
-                <span class="emoji-objeto">📱</span>
+                <img src="assets/starter/comunicador.png" alt="Comunicador" class="imagen-objeto-starter">
                 <small>COMUNICADOR</small>
             </button>
 
@@ -1630,7 +1666,7 @@
                 data-objeto="🎮"
                 onclick="seleccionarObjetoStarter(this)"
             >
-                <span class="emoji-objeto">🎮</span>
+                <img src="assets/starter/control.png" alt="Control" class="imagen-objeto-starter">
                 <small>CONTROL</small>
             </button>
 
@@ -1640,7 +1676,7 @@
                 data-objeto="🗡️"
                 onclick="seleccionarObjetoStarter(this)"
             >
-                <span class="emoji-objeto">🗡️</span>
+                <img src="assets/starter/espada.png" alt="Espada" class="imagen-objeto-starter">
                 <small>ESPADA</small>
             </button>
 
@@ -1650,7 +1686,7 @@
                 data-objeto="🧪"
                 onclick="seleccionarObjetoStarter(this)"
             >
-                <span class="emoji-objeto">🧪</span>
+                <img src="assets/starter/pocion.png" alt="Poción" class="imagen-objeto-starter">
                 <small>POCIÓN</small>
             </button>
 
@@ -1660,7 +1696,7 @@
                 data-objeto="🧸"
                 onclick="seleccionarObjetoStarter(this)"
             >
-                <span class="emoji-objeto">🧸</span>
+                <img src="assets/starter/companero.png" alt="Compañero" class="imagen-objeto-starter">
                 <small>COMPAÑERO</small>
             </button>
 
@@ -1670,7 +1706,7 @@
                 data-objeto="💣"
                 onclick="seleccionarObjetoStarter(this)"
             >
-                <span class="emoji-objeto">💣</span>
+                <img src="assets/starter/bomba.png" alt="Bomba" class="imagen-objeto-starter">
                 <small>BOMBA</small>
             </button>
 
@@ -1762,7 +1798,7 @@
         </p>
 
         <div class="icono-mision-grande">
-            ☕
+            <img src="assets/iconos/desayuno.png" alt="Desayuno" class="icono-mision-personalizado">
         </div>
 
         <h1>
@@ -1886,7 +1922,7 @@
         </p>
 
         <div class="icono-mision-grande">
-            ☕
+            <img src="assets/iconos/desayuno.png" alt="Desayuno completado" class="icono-mision-personalizado">
         </div>
 
         <h1>
@@ -1929,6 +1965,20 @@
         <button onclick="recogerRecompensaDesayuno()">
             ✨ RECOGER RECOMPENSA
         </button>
+
+        <div class="navegacion-prueba">
+            <button onclick="recogerRecompensaDesayuno(); abrirPruebaPendiente()">
+                ⚔️ RECOGER Y SEGUIR A LA SIGUIENTE PRUEBA
+            </button>
+
+            <button class="boton-volver" onclick="abrirMapa()">
+                🗺️ VOLVER AL MAPA
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                ⌂ VOLVER AL MENÚ
+            </button>
+        </div>
 
     </div>
 
@@ -2181,9 +2231,9 @@
 
     <div class="contenedor">
         <img
-    src="assets/iconos/mision disponible.png"
-    class="icono-estado-mision"
-    alt="Misión disponible"
+    src="assets/iconos/oxo.png"
+    class="icono-mision-personalizado"
+    alt="OXO - misión descubierta"
 >
 
         <p class="mensaje-sistema">
@@ -2280,9 +2330,9 @@
 
     <div class="contenedor">
         <img
-    src="assets/iconos/mision completada.png"
-    class="icono-estado-mision"
-    alt="Misión completada"
+    src="assets/iconos/oxo.png"
+    class="icono-mision-personalizado"
+    alt="OXO - misión completada"
 >
 
         <h1>
@@ -2304,6 +2354,20 @@
         <button onclick="recogerRecompensa1()">
             RECOGER RECOMPENSA
         </button>
+
+        <div class="navegacion-prueba">
+            <button onclick="recogerRecompensa1(); abrirPruebaPendiente()">
+                ⚔️ RECOGER Y SEGUIR A LA SIGUIENTE PRUEBA
+            </button>
+
+            <button class="boton-volver" onclick="abrirMapa()">
+                🗺️ VOLVER AL MAPA
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                ⌂ VOLVER AL MENÚ
+            </button>
+        </div>
 
     </div>
 
@@ -2379,6 +2443,8 @@
 <div id="pantalla-mision-2" class="pantalla">
 
     <div class="contenedor">
+
+        <img src="assets/iconos/genko.png" alt="Genko - misión descubierta" class="icono-mision-personalizado">
 
         <p class="mensaje-sistema">
             ❗ MISIÓN 02
@@ -2466,6 +2532,8 @@
 
     <div class="contenedor">
 
+        <img src="assets/iconos/genko.png" alt="Genko - misión completada" class="icono-mision-personalizado">
+
         <h1>
             🍣 MISIÓN 02 COMPLETADA
         </h1>
@@ -2493,6 +2561,20 @@
         <button onclick="recogerRecompensa2()">
             RECOGER RECOMPENSA
         </button>
+
+        <div class="navegacion-prueba">
+            <button onclick="recogerRecompensa2(); abrirPruebaPendiente()">
+                ⚔️ RECOGER Y SEGUIR A LA SIGUIENTE PRUEBA
+            </button>
+
+            <button class="boton-volver" onclick="abrirMapa()">
+                🗺️ VOLVER AL MAPA
+            </button>
+
+            <button class="boton-volver" onclick="volverJuego()">
+                ⌂ VOLVER AL MENÚ
+            </button>
+        </div>
 
     </div>
 
@@ -2733,6 +2815,8 @@
 
     <div class="contenedor">
 
+        <img src="assets/iconos/lava.png" alt="El Suelo es Lava - misión descubierta" class="icono-mision-personalizado">
+
         <p class="mensaje-sistema">
             ❗ MISIÓN 03 DESBLOQUEADA
         </p>
@@ -2775,7 +2859,19 @@
             ⚠️ El suelo no es seguro.
         </p>
 
-        <button onclick="completarMision3()">
+        <button
+            id="boton-llegada-party"
+            class="boton-party-llegada"
+            onclick="detectarPartyLava()"
+        >
+            📡 HEMOS LLEGADO
+        </button>
+
+        <button
+            id="boton-completar-lava-real"
+            class="zona-oculta"
+            onclick="completarMision3()"
+        >
             ✓ COMPLETAR MISIÓN
         </button>
 
@@ -2784,9 +2880,50 @@
 </div>
 
 
+<!-- ==================================================
+     EVENTO SORPRESA · PARTY EN LAVA
+================================================== -->
+
+<div id="pantalla-party-detectada" class="pantalla pantalla-party-evento">
+    <div class="contenedor party-evento-contenedor">
+        <p class="mensaje-sistema party-alerta">⚠ ACTIVIDAD INUSUAL DETECTADA</p>
+        <div class="party-radar">
+            <span class="party-radar-centro">✦</span>
+            <span class="party-radar-punto punto-1"></span>
+            <span class="party-radar-punto punto-2"></span>
+            <span class="party-radar-punto punto-3"></span>
+        </div>
+        <h1>ANALIZANDO JUGADORES CERCANOS...</h1>
+        <p class="party-texto-sistema">Se han detectado nuevas señales en la zona.</p>
+        <button onclick="revelarPartyLava()">CONTINUAR ANÁLISIS</button>
+    </div>
+</div>
+
+<div id="pantalla-party-revelada" class="pantalla pantalla-party-evento">
+    <div class="contenedor party-evento-contenedor">
+        <p class="mensaje-sistema party-exito">👥 NUEVOS MIEMBROS DEL GRUPO DETECTADOS</p>
+        <div class="party-siluetas" aria-label="Nuevos miembros de la party">
+            <div class="party-silueta">?</div>
+            <div class="party-silueta party-silueta-central">+</div>
+            <div class="party-silueta">?</div>
+        </div>
+        <h1>LA PARTY HA CRECIDO</h1>
+        <p>La misión ya no pertenece solo a dos jugadores.</p>
+        <div class="party-logro">
+            <small>🏆 LOGRO SECRETO DESBLOQUEADO</small>
+            <strong>LA PARTY ESTÁ COMPLETA</strong>
+        </div>
+        <p class="party-aviso-personajes">Nuevos compañeros disponibles en PERSONAJES.</p>
+        <button onclick="confirmarPartyLava()">⚔ CONTINUAR MISIÓN</button>
+    </div>
+</div>
+
+
 <div id="pantalla-mision-3-completada" class="pantalla">
 
     <div class="contenedor">
+
+        <img src="assets/iconos/lava.png" alt="El Suelo es Lava - misión completada" class="icono-mision-personalizado">
 
         <h1>
             🌋 MISIÓN 03 COMPLETADA
@@ -4281,7 +4418,7 @@
     <div class="cena-panel-rpg">
 
         <div class="cena-icono-grande">
-            🍽️
+            <img src="assets/iconos/cena.png" alt="Cena - misión descubierta" class="icono-mision-personalizado">
         </div>
 
         <p class="cena-etiqueta">
@@ -4395,7 +4532,7 @@
     <div class="cena-panel-rpg cena-panel-completado">
 
         <div class="cena-icono-grande">
-            🏆
+            <img src="assets/iconos/cena.png" alt="Cena - misión completada" class="icono-mision-personalizado">
         </div>
 
         <p class="cena-etiqueta">
@@ -4580,6 +4717,199 @@
 </div>
 
 <script src="script.js"></script>
+
+<script>
+/* ==================================================
+   NIVEL 23 · EVENTO SORPRESA PARTY EN LAVA
+   Preparado para añadir nombres y avatares más adelante.
+================================================== */
+const CLAVE_PARTY_LAVA = "nivel23_party_lava_desbloqueada";
+
+function partyLavaDesbloqueada(){
+    return localStorage.getItem(CLAVE_PARTY_LAVA) === "1";
+}
+
+function detectarPartyLava(){
+    if (partyLavaDesbloqueada()) {
+        confirmarPartyLava();
+        return;
+    }
+    mostrarPantalla("pantalla-party-detectada");
+}
+
+function revelarPartyLava(){
+    mostrarPantalla("pantalla-party-revelada");
+}
+
+function confirmarPartyLava(){
+    const eraNueva = !partyLavaDesbloqueada();
+    localStorage.setItem(CLAVE_PARTY_LAVA,"1");
+    actualizarEstadoPartyLava();
+
+    if (eraNueva && typeof mostrarNotificacion === "function") {
+        try { mostrarNotificacion("🏆 LOGRO SECRETO", "LA PARTY ESTÁ COMPLETA"); } catch(e) {}
+    }
+
+    mostrarPantalla("pantalla-mision-3-curso");
+}
+
+function actualizarEstadoPartyLava(){
+    const activa = partyLavaDesbloqueada();
+    const llegada = document.getElementById("boton-llegada-party");
+    const completar = document.getElementById("boton-completar-lava-real");
+
+    if (llegada) llegada.classList.toggle("zona-oculta", activa);
+    if (completar) completar.classList.toggle("zona-oculta", !activa);
+
+    const contador = document.querySelector(".contador-grupo-rpg strong");
+    if (contador) contador.textContent = activa ? "PARTY +" : "2 / 2";
+
+    const rejilla = document.querySelector("#pantalla-personajes .rejilla-personajes-rpg");
+    if (rejilla) {
+        let bloque = document.getElementById("party-amigos-desbloqueada");
+        if (activa && !bloque) {
+            bloque = document.createElement("div");
+            bloque.id = "party-amigos-desbloqueada";
+            bloque.className = "party-miembro-desbloqueado";
+            bloque.innerHTML = '<span>👥</span><strong>NUEVOS MIEMBROS DE LA PARTY</strong><small>Identidades pendientes de registrar</small>';
+            rejilla.appendChild(bloque);
+        } else if (!activa && bloque) {
+            bloque.remove();
+        }
+    }
+}
+
+/* Si PERSONAJES se vuelve a renderizar, recuperamos la tarjeta de la party. */
+if (typeof abrirPersonajes === "function") {
+    const abrirPersonajesOriginalParty = abrirPersonajes;
+    abrirPersonajes = function(){
+        abrirPersonajesOriginalParty.apply(this, arguments);
+        actualizarEstadoPartyLava();
+    };
+}
+
+document.addEventListener("DOMContentLoaded", actualizarEstadoPartyLava);
+</script>
+
+
+
+<!-- NIVEL 23 · ICONOS RPG EN "ANALIZANDO EQUIPO" -->
+<style>
+.imagen-objeto-starter {
+    display: block;
+    width: 92px;
+    height: 92px;
+    object-fit: contain;
+    object-position: center;
+    margin: 0 auto 10px;
+    pointer-events: none;
+}
+.imagen-objeto-analisis {
+    display: block;
+    width: 78px;
+    height: 78px;
+    object-fit: contain;
+    object-position: center;
+    margin: 0 auto 8px;
+    pointer-events: none;
+}
+@media (max-width: 650px) {
+    .imagen-objeto-starter {
+        width: 68px;
+        height: 68px;
+        margin-bottom: 7px;
+    }
+    .imagen-objeto-analisis {
+        width: 58px;
+        height: 58px;
+        margin-bottom: 6px;
+    }
+}
+</style>
+<script>
+const iconosStarterAnalisis = {
+    "☕": "assets/starter/cafe.png",
+    "🥐": "assets/starter/provisiones.png",
+    "📱": "assets/starter/comunicador.png",
+    "🎮": "assets/starter/control.png",
+    "🗡️": "assets/starter/espada.png",
+    "🧪": "assets/starter/pocion.png",
+    "🧸": "assets/starter/companero.png",
+    "💣": "assets/starter/bomba.png"
+};
+
+function confirmarStarterPack() {
+    if (objetosStarter.length !== 3) {
+        return;
+    }
+
+    let textoObjetos = "";
+
+    objetosStarter.forEach(function (objeto) {
+        textoObjetos += `
+            <div class="objeto-equipado">
+                <span>
+                    <img
+                        src="${iconosStarterAnalisis[objeto]}"
+                        alt="Objeto equipado"
+                        class="imagen-objeto-analisis"
+                    >
+                </span>
+                <small>EQUIPADO ✓</small>
+            </div>
+        `;
+    });
+
+    document.getElementById("objetos-equipados").innerHTML = textoObjetos;
+    document.getElementById("mensaje-starter").innerHTML =
+        "<p>🔍 Comprobando inventario...</p>";
+
+    mostrarPantalla("pantalla-resultado-starter");
+
+    setTimeout(function () {
+        document.getElementById("mensaje-starter").innerHTML = `
+            <p class="texto-correcto">✓ 3/3 OBJETOS EQUIPADOS</p>
+            <p>Analizando estado del jugador...</p>
+        `;
+    }, 1300);
+
+    setTimeout(function () {
+        document.getElementById("mensaje-starter").innerHTML = `
+            <p class="texto-alerta">⚠️ ERROR</p>
+            <p>OBJETO ESENCIAL NO DETECTADO</p>
+            <p>⚡ ENERGÍA INICIAL: <strong>0%</strong></p>
+        `;
+    }, 2800);
+
+    setTimeout(function () {
+        document.getElementById("mensaje-starter").innerHTML = `
+            <p>📡 BUSCANDO FUENTE DE ENERGÍA...</p>
+            <p>████░░░░░░ 40%</p>
+        `;
+    }, 4300);
+
+    setTimeout(function () {
+        document.getElementById("mensaje-starter").innerHTML = `
+            <p>📡 UBICACIÓN DETECTADA</p>
+            <p>██████████ 100%</p>
+            <p class="texto-correcto">✨ MISIÓN SECUNDARIA DESBLOQUEADA</p>
+        `;
+    }, 5900);
+
+    setTimeout(function () {
+        estadoDesayuno = "disponible";
+        guardarPartida();
+        actualizarMapa();
+        notificar(
+            "☕",
+            "MISIÓN SECUNDARIA DESBLOQUEADA",
+            "Se ha localizado una fuente de energía."
+        );
+        mostrarPantalla("pantalla-desayuno");
+    }, 7600);
+}
+</script>
+
 </body>
 
 </html>
