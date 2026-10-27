@@ -4852,7 +4852,10 @@ function actualizarEstadoPartyLava(){
     const completar = document.getElementById("boton-completar-lava-real");
 
     if (llegada) llegada.classList.toggle("zona-oculta", activa);
-    if (completar) completar.classList.toggle("zona-oculta", !activa);
+
+    // El botón para completar Lava debe estar disponible mientras la misión
+    // está en curso. Al pulsarlo comienza el escáner sorpresa de la party.
+    if (completar) completar.classList.remove("zona-oculta");
 
     const contador = document.querySelector(".contador-grupo-rpg strong");
     if (contador) contador.textContent = activa ? "PARTY +" : "2 / 2";
