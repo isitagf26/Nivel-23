@@ -1073,9 +1073,6 @@ let intentosLava = 1;
 
 let bloqueoLava = false;
 
-// Evento secreto: jugadores detectados tras El Suelo es Lava
-let partyLavaDesbloqueada = false;
-
 
 // ==================================================
 // PANTALLAS
@@ -1298,8 +1295,6 @@ function abrirPersonajes() {
             monedas;
     }
 
-
-    actualizarPartyPersonajes();
 
     mostrarPantalla(
         "pantalla-personajes"
@@ -1580,6 +1575,9 @@ function actualizarTarjetaMision(
     ========================================= */
 
  if (estado === "completada") {
+
+    tarjeta.classList.add("completada");
+    nombre.textContent = nombresMisiones[id];
 
     const iconosCompletadas = {
         desayuno: "assets/iconos/desayuno.png",
@@ -4776,88 +4774,9 @@ function completarMision3() {
     guardarPartida();
 
 
-    if (!partyLavaDesbloqueada) {
-        iniciarEscanerPartyLava();
-    }
-    else {
-        mostrarPantalla("pantalla-mision-3-completada");
-    }
-}
-
-function iniciarEscanerPartyLava() {
-    mostrarPantalla("pantalla-party-detectada");
-
-    const orden = [
-        ["jorge", "JORGE", "JUGADOR 03 DETECTADO"],
-        ["ossama", "OSSAMA", "JUGADOR 04 DETECTADO"],
-        ["alvaro", "ÁLVARO", "JUGADOR 05 DETECTADO"],
-        ["manu", "MANU", "JUGADOR 06 DETECTADO"]
-    ];
-
-    const estadoEscaner = document.getElementById("party-estado-escaner");
-    const finalEscaner = document.getElementById("party-final-escaner");
-
-    orden.forEach(function(datos) {
-        const tarjeta = document.getElementById("party-senal-" + datos[0]);
-        if (tarjeta) {
-            tarjeta.classList.remove("reconocido");
-            const nombre = tarjeta.querySelector("strong");
-            if (nombre) nombre.textContent = "????";
-        }
-    });
-
-    if (finalEscaner) {
-        finalEscaner.className = "party-final-oculto";
-    }
-
-    if (estadoEscaner) {
-        estadoEscaner.textContent = "2 JUGADORES REGISTRADOS · BUSCANDO OTRAS SEÑALES...";
-    }
-
-    setTimeout(function() {
-        if (estadoEscaner) estadoEscaner.textContent = "⚠ ANOMALÍA DETECTADA · 4 SEÑALES ADICIONALES";
-    }, 1300);
-
-    orden.forEach(function(datos, indice) {
-        setTimeout(function() {
-            const tarjeta = document.getElementById("party-senal-" + datos[0]);
-            if (tarjeta) {
-                tarjeta.classList.add("reconocido");
-                const nombre = tarjeta.querySelector("strong");
-                if (nombre) nombre.textContent = datos[1];
-            }
-            if (estadoEscaner) estadoEscaner.textContent = datos[2] + " · " + datos[1];
-        }, 2600 + (indice * 1500));
-    });
-
-    setTimeout(function() {
-        partyLavaDesbloqueada = true;
-        actualizarPartyPersonajes();
-        guardarPartida();
-        if (estadoEscaner) estadoEscaner.textContent = "✓ IDENTIFICACIÓN FINALIZADA";
-        if (finalEscaner) finalEscaner.className = "party-final-visible";
-    }, 2600 + (orden.length * 1500));
-}
-
-function confirmarPartyLava() {
-    partyLavaDesbloqueada = true;
-    actualizarPartyPersonajes();
-    guardarPartida();
-    mostrarPantalla("pantalla-mision-3-completada");
-}
-
-function actualizarPartyPersonajes() {
-    const amigos = document.getElementById("amigos-party-lava");
-    const contador = document.getElementById("contador-grupo-personajes");
-
-    if (amigos) {
-        if (partyLavaDesbloqueada) amigos.classList.remove("zona-oculta");
-        else amigos.classList.add("zona-oculta");
-    }
-
-    if (contador) {
-        contador.textContent = partyLavaDesbloqueada ? "6 / 6" : "2 / 2";
-    }
+    mostrarPantalla(
+        "pantalla-mision-3-completada"
+    );
 }
 
 
@@ -5119,11 +5038,18 @@ function mostrarDetalleReto(id) {
         reto.completado
     ) {
 
+        const pruebaGuardada = obtenerPruebasRetos()[id];
         zonaAccion = `
 
             <div class="detalle-reto-estado completado">
                 ✓ RETO COMPLETADO
             </div>
+            ${pruebaGuardada ? `
+                <div class="prueba-reto-guardada">
+                    <small>📸 PRUEBA REGISTRADA</small>
+                    <img src="${pruebaGuardada}" alt="Prueba del reto ${reto.nombre}">
+                </div>
+            ` : ""}
 
         `;
 
@@ -5249,111 +5175,130 @@ function mostrarDetalleReto(id) {
     }
 }
 
+let retoPendientePrueba = null;
+let fotoPendientePrueba = null;
+
+function obtenerPruebasRetos() {
+    try {
+        return JSON.parse(localStorage.getItem("nivel23_pruebas_retos") || "{}");
+    } catch (e) {
+        return {};
+    }
+}
+
+function guardarPruebaReto(id, imagen) {
+    const pruebas = obtenerPruebasRetos();
+    pruebas[id] = imagen;
+    try {
+        localStorage.setItem("nivel23_pruebas_retos", JSON.stringify(pruebas));
+    } catch (e) {
+        // Si el navegador no permite guardar la miniatura, el reto igualmente queda registrado.
+    }
+}
+
+function abrirPruebaReto(id) {
+    const reto = retos[id];
+    if (!reto || reto.completado || id === "lavaSinAbandonar") return;
+
+    retoPendientePrueba = id;
+    fotoPendientePrueba = null;
+
+    const modal = document.getElementById("modal-prueba-reto");
+    const titulo = document.getElementById("titulo-prueba-reto");
+    const input = document.getElementById("input-prueba-reto");
+    const preview = document.getElementById("preview-prueba-reto");
+    const validar = document.getElementById("boton-validar-prueba-reto");
+
+    if (titulo) titulo.textContent = reto.nombre;
+    if (input) input.value = "";
+    if (preview) {
+        preview.removeAttribute("src");
+        preview.classList.remove("visible");
+    }
+    if (validar) validar.disabled = true;
+    if (modal) {
+        modal.classList.add("activo");
+        modal.setAttribute("aria-hidden", "false");
+    }
+}
+
+function cerrarPruebaReto() {
+    const modal = document.getElementById("modal-prueba-reto");
+    if (modal) {
+        modal.classList.remove("activo");
+        modal.setAttribute("aria-hidden", "true");
+    }
+    retoPendientePrueba = null;
+    fotoPendientePrueba = null;
+}
+
+function previsualizarPruebaReto(input) {
+    const archivo = input && input.files && input.files[0];
+    if (!archivo || !archivo.type.startsWith("image/")) return;
+
+    const lector = new FileReader();
+    lector.onload = function(evento) {
+        const imagen = new Image();
+        imagen.onload = function() {
+            const max = 700;
+            let w = imagen.width;
+            let h = imagen.height;
+            const escala = Math.min(1, max / Math.max(w, h));
+            w = Math.round(w * escala);
+            h = Math.round(h * escala);
+
+            const canvas = document.createElement("canvas");
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(imagen, 0, 0, w, h);
+            fotoPendientePrueba = canvas.toDataURL("image/jpeg", 0.72);
+
+            const preview = document.getElementById("preview-prueba-reto");
+            const validar = document.getElementById("boton-validar-prueba-reto");
+            if (preview) {
+                preview.src = fotoPendientePrueba;
+                preview.classList.add("visible");
+            }
+            if (validar) validar.disabled = false;
+        };
+        imagen.src = evento.target.result;
+    };
+    lector.readAsDataURL(archivo);
+}
+
+function validarPruebaReto() {
+    const id = retoPendientePrueba;
+    const reto = retos[id];
+    if (!id || !reto || reto.completado || !fotoPendientePrueba) return;
+
+    guardarPruebaReto(id, fotoPendientePrueba);
+    reto.completado = true;
+    darMonedas(reto.recompensa);
+
+    if (id === "fotoJuntos") desbloquearLogro("player2");
+    if (id === "juegoInfancia") desbloquearLogro("nostalgia");
+    if (id === "japon") desbloquearLogro("japon");
+
+    guardarPartida();
+    cerrarPruebaReto();
+    actualizarJugador();
+    renderizarRetos();
+    mostrarDetalleReto(id);
+
+    notificar("📸", "PRUEBA REGISTRADA", "+" + reto.recompensa + " monedas");
+}
+
 function completarReto(id) {
+    const reto = retos[id];
 
-    let reto =
-        retos[id];
-    // SUPERVIVIENTE se consigue automáticamente
-    // al completar El Suelo es Lava.
     if (id === "lavaSinAbandonar") {
-
-        notificar(
-            "🌋",
-            "RETO ESPECIAL",
-            "Este reto se completa automáticamente al superar El Suelo es Lava."
-        );
-
+        notificar("🌋", "RETO ESPECIAL", "Este reto se completa automáticamente al superar El Suelo es Lava.");
         return;
     }
 
-    if (
-        !reto ||
-        reto.completado
-    ) {
-        return;
-    }
-
-
-    let confirmar =
-        confirm(
-            "¿Confirmas que has completado este reto?"
-        );
-
-
-    if (!confirmar) {
-        return;
-    }
-
-
-    reto.completado =
-        true;
-
-
-    darMonedas(
-        reto.recompensa
-    );
-
-
-    if (
-        id ===
-        "fotoJuntos"
-    ) {
-
-        desbloquearLogro(
-            "player2"
-        );
-    }
-
-
-    if (
-        id ===
-        "juegoInfancia"
-    ) {
-
-        desbloquearLogro(
-            "nostalgia"
-        );
-    }
-
-
-    if (
-        id ===
-        "japon"
-    ) {
-
-        desbloquearLogro(
-            "japon"
-        );
-    }
-
-
-    if (
-        id ===
-        "lavaSinAbandonar"
-    ) {
-
-        desbloquearLogro(
-            "superviviente"
-        );
-    }
-
-
-    notificar(
-        "🪙",
-        "RETO COMPLETADO",
-        "+" +
-        reto.recompensa +
-        " monedas"
-    );
-
-
-  guardarPartida();
-
-renderizarRetos();
-
-mostrarDetalleReto(id);
-
-actualizarJugador();
+    if (!reto || reto.completado) return;
+    abrirPruebaReto(id);
 }
 
 // ==================================================
@@ -7533,8 +7478,6 @@ function guardarPartida() {
         recompensaMision2Recogida,
         recompensaMision3Recogida,
 
-        partyLavaDesbloqueada,
-
        segundosIntentos,
 
 eleccionJugador,
@@ -7645,11 +7588,6 @@ function cargarPartida() {
             partida.recompensaMision3Recogida ??
             false;
 
-        partyLavaDesbloqueada =
-            partida.partyLavaDesbloqueada ??
-            false;
-
-        actualizarPartyPersonajes();
 
         segundosIntentos =
             partida.segundosIntentos ?? 0;
