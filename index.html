@@ -2073,9 +2073,9 @@
             deberás demostrar tus conocimientos.
         </p>
 
-        <h2>
-            🎮 LEAGUE OF LEGENDS
-        </h2>
+        <div class="logo-lol-mision-wrap">
+            <img src="assets/iconos/logo-lol-nivel23.png" alt="League of Legends" class="logo-lol-mision">
+        </div>
 
         <button onclick="iniciarRetoLol()">
             INICIAR PRUEBA
@@ -3932,15 +3932,15 @@
 
                 <div class="texto-carta-rpg">
 
-                    <p>
-                        Aquí irá tu mensaje personal definitivo para él.
-                    </p>
+                    <p>Has completado misiones, superado pruebas y desbloqueado cada rincón de esta aventura.</p>
 
-                    <p>
-                        Este espacio puede contener una carta más larga,
-                        varios párrafos y todo lo que quieras decirle
-                        al llegar a este punto de la aventura.
-                    </p>
+                    <p>Pero si hay algo que tengo claro, es que mi mayor suerte ha sido encontrarte a ti. Porque desde que llegaste a mi vida, hasta los días más normales se han convertido en aventuras que no cambiaría por nada.</p>
+
+                    <p>Feliz cumpleaños, mi amor. 💜</p>
+
+                    <p>Ojalá nos queden infinitos niveles por superar, sueños por cumplir y momentos por compartir. Porque, si es contigo, no me importa lo que nos depare la siguiente aventura, siempre voy a querer vivirla a tu lado.</p>
+
+                    <p>Te amo.</p>
 
                 </div>
 
@@ -3948,7 +3948,7 @@
                 <div class="firma-carta-rpg">
 
                     <span>
-                        PLAYER 2
+                        CON TODO MI AMOR
                     </span>
 
                     <strong>
@@ -4920,6 +4920,30 @@ document.addEventListener("DOMContentLoaded", actualizarEstadoPartyLava);
         height: 58px;
         margin-bottom: 6px;
     }
+}
+
+/* LOGO LEAGUE OF LEGENDS · PRUEBA DE ACCESO */
+.logo-lol-mision-wrap {
+    width: min(520px, 92%);
+    margin: 26px auto 30px;
+    padding: 18px 24px;
+    border: 1px solid rgba(99, 226, 240, .35);
+    border-radius: 18px;
+    background: radial-gradient(circle at 50% 50%, rgba(142, 72, 220, .20), rgba(9, 8, 31, .10) 65%, transparent 100%);
+    box-shadow: inset 0 0 28px rgba(126, 65, 213, .13), 0 0 26px rgba(76, 224, 242, .08);
+}
+.logo-lol-mision {
+    display: block;
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 9px rgba(88, 231, 244, .28)) drop-shadow(0 0 18px rgba(174, 77, 255, .22));
+}
+@media (max-width: 600px) {
+    .logo-lol-mision-wrap { margin: 20px auto 24px; padding: 14px 16px; }
+    .logo-lol-mision { max-width: 330px; }
 }
 </style>
 <script>
