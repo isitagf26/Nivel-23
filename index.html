@@ -164,6 +164,22 @@
   .acciones-prueba-reto{grid-template-columns:1fr;}
 }
 
+
+/* CENA · REVELACIÓN DEL CHINO DE PÍO */
+#pantalla-cena .cena-panel-rpg { max-width: 760px; }
+.cena-revelacion { animation: cenaAparece .75s ease both; }
+.cena-sello { display:inline-block; margin:12px auto; padding:9px 16px; border:1px solid #e6bc73; border-radius:30px; color:#f5d898; font-family:var(--fuente-ui,monospace); font-size:clamp(.6rem,2vw,.85rem); letter-spacing:.08em; background:rgba(91,52,17,.22); animation:cenaBrillo 2.8s ease-in-out infinite; }
+.cena-icono-pio { width:min(360px,88%); height:auto; display:block; margin:8px auto 14px; object-fit:contain; image-rendering:pixelated; filter:drop-shadow(0 0 18px rgba(158,61,246,.35)); animation:cenaIcono .8s .2s both; }
+.cena-revelacion h1 { color:#f9d58b; text-shadow:0 0 18px rgba(249,169,67,.26); }
+.cena-menu-pio { margin:18px auto 22px; padding:16px 18px; border:1px solid rgba(197,144,255,.5); border-radius:16px; background:linear-gradient(145deg,rgba(68,36,115,.35),rgba(17,13,46,.65)); text-align:center; }
+.cena-menu-pio small { display:block; margin-bottom:10px; color:#72eaf5; font-family:var(--fuente-ui,monospace); letter-spacing:.08em; }
+.cena-menu-pio p { margin:7px 0; line-height:1.55; }
+.cena-revelacion .cena-texto { line-height:1.65; }
+@keyframes cenaAparece { from {opacity:0;transform:translateY(20px)} to {opacity:1;transform:translateY(0)} }
+@keyframes cenaIcono { from {opacity:0;transform:scale(.82)} to {opacity:1;transform:scale(1)} }
+@keyframes cenaBrillo { 50% {box-shadow:0 0 20px rgba(239,181,79,.25)} }
+@media(max-width:600px) { .cena-icono-pio{width:min(290px,90%)} .cena-menu-pio{padding:13px 11px} .cena-revelacion h1{font-size:clamp(1.55rem,7vw,2.4rem)} }
+
 </style>
 
 </head>
@@ -3932,15 +3948,15 @@
 
                 <div class="texto-carta-rpg">
 
-                    <p>Has completado misiones, superado pruebas y desbloqueado cada rincón de esta aventura.</p>
+                    <p>
+                        Aquí irá tu mensaje personal definitivo para él.
+                    </p>
 
-                    <p>Pero si hay algo que tengo claro, es que mi mayor suerte ha sido encontrarte a ti. Porque desde que llegaste a mi vida, hasta los días más normales se han convertido en aventuras que no cambiaría por nada.</p>
-
-                    <p>Feliz cumpleaños, mi amor. 💜</p>
-
-                    <p>Ojalá nos queden infinitos niveles por superar, sueños por cumplir y momentos por compartir. Porque, si es contigo, no me importa lo que nos depare la siguiente aventura, siempre voy a querer vivirla a tu lado.</p>
-
-                    <p>Te amo.</p>
+                    <p>
+                        Este espacio puede contener una carta más larga,
+                        varios párrafos y todo lo que quieras decirle
+                        al llegar a este punto de la aventura.
+                    </p>
 
                 </div>
 
@@ -3948,7 +3964,7 @@
                 <div class="firma-carta-rpg">
 
                     <span>
-                        CON TODO MI AMOR
+                        PLAYER 2
                     </span>
 
                     <strong>
@@ -4433,58 +4449,25 @@
 ================================================== -->
 
 <div id="pantalla-cena" class="pantalla pantalla-cena-rpg">
-
     <div class="fondo-cena-rpg"></div>
-
-    <div class="cena-panel-rpg">
-
-        <div class="cena-icono-grande">
-            <img src="assets/iconos/cena.png" alt="Cena - misión descubierta" class="icono-mision-personalizado">
+    <div class="cena-panel-rpg cena-revelacion">
+        <p class="cena-etiqueta">✦ LLAVE SECRETA UTILIZADA ✦</p>
+        <div class="cena-sello">🔓 UBICACIÓN DESBLOQUEADA</div>
+        <img src="assets/iconos/chino-de-pio.png" alt="Chino de Pío: nuestra cena de confianza" class="cena-icono-pio">
+        <h1>EL CHINO DE PÍO</h1>
+        <p class="cena-etiqueta">🌙 MISIÓN SECRETA · RECARGA NOCTURNA</p>
+        <div class="separador-cena"><span></span><b>✦</b><span></span></div>
+        <p class="cena-texto">Después de tantas misiones, toca volver a nuestro lugar de siempre. No necesitamos una cena elegante para terminar un día especial: solo nuestra comida favorita, para llevar, y una noche tranquila juntos en casa. 💜</p>
+        <div class="cena-menu-pio">
+            <small>🍱 PEDIDO HABITUAL DESBLOQUEADO</small>
+            <p>🍚 Arroz tres delicias</p>
+            <p>🥢 Arroz tostado con verduras</p>
+            <p>🍗 Pollo agridulce</p>
+            <p><strong>Todo en nuestro plato de siempre.</strong></p>
         </div>
-
-        <p class="cena-etiqueta">
-            ✦ MISIÓN SECRETA DESBLOQUEADA ✦
-        </p>
-
-        <h1>
-            RECARGA NOCTURNA
-        </h1>
-
-        <div class="separador-cena">
-            <span></span>
-            <b>✦</b>
-            <span></span>
-        </div>
-
-        <div class="cena-objetivo">
-
-            <small>OBJETIVO</small>
-
-            <p>
-                Recuperar energía después de
-                un largo día de aventura.
-            </p>
-
-        </div>
-
-        <div class="cena-destino">
-            📍 DESTINO DESCONOCIDO
-        </div>
-
-        <p class="cena-pista">
-            Los detalles de esta misión
-            se revelarán cuando llegue el momento.
-        </p>
-
-        <button
-            class="boton-cena-principal"
-            onclick="aceptarCena()"
-        >
-            ACEPTAR MISIÓN
-        </button>
-
+        <div class="cena-objetivo"><small>OBJETIVO</small><p>Recoger la cena y disfrutarla juntos en casa. 🏠</p></div>
+        <button class="boton-cena-principal" onclick="aceptarCena()">💜 ACEPTAR MISIÓN</button>
     </div>
-
 </div>
 
 
@@ -4499,7 +4482,7 @@
     <div class="cena-panel-rpg">
 
         <div class="cena-icono-grande">
-            🌙
+            <img src="assets/iconos/chino-de-pio.png" alt="Chino de Pío" class="icono-mision-personalizado">
         </div>
 
         <p class="cena-etiqueta">
@@ -4525,8 +4508,8 @@
             <small>OBJETIVO ACTUAL</small>
 
             <p>
-                Disfrutar de la última parada
-                antes de continuar la aventura.
+                Recoger nuestro pedido del Chino de Pío
+                y cenar tranquilos en casa.
             </p>
         </div>
 
@@ -4553,7 +4536,7 @@
     <div class="cena-panel-rpg cena-panel-completado">
 
         <div class="cena-icono-grande">
-            <img src="assets/iconos/cena.png" alt="Cena - misión completada" class="icono-mision-personalizado">
+            <img src="assets/iconos/chino-de-pio.png" alt="Chino de Pío - misión completada" class="icono-mision-personalizado">
         </div>
 
         <p class="cena-etiqueta">
