@@ -180,6 +180,42 @@
 @keyframes cenaBrillo { 50% {box-shadow:0 0 20px rgba(239,181,79,.25)} }
 @media(max-width:600px) { .cena-icono-pio{width:min(290px,90%)} .cena-menu-pio{padding:13px 11px} .cena-revelacion h1{font-size:clamp(1.55rem,7vw,2.4rem)} }
 
+
+.pista-nikkei-comprada{margin:20px auto;padding:18px;max-width:560px;border:1px solid #d5a55d;border-radius:15px;background:linear-gradient(145deg,rgba(88,56,20,.45),rgba(39,25,67,.8));box-shadow:0 0 20px rgba(188,123,255,.15);text-align:center;line-height:1.6}
+.pista-nikkei-comprada[hidden]{display:none!important}
+.pista-nikkei-comprada strong{color:#f5d58c;font-family:var(--fuente-ui,monospace)}
+.pista-nikkei-letras{font-family:var(--fuente-ui,monospace);font-size:clamp(1.15rem,5vw,1.65rem);letter-spacing:.12em;color:#80f2f3}
+
+/* CENA · MISMO FONDO Y PROPORCIONES QUE LAS DEMÁS MISIONES */
+.pantalla-cena-rpg { min-height:100vh; padding:clamp(12px,3vw,30px) 16px; overflow:visible; background:transparent!important; }
+.pantalla-cena-rpg .fondo-cena-rpg { display:none!important; }
+.pantalla-cena-rpg .cena-panel-rpg { width:min(1040px,100%)!important; max-width:1040px!important; padding:clamp(20px,3.2vw,36px)!important; margin:20px auto!important; }
+.pantalla-cena-rpg .cena-icono-pio { width:clamp(130px,19vw,195px)!important; max-width:55%!important; margin:10px auto!important; }
+.pantalla-cena-rpg .cena-icono-grande img { width:clamp(125px,18vw,175px)!important; height:auto!important; margin:8px auto 14px!important; }
+.pantalla-cena-rpg .cena-revelacion h1 { font-size:clamp(1.6rem,3.5vw,2.5rem)!important; }
+.pantalla-cena-rpg .cena-menu-pio { max-width:670px; margin:14px auto; }
+.pantalla-cena-rpg .cena-texto { max-width:780px; margin:16px auto; }
+@media(max-width:600px) { .pantalla-cena-rpg {padding:12px 10px!important;min-height:100dvh;} .pantalla-cena-rpg .cena-panel-rpg {padding:20px 14px!important;margin:8px auto!important;} .pantalla-cena-rpg .cena-icono-pio {width:145px!important;max-width:60%!important;} }
+
+
+/* FIX NIVEL 23: fondo nocturno y navegación coherentes en las cuatro pantallas de cena */
+.pantalla-cena-rpg.pantalla-activa {
+  background-image:linear-gradient(rgba(5,7,23,.64),rgba(5,7,23,.82)),url("assets/fondos/fondo-dashboard.png")!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  background-attachment:fixed!important;
+  align-items:center;
+  justify-content:center;
+}
+.pantalla-cena-rpg .fondo-cena-rpg {display:none!important;}
+.pantalla-cena-rpg .cena-panel-rpg {width:min(960px,calc(100% - 12px))!important;max-width:960px!important;}
+.cena-navegacion-rpg {border-top:1px solid rgba(158,118,238,.25);margin-top:24px;padding-top:20px;display:flex;justify-content:center;}
+.cena-volver-mapa {width:min(420px,100%);min-height:52px;padding:12px 20px;border:1px solid rgba(184,151,255,.7);border-radius:12px;background:rgba(11,10,37,.84);color:#f8f2ff;font-family:var(--fuente-ui,"Silkscreen",monospace);font-size:clamp(.68rem,2vw,.9rem);letter-spacing:.05em;cursor:pointer;transition:background .2s,border-color .2s;}
+.cena-volver-mapa:hover,.cena-volver-mapa:focus-visible{background:rgba(93,56,168,.5);border-color:#d3b6ff;}
+@media(max-width:600px){.pantalla-cena-rpg.pantalla-activa{background-attachment:scroll!important;background-position:center center!important;padding:14px 10px!important;}.pantalla-cena-rpg .cena-panel-rpg{width:100%!important;margin:8px auto!important;}.cena-navegacion-rpg{margin-top:18px;padding-top:16px;}}
+
+.producto-pista-nikkei[hidden]{display:none!important}
 </style>
 
 </head>
@@ -2492,6 +2528,15 @@
         </button>
 
         <div id="resultado-nikkei"></div>
+<div id="pista-nikkei-comprada" class="pista-nikkei-comprada" hidden>
+  <button id="boton-ver-pista" type="button" onclick="mostrarPergaminoPista()">📜 ABRIR PERGAMINO COMPRADO</button>
+  <div id="contenido-pergamino-pista" hidden>
+    <img src="assets/tienda/pergamino-pista.png" alt="Pergamino" style="display:block;width:125px;max-width:45%;margin:12px auto">
+    <strong>📜 PERGAMINO DESCIFRADO</strong>
+    <p>La palabra tiene <b>6 letras</b>. Empieza por <b>NI</b>, termina por <b>EI</b> y lleva <b>dos K</b>.</p>
+    <p class="pista-nikkei-letras">N I _ _ E I</p>
+  </div>
+</div>
 
         <div class="navegacion-prueba">
             <button class="boton-volver" onclick="abrirMapa()">
@@ -3319,6 +3364,16 @@
                     </div>
 
                 </article>
+
+<article class="producto producto-rpg producto-pista-nikkei" id="producto-pista-nikkei" hidden>
+  <div class="icono-producto-rpg"><img src="assets/tienda/pergamino-pista.png" alt="Pergamino de pista" class="imagen-icono-tienda"></div>
+  <div class="tipo-producto-rpg">PISTA · UN SOLO USO</div>
+  <h3>PERGAMINO DE PISTA</h3>
+  <p>Una pista casi definitiva para descifrar la fusión de Tokio y Lima.</p>
+  <div class="producto-rpg-inferior"><strong>15 🪙</strong>
+    <button id="boton-comprar-pista-nikkei" onclick="comprarPistaNikkei()">COMPRAR</button>
+  </div>
+</article>
 
 <!-- SEGUNDO INTENTO -->
 
@@ -4386,7 +4441,7 @@
      CENA SECRETA
 ================================================== -->
 
-<<!-- ==================================================
+<!-- ==================================================
      PUERTA SECRETA · CENA
 ================================================== -->
 
@@ -4395,14 +4450,6 @@
     <div class="fondo-cena-rpg"></div>
 
     <div class="cena-panel-rpg">
-
-        <button
-            class="boton-atras-rpg"
-            onclick="abrirMapa()"
-            aria-label="Volver"
-        >
-            ←
-        </button>
 
         <div class="cena-icono-grande">
             🔐
@@ -4439,6 +4486,10 @@
             🔑 USAR LLAVE SECRETA
         </button>
 
+
+        <div class="cena-navegacion-rpg">
+            <button type="button" class="cena-volver-mapa" onclick="abrirMapa()">🗺️ VOLVER AL MAPA</button>
+        </div>
     </div>
 
 </div>
@@ -4467,6 +4518,10 @@
         </div>
         <div class="cena-objetivo"><small>OBJETIVO</small><p>Recoger la cena y disfrutarla juntos en casa. 🏠</p></div>
         <button class="boton-cena-principal" onclick="aceptarCena()">💜 ACEPTAR MISIÓN</button>
+
+        <div class="cena-navegacion-rpg">
+            <button type="button" class="cena-volver-mapa" onclick="abrirMapa()">🗺️ VOLVER AL MAPA</button>
+        </div>
     </div>
 </div>
 
@@ -4520,6 +4575,10 @@
             ✓ COMPLETAR MISIÓN
         </button>
 
+
+        <div class="cena-navegacion-rpg">
+            <button type="button" class="cena-volver-mapa" onclick="abrirMapa()">🗺️ VOLVER AL MAPA</button>
+        </div>
     </div>
 
 </div>
@@ -4569,6 +4628,10 @@
             CONTINUAR AVENTURA
         </button>
 
+
+        <div class="cena-navegacion-rpg">
+            <button type="button" class="cena-volver-mapa" onclick="abrirMapa()">🗺️ VOLVER AL MAPA</button>
+        </div>
     </div>
 
 </div>
@@ -5013,6 +5076,67 @@ function confirmarStarterPack() {
 }
 </script>
 
+<script>
+/* El pergamino solo se ofrece al llegar a la prueba de Tokio + Lima. */
+/* Pista Nikkei: compra única, persistente y disponible al volver a la prueba. */
+// Nueva clave: las compras de prueba antiguas no marcan el objeto como adquirido.
+const CLAVE_PISTA_NIKKEI = 'nivel23_pergamino_v2';
+function mostrarPergaminoPista() {
+  const contenido = document.getElementById('contenido-pergamino-pista');
+  const boton = document.getElementById('boton-ver-pista');
+  if (localStorage.getItem(CLAVE_PISTA_NIKKEI) !== 'si' ||
+      typeof obtenerPruebaPendiente !== 'function' ||
+      obtenerPruebaPendiente() !== 'nikkei') return;
+  if (contenido) contenido.hidden = false;
+  if (boton) boton.hidden = true;
+}
+function actualizarPistaNikkei() {
+  const comprada = localStorage.getItem(CLAVE_PISTA_NIKKEI) === 'si';
+  const panel = document.getElementById('pista-nikkei-comprada');
+  const boton = document.getElementById('boton-comprar-pista-nikkei');
+  const producto = document.getElementById('producto-pista-nikkei');
+  // La prueba se desbloquea tras completar OXO y recoger su recompensa.
+  const disponible = typeof estadoMision1 !== 'undefined' &&
+    estadoMision1 === 'completada' &&
+    typeof recompensaMision1Recogida !== 'undefined' &&
+    recompensaMision1Recogida &&
+    typeof estadoMision2 !== 'undefined' &&
+    estadoMision2 === 'bloqueada';
+  if (producto) {
+    producto.hidden = !disponible;
+    producto.classList.toggle('zona-oculta', !disponible);
+  }
+  if (panel) panel.hidden = !disponible || !comprada;
+  if (boton) { boton.disabled = comprada; boton.textContent = comprada ? 'ADQUIRIDO ✓' : 'COMPRAR'; }
+}
+function comprarPistaNikkei() {
+  const producto = document.getElementById('producto-pista-nikkei');
+  actualizarPistaNikkei();
+  if (!producto || producto.hidden) {
+    resultadoTienda('🔒 Este objeto aún no está disponible.');
+    return;
+  }
+  if (localStorage.getItem(CLAVE_PISTA_NIKKEI) === 'si') {
+    resultadoTienda('📜 Ya tienes el pergamino. ¡Vuelve a la prueba de Tokio + Lima!');
+    return;
+  }
+  if (!gastarMonedas(15)) {
+    resultadoTienda('❌ Necesitas 15 monedas para comprar el pergamino.');
+    return;
+  }
+  localStorage.setItem(CLAVE_PISTA_NIKKEI, 'si');
+  guardarPartida();
+  actualizarPistaNikkei();
+  resultadoTienda('📜 ¡Pergamino adquirido! La pista aparecerá en la prueba de Tokio + Lima.');
+}
+document.addEventListener('DOMContentLoaded', function(){
+  actualizarPistaNikkei();
+  const pantallaTienda = document.getElementById('pantalla-tienda');
+  if (pantallaTienda) new MutationObserver(actualizarPistaNikkei).observe(pantallaTienda,{attributes:true,attributeFilter:['class']});
+  const pantallaPrueba = document.getElementById('pantalla-reto-nikkei');
+  if (pantallaPrueba) new MutationObserver(actualizarPistaNikkei).observe(pantallaPrueba,{attributes:true,attributeFilter:['class']});
+});
+</script>
 </body>
 
 </html>
