@@ -14146,3 +14146,13 @@ p {
  #pantalla-logros .logro-rpg {display:grid!important;grid-template-columns:50px minmax(0,1fr) auto!important;}
  .party-senales {grid-template-columns:repeat(2,minmax(0,1fr))!important;}
 }
+
+/* NIVEL 23 · MAPA SIN RECORTE NI FRANJA NEGRA · 05/11 */
+.mapa-dashboard {background:transparent!important;min-height:0!important;gap:0!important;border:1px solid rgba(172,137,255,.5)!important;}
+.mapa-dashboard > img {display:block!important;width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;object-fit:contain!important;object-position:center!important;flex:0 0 auto!important;}
+.mapa-dashboard-etiqueta {background:linear-gradient(135deg,#21183c,#18142e)!important;padding:12px 15px 4px!important;gap:3px!important;border-top:1px solid rgba(172,137,255,.4)!important;}
+.mapa-dashboard-etiqueta small {font-size:.68rem!important;letter-spacing:.08em!important;}
+.mapa-dashboard-etiqueta strong {font-size:clamp(1rem,3.7vw,1.35rem)!important;}
+.mapa-dashboard-etiqueta span {font-size:.85rem!important;}
+.mapa-dashboard-abrir {background:linear-gradient(135deg,#21183c,#18142e)!important;padding:8px 15px 12px!important;color:#f1dcff!important;}
+@media(max-width:700px){.mapa-dashboard > img {height:auto!important;min-height:0!important;max-height:none!important;object-fit:contain!important;}}
