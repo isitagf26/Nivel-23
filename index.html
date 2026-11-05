@@ -1452,7 +1452,7 @@
 
                 </button>
 
-                <div id="amigos-party-lava" class="party-amigos-grid zona-oculta" style="display:contents;">
+                <div id="amigos-party-lava" class="party-amigos-grid zona-oculta">
                     <div class="personaje-seleccion-rpg personaje-amigo-rpg">
                         <div class="personaje-marco-rpg"><div class="personaje-retrato-rpg"><img src="assets/personajes/jorge.png" alt="Jorge"></div></div>
                         <div class="personaje-info-rpg"><span class="personaje-tipo-rpg">🎮 JUGADOR 3</span><h2>JORGE</h2><p>MIEMBRO DE LA PARTY</p></div>
@@ -4899,6 +4899,9 @@ function actualizarEstadoPartyLava(){
     // está en curso. Al pulsarlo comienza el escáner sorpresa de la party.
     if (completar) completar.classList.remove("zona-oculta");
 
+    const amigos = document.getElementById("amigos-party-lava");
+    if (amigos) amigos.classList.toggle("zona-oculta", !activa);
+
     const contador = document.querySelector(".contador-grupo-rpg strong");
     if (contador) contador.textContent = activa ? "PARTY +" : "2 / 2";
 
@@ -4909,7 +4912,7 @@ function actualizarEstadoPartyLava(){
             bloque = document.createElement("div");
             bloque.id = "party-amigos-desbloqueada";
             bloque.className = "party-miembro-desbloqueado";
-            bloque.innerHTML = '<span>👥</span><strong>NUEVOS MIEMBROS DE LA PARTY</strong><small>Identidades pendientes de registrar</small>';
+            bloque.innerHTML = '<span>👥</span><strong>PARTY COMPLETA</strong><small>Jorge · Ossama · Álvaro · Manu</small>';
             rejilla.appendChild(bloque);
         } else if (!activa && bloque) {
             bloque.remove();

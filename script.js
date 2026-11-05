@@ -4774,9 +4774,12 @@ function completarMision3() {
     guardarPartida();
 
 
-    mostrarPantalla(
-        "pantalla-mision-3-completada"
-    );
+    // La revelación de la party ocurre ANTES de mostrar la recompensa.
+    if (typeof detectarPartyLava === "function") {
+        detectarPartyLava();
+    } else {
+        mostrarPantalla("pantalla-mision-3-completada");
+    }
 }
 
 
