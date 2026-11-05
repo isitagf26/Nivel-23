@@ -1588,6 +1588,9 @@ function actualizarTarjetaMision(
         iconosCompletadas[id] ||
         "assets/iconos/mision completada.png";
 
+    nombre.textContent = nombresMisiones[id];
+    tarjeta.classList.add("completada");
+
     texto.textContent =
         "MISIÓN COMPLETADA";
 
@@ -5040,6 +5043,7 @@ function mostrarDetalleReto(id) {
             <div class="detalle-reto-estado completado">
                 ✓ RETO COMPLETADO
             </div>
+            ${localStorage.getItem("nivel23_foto_reto_" + id) ? `<div class="prueba-reto-guardada"><small>📸 PRUEBA FOTOGRÁFICA</small><img src="${localStorage.getItem("nivel23_foto_reto_" + id)}" alt="Fotografía del reto completado"></div>` : ""}
 
         `;
 
@@ -5190,17 +5194,97 @@ function completarReto(id) {
     }
 
 
-    let confirmar =
-        confirm(
-            "¿Confirmas que has completado este reto?"
-        );
+    // No se puede reclamar la recompensa sin aportar una foto.
+    abrirPruebaReto(id);
+    return;
+}
 
+let retoPendienteFoto = null;
+let fotoPendienteValidada = false;
 
-    if (!confirmar) {
+function abrirPruebaReto(id) {
+    const reto = retos[id];
+    if (!reto || reto.completado || !reto.desbloqueado || id === "lavaSinAbandonar") return;
+    retoPendienteFoto = id;
+    fotoPendienteValidada = false;
+    const modal = document.getElementById("modal-prueba-reto");
+    const input = document.getElementById("input-prueba-reto");
+    const preview = document.getElementById("preview-prueba-reto");
+    const validar = document.getElementById("boton-validar-prueba-reto");
+    if (!modal || !input || !preview || !validar) return;
+    document.getElementById("titulo-prueba-reto").textContent = reto.nombre;
+    input.value = "";
+    preview.removeAttribute("src");
+    preview.classList.remove("visible");
+    validar.disabled = true;
+    modal.classList.add("activo");
+    modal.setAttribute("aria-hidden", "false");
+}
+
+function previsualizarPruebaReto(input) {
+    const archivo = input.files && input.files[0];
+    const preview = document.getElementById("preview-prueba-reto");
+    const validar = document.getElementById("boton-validar-prueba-reto");
+    fotoPendienteValidada = false;
+    validar.disabled = true;
+    if (!archivo || !archivo.type.startsWith("image/")) {
+        preview.removeAttribute("src");
+        preview.classList.remove("visible");
         return;
     }
+    const lector = new FileReader();
+    lector.onload = function () {
+        preview.onload = function () {
+            fotoPendienteValidada = true;
+            validar.disabled = false;
+        };
+        preview.onerror = function () {
+            fotoPendienteValidada = false;
+            validar.disabled = true;
+        };
+        preview.src = lector.result;
+        preview.classList.add("visible");
+    };
+    lector.readAsDataURL(archivo);
+}
 
+function cerrarPruebaReto() {
+    const modal = document.getElementById("modal-prueba-reto");
+    if (modal) {
+        modal.classList.remove("activo");
+        modal.setAttribute("aria-hidden", "true");
+    }
+    retoPendienteFoto = null;
+    fotoPendienteValidada = false;
+}
 
+function validarPruebaReto() {
+    const id = retoPendienteFoto;
+    const input = document.getElementById("input-prueba-reto");
+    if (!id || !fotoPendienteValidada || !input || !input.files || !input.files[0]) return;
+    const reto = retos[id];
+    if (!reto || reto.completado || !reto.desbloqueado || id === "lavaSinAbandonar") return;
+    // Conservamos una versión ligera de la fotografía en el propio dispositivo.
+    const preview = document.getElementById("preview-prueba-reto");
+    try {
+        const lienzo = document.createElement("canvas");
+        const max = 520;
+        const factor = Math.min(1, max / Math.max(preview.naturalWidth, preview.naturalHeight));
+        lienzo.width = Math.max(1, Math.round(preview.naturalWidth * factor));
+        lienzo.height = Math.max(1, Math.round(preview.naturalHeight * factor));
+        lienzo.getContext("2d").drawImage(preview, 0, 0, lienzo.width, lienzo.height);
+        localStorage.setItem("nivel23_foto_reto_" + id, lienzo.toDataURL("image/jpeg", .65));
+    } catch (e) {
+        // La foto se ha aportado; si el navegador no permite guardarla,
+        // la recompensa puede validarse igualmente.
+    }
+    cerrarPruebaReto();
+    completarRetoConFoto(id);
+}
+
+function completarRetoConFoto(id) {
+    const reto = retos[id];
+    if (!reto || reto.completado || !reto.desbloqueado || id === "lavaSinAbandonar") return;
     reto.completado =
         true;
 
