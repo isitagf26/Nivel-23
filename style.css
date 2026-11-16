@@ -14163,3 +14163,30 @@ p {
 #pista-nikkei-comprada[hidden], #contenido-pergamino-pista[hidden], #boton-ver-pista[hidden], #producto-pista-nikkei[hidden], #amigos-party-lava[hidden], #amigos-party-lava.zona-oculta {display:none!important;}
 .brujula-party{display:block;width:150px;height:150px;object-fit:contain;margin:16px auto;animation:brujulaPulso 1.5s ease-in-out infinite alternate;}
 @keyframes brujulaPulso{from{transform:rotate(-8deg);filter:drop-shadow(0 0 5px #9c55ff)}to{transform:rotate(8deg);filter:drop-shadow(0 0 18px #b96aff)}}
+
+#pantalla-archivo-23.pantalla-activa{display:block!important;overflow-y:auto!important;height:100dvh;background:radial-gradient(ellipse at top,#35205d,#100b24 65%);padding:24px 12px 90px;box-sizing:border-box}
+.final-recuerdos{max-width:650px;margin:auto;text-align:center;color:#f6dfff;padding:20px!important;border:1px solid #9364e7;border-radius:20px;background:#17112e;box-shadow:0 0 35px #a44aff33}.final-recuerdos [hidden]{display:none!important}.final-recuerdos h1{font-size:clamp(20px,5vw,34px);color:#e4aaff;line-height:1.5}.final-recuerdos h2{color:#f0a0ed;margin:24px 0}.recuerdo-castillo{font-size:64px;animation:recuerdoEntrada 1.5s ease both}.recuerdo-etiqueta{color:#e6b6ff;font-size:12px;letter-spacing:2px}.final-recuerdos #recuerdo-foto{display:block;width:100%;height:min(52dvh,480px);object-fit:contain;background:#0b081a;border:2px solid #a875ef;border-radius:12px;box-sizing:border-box}.recuerdo-animacion{animation:recuerdoEntrada .8s ease both}.recuerdo-controles{display:flex;gap:8px;justify-content:center}.final-recuerdos button{margin:8px 0;max-width:100%;white-space:normal}.recuerdo-controles button{flex:1}.recuerdo-mensaje{font-size:clamp(18px,4vw,25px);line-height:1.7;color:#fff1fa;margin:30px 0}.final-recuerdos #recuerdo-cierre{animation:recuerdoEntrada 1.4s ease both}@keyframes recuerdoEntrada{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.recuerdo-animacion,.recuerdo-castillo,.final-recuerdos #recuerdo-cierre{animation:none}}
+
+/* EPÍLOGO · únicamente pantalla final */
+#pantalla-archivo-23 .final-recuerdos{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(155deg,#23143e,#100b24 70%);border:2px solid #c395ff;box-shadow:0 0 45px #a44aff55;padding:clamp(16px,4vw,34px)!important}
+.final23-estrellas{position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(circle,#f6d8ff 1px,transparent 2px),radial-gradient(circle,#e8bc78 1px,transparent 2px);background-size:47px 61px,83px 97px;background-position:0 0,23px 31px;opacity:.35;animation:final23Estrellas 5s ease-in-out infinite alternate}
+.final23-castillo{width:min(220px,65%);height:auto;object-fit:contain;filter:drop-shadow(0 0 22px #d5a2ff);animation:recuerdoEntrada 1.5s both}
+.final23-marco{padding:7px;border:1px solid #f3cc88;border-radius:16px;background:linear-gradient(135deg,#b77bdf,#38245d,#d9ad69);box-shadow:0 0 25px #c78dff44}
+#pantalla-archivo-23 #recuerdo-foto{height:min(55dvh,500px);border:0;border-radius:10px;object-fit:contain}
+#final23-progreso{width:100%;height:8px;accent-color:#e9a7ff;margin-bottom:12px}
+.final23-carta,.final23-logro,.final23-proximo,.final23-creditos,#final23-estadisticas{margin:20px 0;padding:18px;border:1px solid #a67acb;border-radius:14px;background:#1c1336e8}
+.final23-carta{animation:recuerdoEntrada 1.8s both}.final23-logro,.final23-proximo{color:#f6d58b;border-color:#d4aa68}.final23-logro strong{display:block;margin-top:10px}.final23-creditos{font-size:.8rem;letter-spacing:1px;color:#d9c2f5}.final23-proximo{font-family:var(--fuente-rpg);font-size:1.5rem}.final23-proximo small{font-size:1rem}.final23-estadisticas-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.final23-estadisticas-grid span{display:block;color:#f4d69b;font-size:1.2rem}.final23-estadisticas-grid small{font-size:.7rem;color:#d9c2f5}
+@keyframes final23Estrellas{to{opacity:.65;transform:translateY(-12px)}}
+@media(prefers-reduced-motion:reduce){.final23-estrellas,.final23-carta,.final23-castillo{animation:none}}
+
+/* CASTILLO Y EPÍLOGO · fondo nocturno original */
+#pantalla-final.pantalla-activa,
+#pantalla-archivo-23.pantalla-activa,
+#pantalla-final .fondo-final-rpg {
+    background: linear-gradient(rgba(5,7,23,.20),rgba(5,7,23,.38)), url("assets/fondos/fondo-dashboard.png") center center / cover no-repeat fixed !important;
+}
+@media (max-width:600px) {
+    #pantalla-final.pantalla-activa,
+    #pantalla-archivo-23.pantalla-activa,
+    #pantalla-final .fondo-final-rpg { background-attachment: scroll !important; }
+}

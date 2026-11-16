@@ -13,7 +13,7 @@
     <title>Nivel 23</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=20261116-5">
+    <link rel="stylesheet" href="style.css?v=20261116-7">
 
     <!-- ICONO NAVEGADOR -->
     <link
@@ -4060,37 +4060,14 @@
 
 
 <div id="pantalla-archivo-23" class="pantalla">
-
-    <div class="contenedor">
-
-        <p class="mensaje-sistema">
-            🗝️ ARCHIVO LEGENDARIO
-        </p>
-
-        <h1>
-            NIVEL 23
-        </h1>
-
-        <div class="archivo-secreto">
-
-            <p>
-                🎬 ARCHIVO DE VÍDEO DETECTADO
-            </p>
-
-            <p>
-                Aquí irá tu vídeo especial.
-            </p>
-
-        </div>
-
-        <button onclick="abrirArchivos()">
-            <img src="assets/iconos/volver.png" class="icono-volver-rpg" alt=""> <span>VOLVER</span>
-        </button>
-
-    </div>
-
+  <div class="contenedor final-recuerdos">
+    <div class="final23-estrellas" aria-hidden="true"></div>
+    <div id="recuerdo-apertura" class="recuerdo-apertura"><img class="final23-castillo" src="assets/iconos/castillo.png" alt="Castillo"><p class="recuerdo-etiqueta">✦ EL TESORO FINAL ✦</p><h1>Nuestra aventura</h1><p>Has encontrado la llave legendaria. Al otro lado de estas puertas te espera el tesoro más importante de esta partida.</p><button onclick="iniciarRecuerdos()">ABRIR EL CASTILLO ♥</button></div>
+    <div id="recuerdo-galeria" hidden><p class="recuerdo-etiqueta">✦ RECUERDOS DESBLOQUEADOS ✦</p><h2>El álbum de nuestra aventura</h2><div class="final23-marco"><img id="recuerdo-foto" alt="Recuerdo de nuestra aventura"></div><p id="recuerdo-contador"></p><progress id="final23-progreso" max="10" value="1"></progress><div class="recuerdo-controles"><button onclick="moverRecuerdo(-1)" aria-label="Foto anterior">←</button><button id="recuerdo-pausa" onclick="pausarRecuerdos()">PAUSA</button><button onclick="moverRecuerdo(1)" aria-label="Foto siguiente">→</button></div><button onclick="cerrarRecuerdos()">VER MENSAJE FINAL</button></div>
+    <div id="recuerdo-cierre" hidden><div class="recuerdo-castillo">🏆</div><p class="recuerdo-etiqueta">✦ FINAL LEGENDARIO ✦</p><h1>NIVEL 23 COMPLETADO</h1><div class="final23-carta"><p class="recuerdo-mensaje">Mi aventura favorita eres tú. Gracias por ser mi compañero de partida, dentro y fuera del juego.</p><p>Feliz cumpleaños, mi amor. Por todos los niveles que nos quedan por descubrir juntos. ♥</p></div><div class="final23-logro">🏆 LOGRO LEGENDARIO DESBLOQUEADO<br><strong>MI COMPAÑERO DE AVENTURAS</strong></div><div id="final23-estadisticas"></div><h2>AIMAR ♡ ISA</h2><div class="final23-creditos"><p>PROTAGONISTA · AIMAR</p><p>PLAYER 2 · ISA</p><p>ALIADOS · JORGE, OSSAMA, ÁLVARO Y MANU</p><p>Una aventura hecha con amor.</p></div><div class="final23-proximo">🔒 NIVEL 24<br><small>Continuará…</small></div><button onclick="iniciarRecuerdos()">VOLVER A VER LOS RECUERDOS</button></div>
+    <button id="final23-sonido" onclick="final23AlternarSonido()">♫ ACTIVAR MÚSICA</button><button onclick="volverDelCastillo()">← VOLVER AL MAPA</button>
+  </div>
 </div>
-
 
 <!-- ==================================================
      EASTER EGG
@@ -4653,7 +4630,7 @@
 
 
         <div class="icono-castillo-final">
-            🏰
+            <img class="final23-castillo" src="assets/iconos/castillo.png" alt="Castillo">
         </div>
 
 
@@ -4800,7 +4777,7 @@
   </div>
 </div>
 
-<script src="script.js?v=20261116-5"></script>
+<script src="script.js?v=20261116-6"></script>
 
 <script>
 /* ==================================================

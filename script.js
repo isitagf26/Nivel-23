@@ -6912,7 +6912,7 @@ function mostrarDetalleArchivo(tipo) {
 
                 <button
                     class="boton-abrir-archivo-rpg"
-                    onclick="mostrarPantalla('pantalla-archivo-23')"
+                    onclick="abrirRecuerdosFinales()"
                 >
                     🗝️ ABRIR ARCHIVO
                 </button>
@@ -7473,7 +7473,7 @@ function abrirFinal() {
                     ARCHIVO FINAL DISPONIBLE
                 </p>
 
-                <button onclick="mostrarPantalla('pantalla-archivo-23')">
+                <button onclick="abrirRecuerdosFinales()">
                     🔓 DESBLOQUEAR ARCHIVO FINAL
                 </button>
 
@@ -7865,3 +7865,25 @@ document.addEventListener("visibilitychange", function () {
 window.addEventListener("pagehide", autoguardarPartida);
 window.addEventListener("beforeunload", autoguardarPartida);
 setInterval(autoguardarPartida, 5000);
+
+let recuerdoIndice = 0, recuerdoTimer = null;
+function detenerRecuerdos(){clearInterval(recuerdoTimer);recuerdoTimer=null;}
+function abrirRecuerdosFinales(){if(!puedeVerFinal() || !llave23Comprada)return;detenerRecuerdos();document.getElementById('recuerdo-apertura').hidden=false;document.getElementById('recuerdo-galeria').hidden=true;document.getElementById('recuerdo-cierre').hidden=true;mostrarPantalla('pantalla-archivo-23');}
+function mostrarRecuerdo(){const foto=document.getElementById('recuerdo-foto');foto.src='assets/final/foto-'+String(recuerdoIndice+1).padStart(2,'0')+'.jpeg';foto.classList.remove('recuerdo-animacion');void foto.offsetWidth;foto.classList.add('recuerdo-animacion');document.getElementById('recuerdo-contador').textContent=(recuerdoIndice+1)+' / 10';}
+function iniciarRecuerdos(){detenerRecuerdos();recuerdoIndice=0;document.getElementById('recuerdo-apertura').hidden=true;document.getElementById('recuerdo-cierre').hidden=true;document.getElementById('recuerdo-galeria').hidden=false;mostrarRecuerdo();document.getElementById('recuerdo-pausa').textContent='PAUSA';recuerdoTimer=setInterval(()=>moverRecuerdo(1),4000);}
+function moverRecuerdo(paso){if(recuerdoIndice+paso>=10){cerrarRecuerdos();return;}recuerdoIndice=Math.max(0,recuerdoIndice+paso);mostrarRecuerdo();}
+function pausarRecuerdos(){const b=document.getElementById('recuerdo-pausa');if(recuerdoTimer){detenerRecuerdos();b.textContent='SEGUIR';}else{recuerdoTimer=setInterval(()=>moverRecuerdo(1),4000);b.textContent='PAUSA';}}
+function cerrarRecuerdos(){detenerRecuerdos();document.getElementById('recuerdo-galeria').hidden=true;document.getElementById('recuerdo-apertura').hidden=true;document.getElementById('recuerdo-cierre').hidden=false;}
+function volverDelCastillo(){detenerRecuerdos();abrirMapa();}
+
+// EPÍLOGO · extensiones aisladas del archivo final
+let final23Audio=null, final23Musica=null, final23Nota=0;
+function final23Tono(midi,duracion=.6){if(!final23Audio)return;const t=final23Audio.currentTime,o=final23Audio.createOscillator(),g=final23Audio.createGain();o.type='sine';o.frequency.value=440*Math.pow(2,(midi-69)/12);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.045,t+.06);g.gain.exponentialRampToValueAtTime(.001,t+duracion);o.connect(g);g.connect(final23Audio.destination);o.start(t);o.stop(t+duracion+.03);}
+function final23PararSonido(){clearInterval(final23Musica);final23Musica=null;if(final23Audio){final23Audio.close().catch(()=>{});final23Audio=null;}const b=document.getElementById('final23-sonido');if(b)b.textContent='♫ ACTIVAR MÚSICA';}
+async function final23AlternarSonido(){if(final23Audio){final23PararSonido();return;}const A=window.AudioContext||window.webkitAudioContext;if(!A)return;try{final23Audio=new A();await final23Audio.resume();const notas=[60,64,67,72,69,67,64,62,65,69,72,74,72,69,65,67];final23Nota=0;const tocar=()=>{if(!document.getElementById('pantalla-archivo-23').classList.contains('pantalla-activa')){final23PararSonido();return;}final23Tono(notas[final23Nota++%notas.length],.85);};tocar();final23Musica=setInterval(tocar,620);document.getElementById('final23-sonido').textContent='♫ DESACTIVAR MÚSICA';}catch(e){final23PararSonido();}}
+const final23MostrarOriginal=mostrarRecuerdo;
+mostrarRecuerdo=function(){final23MostrarOriginal();document.getElementById('final23-progreso').value=recuerdoIndice+1;};
+const final23CerrarOriginal=cerrarRecuerdos;
+cerrarRecuerdos=function(){final23CerrarOriginal();const total=Object.values(retos).filter(r=>r.completado).length;document.getElementById('final23-estadisticas').innerHTML=`<p class="recuerdo-etiqueta">RESUMEN DE LA PARTIDA</p><div class="final23-estadisticas-grid"><div><span>${experiencia}</span><small>EXPERIENCIA</small></div><div><span>${total}/${Object.keys(retos).length}</span><small>RETOS</small></div><div><span>${contarLogros()}/${Object.keys(logros).length}</span><small>LOGROS</small></div><div><span>${monedasConseguidas}</span><small>MONEDAS</small></div></div>`;if(final23Audio){final23Tono(72);setTimeout(()=>final23Tono(76),180);setTimeout(()=>final23Tono(79),360);}};
+const final23VolverOriginal=volverDelCastillo;
+volverDelCastillo=function(){final23PararSonido();final23VolverOriginal();};
