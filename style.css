@@ -507,7 +507,7 @@ Al estar en %, se adaptan al móvil.
 }
 
 
-.punto-oxo {
+.punto-mig {
     left: 34%;
     top: 49%;
 }
@@ -14156,3 +14156,10 @@ p {
 .mapa-dashboard-etiqueta span {font-size:.85rem!important;}
 .mapa-dashboard-abrir {background:linear-gradient(135deg,#21183c,#18142e)!important;padding:8px 15px 12px!important;color:#f1dcff!important;}
 @media(max-width:700px){.mapa-dashboard > img {height:auto!important;min-height:0!important;max-height:none!important;object-fit:contain!important;}}
+
+#amigos-party-lava[hidden] { display: none !important; }
+
+/* Protección de contenido secreto */
+#pista-nikkei-comprada[hidden], #contenido-pergamino-pista[hidden], #boton-ver-pista[hidden], #producto-pista-nikkei[hidden], #amigos-party-lava[hidden], #amigos-party-lava.zona-oculta {display:none!important;}
+.brujula-party{display:block;width:150px;height:150px;object-fit:contain;margin:16px auto;animation:brujulaPulso 1.5s ease-in-out infinite alternate;}
+@keyframes brujulaPulso{from{transform:rotate(-8deg);filter:drop-shadow(0 0 5px #9c55ff)}to{transform:rotate(8deg);filter:drop-shadow(0 0 18px #b96aff)}}

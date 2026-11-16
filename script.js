@@ -48,6 +48,7 @@ let eleccionJugador = 0;
 let eleccionJugadorComprada = false;
 
 let mensajeSecretoComprado = false;
+let pergaminoNikkeiComprado = false;
 
 let llaveCenaComprada = false;
 let llaveCenaUsada = false;
@@ -101,8 +102,8 @@ let retos = {
     },
 
     juegoInfancia: {
-        nombre: "VIAJE AL PASADO",
-        descripcion: "Encuentra en OXO un videojuego al que jugaras de pequeño.",
+        nombre: "EXPLORADOR DIGITAL",
+        descripcion: "Descubre un videojuego o una experiencia interactiva en Madrid in Game y haz una foto de lo que más te guste.",
         recompensa: 15,
         desbloqueado: false,
         completado: false
@@ -953,7 +954,7 @@ let logros = {
     desayuno: {
         icono: "🥐",
         nombre: "CON EL ESTÓMAGO LLENO",
-        descripcion: "Completa la misión del desayuno.",
+        descripcion: "Completa la misión de la Churrería Quinta Generación.",
         desbloqueado: false
     },
 
@@ -973,8 +974,8 @@ let logros = {
 
     nostalgia: {
         icono: "🕹️",
-        nombre: "NOSTALGIA DESBLOQUEADA",
-        descripcion: "Encuentra un juego de tu infancia en OXO.",
+        nombre: "EXPLORADOR DIGITAL",
+        descripcion: "Completa el reto de exploración de Madrid in Game.",
         desbloqueado: false
     },
 
@@ -1104,6 +1105,8 @@ function mostrarPantalla(id) {
     }
 
 
+    if (typeof actualizarEstadoPartyLava === "function") actualizarEstadoPartyLava();
+    if (typeof actualizarPistaNikkei === "function") actualizarPistaNikkei();
     window.scrollTo(0, 0);
 
     setTimeout(function () {
@@ -1147,7 +1150,7 @@ function obtenerPruebaPendiente() {
         return "lol";
     }
 
-    // OXO completado y recompensa recogida, pero Nikkei pendiente.
+    // MADRID IN GAME completado y recompensa recogida, pero Nikkei pendiente.
     if (
         estadoMision1 === "completada" &&
         recompensaMision1Recogida &&
@@ -1437,10 +1440,10 @@ function actualizarMisiones() {
     );
 
 
-    /* OXO = MISIÓN 1 */
+    /* MADRID IN GAME = MISIÓN 1 */
 
     actualizarTarjetaMision(
-        "oxo",
+        "mig",
         estadoMision1,
         abrirZona1
     );
@@ -1517,10 +1520,10 @@ function actualizarTarjetaMision(
     const nombresMisiones = {
 
         desayuno:
-            "DESAYUNO",
+            "CHURRERÍA QUINTA GENERACIÓN",
 
-        oxo:
-            "OXO · MUSEO DE LOS VIDEOJUEGOS",
+        mig:
+            "MADRID IN GAME",
 
         genko:
             "GENKO",
@@ -1541,10 +1544,10 @@ function actualizarTarjetaMision(
     const iconosMisiones = {
 
         desayuno:
-            "assets/iconos/desayuno.png",
+            "assets/iconos/churreria-quinta-generacion.png",
 
-        oxo:
-            "assets/iconos/oxo.png",
+        mig:
+            "assets/iconos/madrid-in-game.png",
 
         genko:
             "assets/iconos/genko.png",
@@ -1577,8 +1580,8 @@ function actualizarTarjetaMision(
  if (estado === "completada") {
 
     const iconosCompletadas = {
-        desayuno: "assets/iconos/desayuno.png",
-        oxo: "assets/iconos/oxo.png",
+        desayuno: "assets/iconos/churreria-quinta-generacion.png",
+        mig: "assets/iconos/madrid-in-game.png",
         genko: "assets/iconos/genko.png",
         lava: "assets/iconos/lava.png",
         cena: "assets/iconos/cena.png"
@@ -1823,7 +1826,7 @@ function obtenerObjetivoDashboard() {
                 "Una nueva ubicación ha sido descubierta.",
 
             boton:
-                "IR AL DESAYUNO",
+                "IR A LA CHURRERÍA",
 
             accion:
                 abrirDesayunoMapa
@@ -1844,7 +1847,7 @@ function obtenerObjetivoDashboard() {
                 "MISIÓN EN CURSO",
 
             titulo:
-                "DESAYUNO",
+                "CHURRERÍA QUINTA GENERACIÓN",
 
             descripcion:
                 "Completa la misión para continuar la aventura.",
@@ -1919,7 +1922,7 @@ function obtenerObjetivoDashboard() {
 
 
     // ------------------------------------------
-    // 4 · OXO
+    // 4 · MADRID IN GAME
     // ------------------------------------------
 
     if (
@@ -1934,13 +1937,13 @@ function obtenerObjetivoDashboard() {
                 "MISIÓN 01",
 
             titulo:
-                "OXO",
+                "MADRID IN GAME",
 
             descripcion:
                 "La primera misión principal ya está disponible.",
 
             boton:
-                "IR A OXO",
+                "IR A MADRID IN GAME",
 
             accion:
                 abrirZona1
@@ -1961,13 +1964,13 @@ function obtenerObjetivoDashboard() {
                 "MISIÓN EN CURSO",
 
             titulo:
-                "OXO",
+                "MADRID IN GAME",
 
             descripcion:
                 "Continúa explorando esta parte de la aventura.",
 
             boton:
-                "CONTINUAR OXO",
+                "CONTINUAR MADRID IN GAME",
 
             accion:
                 abrirZona1
@@ -1989,7 +1992,7 @@ function obtenerObjetivoDashboard() {
                 "RECOMPENSA DISPONIBLE",
 
             titulo:
-                "OXO COMPLETADO",
+                "MADRID IN GAME COMPLETADO",
 
             descripcion:
                 "Recoge tu recompensa para descubrir la siguiente prueba.",
@@ -2621,7 +2624,7 @@ const mapasNivel23 = {
             "MISIÓN SECUNDARIA",
 
         descripcion:
-            "Desayuno descubierto"
+            "Churrería Quinta Generación descubierta"
     },
 
 
@@ -2632,7 +2635,7 @@ const mapasNivel23 = {
         numero: "03",
 
         titulo:
-            "OXO",
+            "MADRID IN GAME",
 
         descripcion:
             "El camino se abre"
@@ -2710,7 +2713,7 @@ function obtenerFaseMapa() {
         fase = 2;
     }
 
-    // Prueba de League of Legends superada → mapa OXO
+    // Prueba de League of Legends superada → mapa MADRID IN GAME
     if (estadoMision1 !== "bloqueada") {
         fase = 3;
     }
@@ -2861,9 +2864,9 @@ function actualizarPuntosMapa(
                 "punto-desayuno"
             ),
 
-        oxo:
+        mig:
             document.getElementById(
-                "punto-oxo"
+                "punto-mig"
             ),
 
         genko:
@@ -2924,7 +2927,7 @@ function actualizarPuntosMapa(
             6: [43, 58],
             7: [43, 58]
         },
-        oxo: {
+        mig: {
             3: [34, 46],
             4: [34, 46],
             5: [20, 52],
@@ -2978,7 +2981,7 @@ function actualizarPuntosMapa(
     if (fase >= 3) {
 
         mostrarPuntoMapa(
-            puntos.oxo
+            puntos.mig
         );
     }
 
@@ -3060,7 +3063,7 @@ function abrirZonaMapa(
 
 
     if (
-        zona === "oxo"
+        zona === "mig"
     ) {
 
         abrirZona1();
@@ -3159,7 +3162,7 @@ if (false) {
         cambiarZona(
             "desayuno",
             "☕",
-            "DESAYUNO",
+            "CHURRERÍA QUINTA GENERACIÓN",
             "Nueva misión secundaria"
         );
 
@@ -3173,7 +3176,7 @@ if (false) {
         cambiarZona(
             "desayuno",
             "☕",
-            "DESAYUNO",
+            "CHURRERÍA QUINTA GENERACIÓN",
             "⚡ Recuperando energía..."
         );
 
@@ -3184,14 +3187,14 @@ if (false) {
         cambiarZona(
             "desayuno",
             "✅",
-            "DESAYUNO",
+            "CHURRERÍA QUINTA GENERACIÓN",
             "Misión secundaria completada"
         );
 
     }
 
 
-    // OXO
+    // MADRID IN GAME
 
     if (
         estadoMision1 ===
@@ -3229,7 +3232,7 @@ if (false) {
         cambiarZona(
             "1",
             "🎮",
-            "OXO",
+            "MADRID IN GAME",
             "Misión en curso"
         );
 
@@ -3240,7 +3243,7 @@ if (false) {
         cambiarZona(
             "1",
             "✅",
-            "OXO",
+            "MADRID IN GAME",
             "Misión completada"
         );
 
@@ -3670,7 +3673,7 @@ function confirmarStarterPack() {
         notificar(
             "☕",
             "MISIÓN SECUNDARIA DESBLOQUEADA",
-            "Se ha localizado una fuente de energía."
+            "Nueva localización descubierta: Churrería Quinta Generación."
         );
 
 
@@ -3896,7 +3899,7 @@ function finalizarRetoLol() {
 
 
 // ==================================================
-// OXO
+// MADRID IN GAME
 // ==================================================
 
 function comenzarMision1() {
@@ -4717,11 +4720,8 @@ function abrirMision3() {
     }
 
     else {
-
-        mostrarPantalla(
-            "pantalla-mision-3-completada"
-        );
-
+        if (typeof detectarPartyLava === "function" && !partyLavaDesbloqueada()) detectarPartyLava();
+        else mostrarPantalla("pantalla-mision-3-completada");
     }
 }
 
@@ -4740,6 +4740,8 @@ function aceptarMision3() {
 
 
 function completarMision3() {
+
+    if (estadoMision3 !== "enCurso") return;
 
     estadoMision3 =
         "completada";
@@ -6457,7 +6459,7 @@ function abrirArchivos() {
 
 
     // ==========================================
-    // ARCHIVO OXO
+    // ARCHIVO MADRID IN GAME
     // ==========================================
 
     if (
@@ -6471,7 +6473,7 @@ function abrirArchivos() {
 
             <div
                 class="archivo-rpg-lista"
-                onclick="mostrarDetalleArchivo('oxo')"
+                onclick="mostrarDetalleArchivo('mig')"
             >
 
                 <div class="archivo-lista-icono">
@@ -6481,7 +6483,7 @@ function abrirArchivos() {
                 <div class="archivo-lista-info">
 
                     <h3>
-                        ARCHIVO OXO
+                        ARCHIVO MADRID IN GAME
                     </h3>
 
                     <p>
@@ -6790,11 +6792,11 @@ function mostrarDetalleArchivo(tipo) {
 
 
     // ==========================================
-    // OXO
+    // MADRID IN GAME
     // ==========================================
 
     else if (
-        tipo === "oxo"
+        tipo === "mig"
     ) {
 
         contenido = `
@@ -6810,7 +6812,7 @@ function mostrarDetalleArchivo(tipo) {
                 </p>
 
                 <h2>
-                    ARCHIVO OXO
+                    ARCHIVO MADRID IN GAME
                 </h2>
 
                 <div class="separador-logro-rpg">
@@ -7542,6 +7544,7 @@ eleccionJugador,
 eleccionJugadorComprada,
 
 mensajeSecretoComprado,
+        pergaminoNikkeiComprado,
 
         llaveCenaComprada,
         llaveCenaUsada,
@@ -7589,6 +7592,7 @@ function cargarPartida() {
             );
 
 
+        pergaminoNikkeiComprado = partida.pergaminoNikkeiComprado === true;
         experiencia =
             partida.experiencia ?? 0;
 
@@ -7763,6 +7767,10 @@ function reiniciarPartida() {
     );
 
 
+    localStorage.removeItem("nivel23_party_lava_desbloqueada");
+    ["nivel23_pergamino_v2", "nivel23_pergamino_v3", "nivel23_pergamino_v4", "nivel23_party_lava_v4"].forEach(k => localStorage.removeItem(k));
+    pergaminoNikkeiComprado = false;
+    if (typeof actualizarPistaNikkei === "function") actualizarPistaNikkei();
     location.reload();
 }
 
