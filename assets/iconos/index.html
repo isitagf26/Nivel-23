@@ -13,7 +13,7 @@
     <title>Nivel 23</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20261116-5">
 
     <!-- ICONO NAVEGADOR -->
     <link
@@ -164,6 +164,58 @@
   .acciones-prueba-reto{grid-template-columns:1fr;}
 }
 
+
+/* CENA · REVELACIÓN DEL CHINO DE PÍO */
+#pantalla-cena .cena-panel-rpg { max-width: 760px; }
+.cena-revelacion { animation: cenaAparece .75s ease both; }
+.cena-sello { display:inline-block; margin:12px auto; padding:9px 16px; border:1px solid #e6bc73; border-radius:30px; color:#f5d898; font-family:var(--fuente-ui,monospace); font-size:clamp(.6rem,2vw,.85rem); letter-spacing:.08em; background:rgba(91,52,17,.22); animation:cenaBrillo 2.8s ease-in-out infinite; }
+.cena-icono-pio { width:min(360px,88%); height:auto; display:block; margin:8px auto 14px; object-fit:contain; image-rendering:pixelated; filter:drop-shadow(0 0 18px rgba(158,61,246,.35)); animation:cenaIcono .8s .2s both; }
+.cena-revelacion h1 { color:#f9d58b; text-shadow:0 0 18px rgba(249,169,67,.26); }
+.cena-menu-pio { margin:18px auto 22px; padding:16px 18px; border:1px solid rgba(197,144,255,.5); border-radius:16px; background:linear-gradient(145deg,rgba(68,36,115,.35),rgba(17,13,46,.65)); text-align:center; }
+.cena-menu-pio small { display:block; margin-bottom:10px; color:#72eaf5; font-family:var(--fuente-ui,monospace); letter-spacing:.08em; }
+.cena-menu-pio p { margin:7px 0; line-height:1.55; }
+.cena-revelacion .cena-texto { line-height:1.65; }
+@keyframes cenaAparece { from {opacity:0;transform:translateY(20px)} to {opacity:1;transform:translateY(0)} }
+@keyframes cenaIcono { from {opacity:0;transform:scale(.82)} to {opacity:1;transform:scale(1)} }
+@keyframes cenaBrillo { 50% {box-shadow:0 0 20px rgba(239,181,79,.25)} }
+@media(max-width:600px) { .cena-icono-pio{width:min(290px,90%)} .cena-menu-pio{padding:13px 11px} .cena-revelacion h1{font-size:clamp(1.55rem,7vw,2.4rem)} }
+
+
+.pista-nikkei-comprada{margin:20px auto;padding:18px;max-width:560px;border:1px solid #d5a55d;border-radius:15px;background:linear-gradient(145deg,rgba(88,56,20,.45),rgba(39,25,67,.8));box-shadow:0 0 20px rgba(188,123,255,.15);text-align:center;line-height:1.6}
+.pista-nikkei-comprada[hidden]{display:none!important}
+.pista-nikkei-comprada strong{color:#f5d58c;font-family:var(--fuente-ui,monospace)}
+.pista-nikkei-letras{font-family:var(--fuente-ui,monospace);font-size:clamp(1.15rem,5vw,1.65rem);letter-spacing:.12em;color:#80f2f3}
+
+/* CENA · MISMO FONDO Y PROPORCIONES QUE LAS DEMÁS MISIONES */
+.pantalla-cena-rpg { min-height:100vh; padding:clamp(12px,3vw,30px) 16px; overflow:visible; background:transparent!important; }
+.pantalla-cena-rpg .fondo-cena-rpg { display:none!important; }
+.pantalla-cena-rpg .cena-panel-rpg { width:min(1040px,100%)!important; max-width:1040px!important; padding:clamp(20px,3.2vw,36px)!important; margin:20px auto!important; }
+.pantalla-cena-rpg .cena-icono-pio { width:clamp(130px,19vw,195px)!important; max-width:55%!important; margin:10px auto!important; }
+.pantalla-cena-rpg .cena-icono-grande img { width:clamp(125px,18vw,175px)!important; height:auto!important; margin:8px auto 14px!important; }
+.pantalla-cena-rpg .cena-revelacion h1 { font-size:clamp(1.6rem,3.5vw,2.5rem)!important; }
+.pantalla-cena-rpg .cena-menu-pio { max-width:670px; margin:14px auto; }
+.pantalla-cena-rpg .cena-texto { max-width:780px; margin:16px auto; }
+@media(max-width:600px) { .pantalla-cena-rpg {padding:12px 10px!important;min-height:100dvh;} .pantalla-cena-rpg .cena-panel-rpg {padding:20px 14px!important;margin:8px auto!important;} .pantalla-cena-rpg .cena-icono-pio {width:145px!important;max-width:60%!important;} }
+
+
+/* FIX NIVEL 23: fondo nocturno y navegación coherentes en las cuatro pantallas de cena */
+.pantalla-cena-rpg.pantalla-activa {
+  background-image:linear-gradient(rgba(5,7,23,.64),rgba(5,7,23,.82)),url("assets/fondos/fondo-dashboard.png")!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  background-attachment:fixed!important;
+  align-items:center;
+  justify-content:center;
+}
+.pantalla-cena-rpg .fondo-cena-rpg {display:none!important;}
+.pantalla-cena-rpg .cena-panel-rpg {width:min(960px,calc(100% - 12px))!important;max-width:960px!important;}
+.cena-navegacion-rpg {border-top:1px solid rgba(158,118,238,.25);margin-top:24px;padding-top:20px;display:flex;justify-content:center;}
+.cena-volver-mapa {width:min(420px,100%);min-height:52px;padding:12px 20px;border:1px solid rgba(184,151,255,.7);border-radius:12px;background:rgba(11,10,37,.84);color:#f8f2ff;font-family:var(--fuente-ui,"Silkscreen",monospace);font-size:clamp(.68rem,2vw,.9rem);letter-spacing:.05em;cursor:pointer;transition:background .2s,border-color .2s;}
+.cena-volver-mapa:hover,.cena-volver-mapa:focus-visible{background:rgba(93,56,168,.5);border-color:#d3b6ff;}
+@media(max-width:600px){.pantalla-cena-rpg.pantalla-activa{background-attachment:scroll!important;background-position:center center!important;padding:14px 10px!important;}.pantalla-cena-rpg .cena-panel-rpg{width:100%!important;margin:8px auto!important;}.cena-navegacion-rpg{margin-top:18px;padding-top:16px;}}
+
+.producto-pista-nikkei[hidden]{display:none!important}
 </style>
 
 </head>
@@ -932,7 +984,7 @@
                 <img
                     id="icono-real-desayuno"
                     class="icono-real-mision zona-oculta"
-                    src="assets/iconos/desayuno.png"
+                    src="assets/iconos/churreria-quinta-generacion.png"
                     alt=""
                 >
 
@@ -956,25 +1008,25 @@
 
 
             <!-- =========================
-                 OXO
+                 MADRID IN GAME
             ========================== -->
 
             <div
-                id="tarjeta-mision-oxo"
+                id="tarjeta-mision-mig"
                 class="tarjeta-mision-rpg bloqueada"
             >
 
                 <img
-                    id="icono-mision-oxo"
+                    id="icono-mision-mig"
                     class="icono-lista-mision"
                     src="assets/iconos/mision bloqueada.png"
                     alt=""
                 >
 
                 <img
-                    id="icono-real-oxo"
+                    id="icono-real-mig"
                     class="icono-real-mision zona-oculta"
-                    src="assets/iconos/oxo.png"
+                    src="assets/iconos/madrid-in-game.png"
                     alt=""
                 >
 
@@ -984,11 +1036,11 @@
                         MISIÓN 01
                     </small>
 
-                    <h2 id="nombre-mision-oxo">
+                    <h2 id="nombre-mision-mig">
                         ???
                     </h2>
 
-                    <p id="estado-texto-oxo">
+                    <p id="estado-texto-mig">
                         MISIÓN BLOQUEADA
                     </p>
 
@@ -1400,7 +1452,7 @@
 
                 </button>
 
-                <div id="amigos-party-lava" class="party-amigos-grid zona-oculta" style="display:contents;">
+                <div id="amigos-party-lava" style="display:none!important" hidden class="party-amigos-grid zona-oculta">
                     <div class="personaje-seleccion-rpg personaje-amigo-rpg">
                         <div class="personaje-marco-rpg"><div class="personaje-retrato-rpg"><img src="assets/personajes/jorge.png" alt="Jorge"></div></div>
                         <div class="personaje-info-rpg"><span class="personaje-tipo-rpg">🎮 JUGADOR 3</span><h2>JORGE</h2><p>MIEMBRO DE LA PARTY</p></div>
@@ -1537,13 +1589,13 @@
             ></button>
 
 
-            <!-- OXO -->
+            <!-- MADRID IN GAME -->
 
             <button
-                id="punto-oxo"
-                class="punto-mapa punto-oxo zona-oculta"
-                onclick="abrirZonaMapa('oxo')"
-                aria-label="OXO"
+                id="punto-mig"
+                class="punto-mapa punto-mig zona-oculta"
+                onclick="abrirZonaMapa('mig')"
+                aria-label="MADRID IN GAME"
             ></button>
 
 
@@ -1876,15 +1928,15 @@
     <div class="contenedor">
 
         <p class="mensaje-sistema">
-            ✨ MISIÓN SECUNDARIA DESBLOQUEADA
+            ✨ NUEVA LOCALIZACIÓN DESCUBIERTA
         </p>
 
         <div class="icono-mision-grande">
-            <img src="assets/iconos/desayuno.png" alt="Desayuno" class="icono-mision-personalizado">
+            <img src="assets/iconos/churreria-quinta-generacion.png" alt="Churrería Quinta Generación" class="icono-mision-personalizado">
         </div>
 
         <h1>
-            DESAYUNO
+            CHURRERÍA QUINTA GENERACIÓN
         </h1>
 
         <p class="subtitulo">
@@ -1899,8 +1951,7 @@
             </p>
 
             <p>
-                Se ha localizado una fuente
-                de suministros cercana.
+                Se ha localizado una fuente de suministros muy especial: la churrería de nuestro amigo.
             </p>
 
         </div>
@@ -1921,7 +1972,7 @@
 
 
         <p class="destino-mision">
-            📍 Destino todavía por determinar
+            📍 Churrería Quinta Generación
         </p>
 
 
@@ -1951,11 +2002,11 @@
         </p>
 
         <div class="icono-mision-grande">
-            <img src="assets/iconos/desayuno.png" alt="Desayuno" class="icono-mision-personalizado">
+            <img src="assets/iconos/churreria-quinta-generacion.png" alt="Churrería Quinta Generación" class="icono-mision-personalizado">
         </div>
 
         <h1>
-            DESAYUNO
+            CHURRERÍA QUINTA GENERACIÓN
         </h1>
 
 
@@ -1977,7 +2028,7 @@
         </p>
 
         <p>
-            Completa el desayuno para
+            Disfruta de unos churros con chocolate para
             restaurar tus estadísticas.
         </p>
 
@@ -2004,7 +2055,7 @@
         </p>
 
         <div class="icono-mision-grande">
-            <img src="assets/iconos/desayuno.png" alt="Desayuno completado" class="icono-mision-personalizado">
+            <img src="assets/iconos/churreria-quinta-generacion.png" alt="Churrería Quinta Generación completada" class="icono-mision-personalizado">
         </div>
 
         <h1>
@@ -2298,9 +2349,9 @@
 
     <div class="contenedor">
         <img
-    src="assets/iconos/oxo.png"
+    src="assets/iconos/madrid-in-game.png"
     class="icono-mision-personalizado"
-    alt="OXO - misión descubierta"
+    alt="MADRID IN GAME - misión descubierta"
 >
 
         <p class="mensaje-sistema">
@@ -2317,8 +2368,8 @@
 
         <p>
             Se ha detectado una ubicación relacionada
-            con antiguas aventuras, mundos digitales
-            y muchas vidas extra.
+            con mundos digitales, tecnología
+            y nuevas experiencias de juego.
         </p>
 
         <button onclick="comenzarMision1()">
@@ -2338,23 +2389,22 @@
             📡 DESTINO LOCALIZADO
         </p>
 
-        <img src="assets/iconos/oxo.png" alt="OXO" class="icono-mision-personalizado">
+        <img src="assets/iconos/madrid-in-game.png" alt="MADRID IN GAME" class="icono-mision-personalizado">
 
         <h1>
-            OXO
+            MADRID IN GAME
         </h1>
 
         <h2>
-            MUSEO DEL VIDEOJUEGO
+            EXPERIENCE CENTER · CAMPUS DEL VIDEOJUEGO
         </h2>
 
         <p>
-            📍 Madrid
+            📍 Casa de Campo · Madrid
         </p>
 
         <p>
-            Una misión entre consolas,
-            videojuegos y recuerdos.
+            Una misión entre videojuegos, tecnología y experiencias interactivas.
         </p>
 
         <button onclick="aceptarMision1()">
@@ -2370,10 +2420,10 @@
 
     <div class="contenedor">
 
-        <img src="assets/iconos/oxo.png" alt="OXO" class="icono-mision-personalizado">
+        <img src="assets/iconos/madrid-in-game.png" alt="MADRID IN GAME" class="icono-mision-personalizado">
 
         <h1>
-            OXO
+            MADRID IN GAME
         </h1>
 
         <p class="mensaje-sistema">
@@ -2381,7 +2431,7 @@
         </p>
 
         <p>
-            Explora el museo.
+            Explora Madrid in Game, descubre sus experiencias interactivas y juega juntos.
         </p>
 
         <p>
@@ -2401,9 +2451,9 @@
 
     <div class="contenedor">
         <img
-    src="assets/iconos/oxo.png"
+    src="assets/iconos/madrid-in-game.png"
     class="icono-mision-personalizado"
-    alt="OXO - misión completada"
+    alt="MADRID IN GAME - misión completada"
 >
 
         <h1>
@@ -2476,6 +2526,15 @@
         </button>
 
         <div id="resultado-nikkei"></div>
+<div id="pista-nikkei-comprada" style="display:none!important" class="pista-nikkei-comprada" hidden>
+  <button id="boton-ver-pista" type="button" onclick="mostrarPergaminoPista()">📜 ABRIR PERGAMINO COMPRADO</button>
+  <div id="contenido-pergamino-pista" style="display:none!important" hidden>
+    <img src="assets/tienda/pergamino-pista.png" alt="Pergamino" style="display:block;width:125px;max-width:45%;margin:12px auto">
+    <strong>📜 PERGAMINO DESCIFRADO</strong>
+    <p>La palabra tiene <b>6 letras</b>. Empieza por <b>NI</b>, termina por <b>EI</b> y lleva <b>dos K</b>.</p>
+    <p class="pista-nikkei-letras">N I _ _ E I</p>
+  </div>
+</div>
 
         <div class="navegacion-prueba">
             <button class="boton-volver" onclick="abrirMapa()">
@@ -2928,8 +2987,8 @@
     <div class="contenedor party-evento-contenedor">
         <p class="mensaje-sistema party-alerta">📡 DISPOSITIVO DE RASTREO ACTIVADO</p>
         <div class="party-radar">
-            <span class="party-radar-centro">✦</span>
-            <span class="party-radar-punto punto-1"></span><span class="party-radar-punto punto-2"></span><span class="party-radar-punto punto-3"></span>
+            <span class="party-radar-centro"><img src="assets/iconos/brujula-party.png" alt="Brújula de rastreo" style="width:76%;height:76%;object-fit:contain"></span>
+            <span class="party-radar-punto punto-1"></span><span class="party-radar-punto punto-2"></span><span class="party-radar-punto punto-3"></span><span class="party-radar-punto" style="right:24%;bottom:22%"></span>
         </div>
         <h1 id="party-titulo-escaner">ESCANEANDO LA ZONA...</h1>
         <p id="party-estado-escaner" class="party-escaner-estado">2 JUGADORES REGISTRADOS · BUSCANDO OTRAS SEÑALES...</p>
@@ -3303,6 +3362,16 @@
                     </div>
 
                 </article>
+
+<article class="producto producto-rpg producto-pista-nikkei" id="producto-pista-nikkei" hidden>
+  <div class="icono-producto-rpg"><img src="assets/tienda/pergamino-pista.png" alt="Pergamino de pista" class="imagen-icono-tienda"></div>
+  <div class="tipo-producto-rpg">PISTA · UN SOLO USO</div>
+  <h3>PERGAMINO DE PISTA</h3>
+  <p>Una pista casi definitiva para descifrar la fusión de Tokio y Lima.</p>
+  <div class="producto-rpg-inferior"><strong>15 🪙</strong>
+    <button id="boton-comprar-pista-nikkei" onclick="comprarPistaNikkei()">COMPRAR</button>
+  </div>
+</article>
 
 <!-- SEGUNDO INTENTO -->
 
@@ -3932,15 +4001,11 @@
 
                 <div class="texto-carta-rpg">
 
-                    <p>
-                        Aquí irá tu mensaje personal definitivo para él.
-                    </p>
-
-                    <p>
-                        Este espacio puede contener una carta más larga,
-                        varios párrafos y todo lo que quieras decirle
-                        al llegar a este punto de la aventura.
-                    </p>
+                    <p>Has completado misiones, superado pruebas y desbloqueado cada rincón de esta aventura. Pero si hay algo que tengo claro, es que mi mayor suerte ha sido encontrarte a ti.</p>
+                    <p>Porque desde que llegaste a mi vida, hasta los días más normales se han convertido en aventuras que no cambiaría por nada.</p>
+                    <p>Feliz cumpleaños, mi amor. 💜</p>
+                    <p>Ojalá nos queden infinitos niveles por superar, sueños por cumplir y momentos por compartir. Porque, si es contigo, no me importa lo que nos depare la siguiente aventura, siempre voy a querer vivirla a tu lado.</p>
+                    <p>Te quiero muchísimo. ❤️</p>
 
                 </div>
 
@@ -3948,7 +4013,7 @@
                 <div class="firma-carta-rpg">
 
                     <span>
-                        PLAYER 2
+                        CON TODO MI AMOR
                     </span>
 
                     <strong>
@@ -4370,7 +4435,7 @@
      CENA SECRETA
 ================================================== -->
 
-<<!-- ==================================================
+<!-- ==================================================
      PUERTA SECRETA · CENA
 ================================================== -->
 
@@ -4379,14 +4444,6 @@
     <div class="fondo-cena-rpg"></div>
 
     <div class="cena-panel-rpg">
-
-        <button
-            class="boton-atras-rpg"
-            onclick="abrirMapa()"
-            aria-label="Volver"
-        >
-            ←
-        </button>
 
         <div class="cena-icono-grande">
             🔐
@@ -4423,6 +4480,10 @@
             🔑 USAR LLAVE SECRETA
         </button>
 
+
+        <div class="cena-navegacion-rpg">
+            <button type="button" class="cena-volver-mapa" onclick="abrirMapa()">🗺️ VOLVER AL MAPA</button>
+        </div>
     </div>
 
 </div>
@@ -4433,58 +4494,29 @@
 ================================================== -->
 
 <div id="pantalla-cena" class="pantalla pantalla-cena-rpg">
-
     <div class="fondo-cena-rpg"></div>
-
-    <div class="cena-panel-rpg">
-
-        <div class="cena-icono-grande">
-            <img src="assets/iconos/cena.png" alt="Cena - misión descubierta" class="icono-mision-personalizado">
+    <div class="cena-panel-rpg cena-revelacion">
+        <p class="cena-etiqueta">✦ LLAVE SECRETA UTILIZADA ✦</p>
+        <div class="cena-sello">🔓 UBICACIÓN DESBLOQUEADA</div>
+        <img src="assets/iconos/chino-de-pio.png" alt="Chino de Pío: nuestra cena de confianza" class="cena-icono-pio">
+        <h1>EL CHINO DE PÍO</h1>
+        <p class="cena-etiqueta">🌙 MISIÓN SECRETA · RECARGA NOCTURNA</p>
+        <div class="separador-cena"><span></span><b>✦</b><span></span></div>
+        <p class="cena-texto">Después de tantas misiones, toca volver a nuestro lugar de siempre. No necesitamos una cena elegante para terminar un día especial: solo nuestra comida favorita, para llevar, y una noche tranquila juntos en casa. 💜</p>
+        <div class="cena-menu-pio">
+            <small>🍱 PEDIDO HABITUAL DESBLOQUEADO</small>
+            <p>🍚 Arroz tres delicias</p>
+            <p>🥢 Arroz tostado con verduras</p>
+            <p>🍗 Pollo agridulce</p>
+            <p><strong>Todo en nuestro plato de siempre.</strong></p>
         </div>
+        <div class="cena-objetivo"><small>OBJETIVO</small><p>Recoger la cena y disfrutarla juntos en casa. 🏠</p></div>
+        <button class="boton-cena-principal" onclick="aceptarCena()">💜 ACEPTAR MISIÓN</button>
 
-        <p class="cena-etiqueta">
-            ✦ MISIÓN SECRETA DESBLOQUEADA ✦
-        </p>
-
-        <h1>
-            RECARGA NOCTURNA
-        </h1>
-
-        <div class="separador-cena">
-            <span></span>
-            <b>✦</b>
-            <span></span>
+        <div class="cena-navegacion-rpg">
+            <button type="button" class="cena-volver-mapa" onclick="abrirMapa()">🗺️ VOLVER AL MAPA</button>
         </div>
-
-        <div class="cena-objetivo">
-
-            <small>OBJETIVO</small>
-
-            <p>
-                Recuperar energía después de
-                un largo día de aventura.
-            </p>
-
-        </div>
-
-        <div class="cena-destino">
-            📍 DESTINO DESCONOCIDO
-        </div>
-
-        <p class="cena-pista">
-            Los detalles de esta misión
-            se revelarán cuando llegue el momento.
-        </p>
-
-        <button
-            class="boton-cena-principal"
-            onclick="aceptarCena()"
-        >
-            ACEPTAR MISIÓN
-        </button>
-
     </div>
-
 </div>
 
 
@@ -4499,7 +4531,7 @@
     <div class="cena-panel-rpg">
 
         <div class="cena-icono-grande">
-            🌙
+            <img src="assets/iconos/chino-de-pio.png" alt="Chino de Pío" class="icono-mision-personalizado">
         </div>
 
         <p class="cena-etiqueta">
@@ -4525,8 +4557,8 @@
             <small>OBJETIVO ACTUAL</small>
 
             <p>
-                Disfrutar de la última parada
-                antes de continuar la aventura.
+                Recoger nuestro pedido del Chino de Pío
+                y cenar tranquilos en casa.
             </p>
         </div>
 
@@ -4537,6 +4569,10 @@
             ✓ COMPLETAR MISIÓN
         </button>
 
+
+        <div class="cena-navegacion-rpg">
+            <button type="button" class="cena-volver-mapa" onclick="abrirMapa()">🗺️ VOLVER AL MAPA</button>
+        </div>
     </div>
 
 </div>
@@ -4553,7 +4589,7 @@
     <div class="cena-panel-rpg cena-panel-completado">
 
         <div class="cena-icono-grande">
-            <img src="assets/iconos/cena.png" alt="Cena - misión completada" class="icono-mision-personalizado">
+            <img src="assets/iconos/chino-de-pio.png" alt="Chino de Pío - misión completada" class="icono-mision-personalizado">
         </div>
 
         <p class="cena-etiqueta">
@@ -4586,6 +4622,10 @@
             CONTINUAR AVENTURA
         </button>
 
+
+        <div class="cena-navegacion-rpg">
+            <button type="button" class="cena-volver-mapa" onclick="abrirMapa()">🗺️ VOLVER AL MAPA</button>
+        </div>
     </div>
 
 </div>
@@ -4748,7 +4788,7 @@
 
     <label class="selector-foto-reto">
       📷 HACER FOTO O ELEGIR IMAGEN
-      <input id="input-prueba-reto" type="file" accept="image/*" capture="environment" onchange="previsualizarPruebaReto(this)">
+      <input id="input-prueba-reto" type="file" accept="image/*" onchange="previsualizarPruebaReto(this)">
     </label>
 
     <img id="preview-prueba-reto" class="preview-foto-reto" alt="Prueba del reto">
@@ -4760,25 +4800,31 @@
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=20261116-5"></script>
 
 <script>
 /* ==================================================
    NIVEL 23 · EVENTO SORPRESA PARTY EN LAVA
    Preparado para añadir nombres y avatares más adelante.
 ================================================== */
-const CLAVE_PARTY_LAVA = "nivel23_party_lava_desbloqueada";
+const CLAVE_PARTY_LAVA = "nivel23_party_lava_v4";
 
 function partyLavaDesbloqueada(){
-    return localStorage.getItem(CLAVE_PARTY_LAVA) === "1";
+    return estadoMision3 === "completada" && localStorage.getItem(CLAVE_PARTY_LAVA) === "1";
 }
 
+let escaneoPartyActivo = false;
+let escaneoPartyTerminado = false;
 function detectarPartyLava(){
+    if (estadoMision3 !== "completada") return;
     if (partyLavaDesbloqueada()) {
         finalizarPartyLava();
         return;
     }
 
+    if (escaneoPartyActivo) { mostrarPantalla("pantalla-party-detectada"); return; }
+    escaneoPartyActivo = true;
+    escaneoPartyTerminado = false;
     mostrarPantalla("pantalla-party-detectada");
 
     const titulo = document.getElementById("party-titulo-escaner");
@@ -4823,6 +4869,7 @@ function detectarPartyLava(){
     window.setTimeout(() => {
         if (titulo) titulo.textContent = "PARTY IDENTIFICADA";
         if (estado) estado.textContent = "✓ 6 JUGADORES REGISTRADOS";
+        escaneoPartyTerminado = true;
         if (final) final.className = "party-final-visible";
     }, 2400 + miembros.length * 1200 + 500);
 }
@@ -4832,6 +4879,8 @@ function revelarPartyLava(){
 }
 
 function confirmarPartyLava(){
+    if (estadoMision3 !== "completada" || !escaneoPartyTerminado) return;
+    escaneoPartyActivo = false;
     localStorage.setItem(CLAVE_PARTY_LAVA,"1");
     actualizarEstadoPartyLava();
     finalizarPartyLava();
@@ -4857,6 +4906,13 @@ function actualizarEstadoPartyLava(){
     // está en curso. Al pulsarlo comienza el escáner sorpresa de la party.
     if (completar) completar.classList.remove("zona-oculta");
 
+    const amigos = document.getElementById("amigos-party-lava");
+    if (amigos) {
+        amigos.classList.toggle("zona-oculta", !activa);
+        amigos.hidden = !activa;
+        amigos.style.setProperty("display", activa ? "contents" : "none", "important");
+    }
+
     const contador = document.querySelector(".contador-grupo-rpg strong");
     if (contador) contador.textContent = activa ? "PARTY +" : "2 / 2";
 
@@ -4867,7 +4923,7 @@ function actualizarEstadoPartyLava(){
             bloque = document.createElement("div");
             bloque.id = "party-amigos-desbloqueada";
             bloque.className = "party-miembro-desbloqueado";
-            bloque.innerHTML = '<span>👥</span><strong>NUEVOS MIEMBROS DE LA PARTY</strong><small>Identidades pendientes de registrar</small>';
+            bloque.innerHTML = '<span>👥</span><strong>PARTY COMPLETA</strong><small>Jorge · Ossama · Álvaro · Manu</small>';
             rejilla.appendChild(bloque);
         } else if (!activa && bloque) {
             bloque.remove();
@@ -4884,7 +4940,10 @@ if (typeof abrirPersonajes === "function") {
     };
 }
 
-document.addEventListener("DOMContentLoaded", actualizarEstadoPartyLava);
+document.addEventListener("DOMContentLoaded", () => {
+    if (estadoMision3 !== "completada") localStorage.removeItem(CLAVE_PARTY_LAVA);
+    actualizarEstadoPartyLava();
+});
 </script>
 
 
@@ -5023,13 +5082,88 @@ function confirmarStarterPack() {
         notificar(
             "☕",
             "MISIÓN SECUNDARIA DESBLOQUEADA",
-            "Se ha localizado una fuente de energía."
+            "Nueva localización descubierta: Churrería Quinta Generación."
         );
         mostrarPantalla("pantalla-desayuno");
     }, 7600);
 }
 </script>
 
+<script>
+/* El pergamino solo se ofrece al llegar a la prueba de Tokio + Lima. */
+/* Pista Nikkei: compra única, persistente y disponible al volver a la prueba. */
+// Nueva clave: las compras de prueba antiguas no marcan el objeto como adquirido.
+
+function mostrarPergaminoPista() {
+  const contenido = document.getElementById('contenido-pergamino-pista');
+  const boton = document.getElementById('boton-ver-pista');
+  if (pergaminoNikkeiComprado !== true ||
+      typeof obtenerPruebaPendiente !== 'function' ||
+      obtenerPruebaPendiente() !== 'nikkei') return;
+  if (contenido) { contenido.hidden = false; contenido.style.removeProperty('display'); } 
+  if (boton) { boton.hidden = true; boton.style.setProperty('display','none','important'); }
+}
+function actualizarPistaNikkei() {
+  const comprada = pergaminoNikkeiComprado === true;
+  const panel = document.getElementById('pista-nikkei-comprada');
+  const boton = document.getElementById('boton-comprar-pista-nikkei');
+  const producto = document.getElementById('producto-pista-nikkei');
+  // La prueba se desbloquea tras completar MADRID IN GAME y recoger su recompensa.
+  const disponible = typeof estadoMision1 !== 'undefined' &&
+    estadoMision1 === 'completada' &&
+    typeof recompensaMision1Recogida !== 'undefined' &&
+    recompensaMision1Recogida &&
+    typeof estadoMision2 !== 'undefined' &&
+    estadoMision2 === 'bloqueada';
+  if (producto) {
+    producto.hidden = !disponible;
+    producto.classList.toggle('zona-oculta', !disponible);
+  }
+  if (panel) {
+    panel.hidden = !disponible || !comprada;
+    panel.style.setProperty('display', panel.hidden ? 'none' : 'block', 'important');
+  }
+  if (!comprada || !disponible) {
+    const contenido = document.getElementById('contenido-pergamino-pista');
+    const abrir = document.getElementById('boton-ver-pista');
+    if (contenido) { contenido.hidden = true; contenido.style.setProperty('display','none','important'); }
+    if (abrir) { abrir.hidden = true; abrir.style.setProperty('display','none','important'); }
+  }
+  if (comprada && disponible) {
+    const abrir = document.getElementById('boton-ver-pista');
+    const contenido = document.getElementById('contenido-pergamino-pista');
+    if (abrir && contenido && contenido.hidden) { abrir.hidden = false; abrir.style.removeProperty('display'); }
+  }
+  if (boton) { boton.disabled = comprada; boton.textContent = comprada ? 'ADQUIRIDO ✓' : 'COMPRAR'; }
+}
+function comprarPistaNikkei() {
+  const producto = document.getElementById('producto-pista-nikkei');
+  actualizarPistaNikkei();
+  if (!producto || producto.hidden) {
+    resultadoTienda('🔒 Este objeto aún no está disponible.');
+    return;
+  }
+  if (pergaminoNikkeiComprado === true) {
+    resultadoTienda('📜 Ya tienes el pergamino. ¡Vuelve a la prueba de Tokio + Lima!');
+    return;
+  }
+  if (!gastarMonedas(15)) {
+    resultadoTienda('❌ Necesitas 15 monedas para comprar el pergamino.');
+    return;
+  }
+  pergaminoNikkeiComprado = true;
+  guardarPartida();
+  actualizarPistaNikkei();
+  resultadoTienda('📜 ¡Pergamino adquirido! La pista aparecerá en la prueba de Tokio + Lima.');
+}
+document.addEventListener('DOMContentLoaded', function(){
+  actualizarPistaNikkei();
+  const pantallaTienda = document.getElementById('pantalla-tienda');
+  if (pantallaTienda) new MutationObserver(actualizarPistaNikkei).observe(pantallaTienda,{attributes:true,attributeFilter:['class']});
+  const pantallaPrueba = document.getElementById('pantalla-reto-nikkei');
+  if (pantallaPrueba) new MutationObserver(actualizarPistaNikkei).observe(pantallaPrueba,{attributes:true,attributeFilter:['class']});
+});
+</script>
 </body>
 
 </html>
