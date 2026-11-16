@@ -1,30 +1,10 @@
-const CACHE = 'nivel23-v2-mobile';
-const APP_SHELL = [
-  './', './index.html', './style.css', './script.js', './manifest.json',
-  './assets/iconos/icon-192.png', './assets/iconos/icon-512.png'
-];
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL)));
-  self.skipWaiting();
-});
-self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))));
-  self.clients.claim();
-});
+const CACHE = 'nivel23-v11';
+self.addEventListener('install', event => { event.waitUntil(self.skipWaiting()); });
+self.addEventListener('activate', event => { event.waitUntil((async () => { for (const key of await caches.keys()) if (key.startsWith('nivel23-') && key !== CACHE) await caches.delete(key); await self.clients.claim(); })()); });
 self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-  const important = event.request.mode === 'navigate' || /\.(?:css|js)$/.test(new URL(event.request.url).pathname);
-  if (important) {
-    event.respondWith(fetch(event.request).then(response => {
-      const copy = response.clone();
-      caches.open(CACHE).then(cache => cache.put(event.request, copy));
-      return response;
-    }).catch(() => caches.match(event.request).then(r => r || caches.match('./index.html'))));
-    return;
-  }
-  event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
-    const copy = response.clone();
-    caches.open(CACHE).then(cache => cache.put(event.request, copy));
-    return response;
-  })));
+ const req = event.request; const url = new URL(req.url);
+ if (req.method !== 'GET' || url.origin !== self.location.origin) return;
+ if (req.mode === 'navigate' || /\.(html|css|js)$/.test(url.pathname)) {
+  event.respondWith(fetch(req, {cache:'no-store'}));
+ }
 });
