@@ -13,7 +13,7 @@
     <title>Nivel 23</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=20261116-8">
+    <link rel="stylesheet" href="style.css?v=20261116-9">
 
     <!-- ICONO NAVEGADOR -->
     <link
@@ -218,6 +218,34 @@
 .producto-pista-nikkei[hidden]{display:none!important}
 </style>
 
+<style id="castillo-v9">
+/* Castillo v9: scroll desde arriba, fondo atenuado y tarjetas sin desbordamiento */
+body #pantalla-final.pantalla-activa, body #pantalla-archivo-23.pantalla-activa {
+ display:block!important; position:relative!important; height:100vh!important; height:100dvh!important; min-height:0!important; max-height:100dvh!important; overflow-y:auto!important; overflow-x:hidden!important; box-sizing:border-box!important; animation:none!important; transform:none!important;
+ padding:calc(env(safe-area-inset-top, 0px) + 24px) 14px calc(env(safe-area-inset-bottom, 0px) + 24px)!important;
+ background:linear-gradient(rgba(5,7,23,.86),rgba(5,7,23,.94)),url('assets/fondos/fondo-dashboard.png') center/cover no-repeat!important;
+}
+body #pantalla-final .fondo-final-rpg {display:none!important;}
+body #pantalla-final .panel-final-rpg, body #pantalla-archivo-23 .final-recuerdos {position:relative!important; inset:auto!important; transform:none!important; width:100%!important; max-width:760px!important; min-width:0!important; height:auto!important; margin:0 auto!important; box-sizing:border-box!important; overflow:visible!important; background:linear-gradient(145deg,#11132f,#090a20)!important;}
+body #pantalla-final .panel-final-rpg {padding:56px 24px 24px!important;}
+body #pantalla-final .icono-castillo-final {display:block!important; margin:0 auto 12px!important; overflow:visible!important;}
+body #pantalla-final .icono-castillo-final img {display:block!important; width:160px!important; max-width:65%!important; height:auto!important; margin:0 auto!important; animation:none!important; transform:none!important; opacity:1!important;}
+body #pantalla-final .resumen-final-rpg {display:grid!important; grid-template-columns:repeat(4,minmax(0,1fr))!important; width:100%!important; min-width:0!important; gap:8px!important; margin:18px 0!important;}
+body #pantalla-final .estadistica-final-rpg {display:grid!important; grid-template-columns: minmax(0,1fr)!important; grid-template-rows:auto auto auto!important; justify-items:center!important; text-align:center!important; width:100%!important; min-width:0!important; max-width:100%!important; padding:10px 4px!important; gap:4px!important; box-sizing:border-box!important;}
+body #pantalla-final .estadistica-final-rpg > span {grid-row:auto!important; font-size:1.25rem!important;}
+body #pantalla-final .estadistica-final-rpg small {font-size:.62rem!important; letter-spacing:0!important; line-height:1.3!important; white-space:normal!important; overflow-wrap:anywhere!important; min-width:0!important; max-width:100%!important;}
+body #pantalla-final .estadistica-final-rpg strong {font-size:.9rem!important; letter-spacing:0!important; white-space:normal!important; margin:0!important;}
+body #pantalla-final .boton-atras-rpg {position:absolute!important; top:12px!important; left:12px!important; display:grid!important; place-items:center!important; width:40px!important; min-width:40px!important; height:40px!important; padding:0!important;}
+body #pantalla-final .boton-final-volver, body #pantalla-archivo-23 .final23-volver {display:flex!important; justify-content:center!important; align-items:center!important; gap:10px!important; max-width:100%!important; white-space:normal!important;}
+body #pantalla-final .final23-flecha, body #pantalla-archivo-23 .final23-flecha {display:inline-block!important; width:22px!important; height:22px!important; min-width:22px!important; flex:0 0 22px!important; color:white!important; opacity:1!important; visibility:visible!important;}
+@media(max-width:768px){
+ body #pantalla-final .panel-final-rpg {padding:52px 12px 20px!important;}
+ body #pantalla-final .resumen-final-rpg {grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+ body #pantalla-final .panel-final-rpg h1 {font-size:clamp(1.25rem,5.5vw,1.85rem)!important;}
+ body #pantalla-final .icono-castillo-final img {width:140px!important;}
+ body #pantalla-archivo-23 .final23-estadisticas-grid {grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+}
+</style>
 </head>
 
 <body>
@@ -4065,7 +4093,7 @@
     <div id="recuerdo-apertura" class="recuerdo-apertura"><img class="final23-castillo" src="assets/iconos/castillo.png" alt="Castillo"><p class="recuerdo-etiqueta">✦ EL TESORO FINAL ✦</p><h1>Nuestra aventura</h1><p>Has encontrado la llave legendaria. Al otro lado de estas puertas te espera el tesoro más importante de esta partida.</p><button onclick="iniciarRecuerdos()">ABRIR EL CASTILLO ♥</button></div>
     <div id="recuerdo-galeria" hidden><p class="recuerdo-etiqueta">✦ RECUERDOS DESBLOQUEADOS ✦</p><h2>El álbum de nuestra aventura</h2><div class="final23-marco"><img id="recuerdo-foto" alt="Recuerdo de nuestra aventura"></div><p id="recuerdo-contador"></p><progress id="final23-progreso" max="10" value="1"></progress><div class="recuerdo-controles"><button onclick="moverRecuerdo(-1)" aria-label="Foto anterior">←</button><button id="recuerdo-pausa" onclick="pausarRecuerdos()">PAUSA</button><button onclick="moverRecuerdo(1)" aria-label="Foto siguiente">→</button></div><button onclick="cerrarRecuerdos()">VER MENSAJE FINAL</button></div>
     <div id="recuerdo-cierre" hidden><div class="recuerdo-castillo">🏆</div><p class="recuerdo-etiqueta">✦ FINAL LEGENDARIO ✦</p><h1>NIVEL 23 COMPLETADO</h1><div class="final23-carta"><p class="recuerdo-mensaje">Mi aventura favorita eres tú. Gracias por ser mi compañero de partida, dentro y fuera del juego.</p><p>Feliz cumpleaños, mi amor. Por todos los niveles que nos quedan por descubrir juntos. ♥</p></div><div class="final23-logro">🏆 LOGRO LEGENDARIO DESBLOQUEADO<br><strong>MI COMPAÑERO DE AVENTURAS</strong></div><div id="final23-estadisticas"></div><h2>AIMAR ♡ ISA</h2><div class="final23-creditos"><p>PROTAGONISTA · AIMAR</p><p>PLAYER 2 · ISA</p><p>ALIADOS · JORGE, OSSAMA, ÁLVARO Y MANU</p><p>Una aventura hecha con amor.</p></div><div class="final23-proximo">🔒 NIVEL 24<br><small>Continuará…</small></div><button onclick="iniciarRecuerdos()">VOLVER A VER LOS RECUERDOS</button></div>
-    <button class="final23-volver" onclick="volverDelCastillo()"><svg class="final23-flecha" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg> <span>VOLVER AL MAPA</span></button>
+    <button class="final23-volver" onclick="volverDelCastillo()"><svg class="final23-flecha" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg> <span>VOLVER AL MAPA</span></button>
   </div>
 </div>
 
@@ -4625,7 +4653,7 @@
             onclick="volverDelCastillo()"
             aria-label="Volver al mapa"
         >
-            <svg class="final23-flecha" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg>
+            <svg class="final23-flecha" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg>
         </button>
 
 
@@ -4747,7 +4775,7 @@
             class="boton-final-volver"
             onclick="volverDelCastillo()"
         >
-            <svg class="final23-flecha" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg> <span>VOLVER AL MAPA</span>
+            <svg class="final23-flecha" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg> <span>VOLVER AL MAPA</span>
         </button>
 
     </div>
@@ -4777,7 +4805,7 @@
   </div>
 </div>
 
-<script src="script.js?v=20261116-8"></script>
+<script src="script.js?v=20261116-9"></script>
 
 <script>
 /* ==================================================

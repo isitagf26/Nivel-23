@@ -1101,6 +1101,10 @@ function mostrarPantalla(id) {
         destino.classList.add(
             "pantalla-activa"
         );
+        if (id === "pantalla-final" || id === "pantalla-archivo-23") {
+            destino.scrollTop = 0;
+            requestAnimationFrame(() => { destino.scrollTop = 0; });
+        }
 
     }
 
