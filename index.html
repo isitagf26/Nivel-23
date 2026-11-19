@@ -13,7 +13,7 @@
     <title>Nivel 23</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=20261116-11">
+    <link rel="stylesheet" href="style.css?v=20261119-13">
 
     <!-- ICONO NAVEGADOR -->
     <link
@@ -248,7 +248,7 @@ body #pantalla-final .final23-flecha, body #pantalla-archivo-23 .final23-flecha 
 </style>
 <style id="castillo-v10">
 /* V10: isolated final viewport */
-html body #pantalla-final.pantalla-activa, html body #pantalla-archivo-23.pantalla-activa {position:fixed!important;inset:0!important;width:100%!important;height:100%!important;max-height:none!important;min-height:0!important;display:block!important;overflow:auto!important;overscroll-behavior:contain;align-items:start!important;justify-content:start!important;padding:calc( max(44px, env(safe-area-inset-top)) + 16px) 14px calc(max(20px, env(safe-area-inset-bottom)) + 16px)!important;background:linear-gradient(#050717e8,#050717f2),url('assets/fondos/fondo-dashboard.png') center/cover no-repeat!important;z-index:100!important;}
+html body #pantalla-final.pantalla-activa, html body #pantalla-archivo-23.pantalla-activa {position:fixed!important;inset:0!important;width:100%!important;height:100%!important;max-height:none!important;min-height:0!important;display:block!important;overflow:auto!important;overscroll-behavior:contain;align-items:start!important;justify-content:start!important;padding:calc( max(44px, env(safe-area-inset-top)) + 16px) 14px calc(max(20px, env(safe-area-inset-bottom)) + 16px)!important;background:linear-gradient(rgba(5,7,23,.64),rgba(5,7,23,.82)),url('assets/fondos/fondo-dashboard.png') center/cover no-repeat!important;z-index:100!important;}
 html body #pantalla-final .panel-final-rpg,html body #pantalla-archivo-23 .final-recuerdos {width:100%!important;max-width:760px!important;min-width:0!important;margin:0 auto!important;box-sizing:border-box!important;transform:none!important;top:auto!important;left:auto!important;}
 html body #pantalla-final .resumen-final-rpg {width:100%!important;max-width:100%!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;}
 html body #pantalla-final .estadistica-final-rpg {display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;min-width:0!important;width:100%!important;max-width:100%!important;min-height:0!important;padding:8px 4px!important;gap:4px!important;box-sizing:border-box!important;}
@@ -4104,7 +4104,7 @@ html body #pantalla-final .boton-final-volver svg,html body #pantalla-final .bot
     <div id="recuerdo-apertura" class="recuerdo-apertura"><img class="final23-castillo" src="assets/iconos/castillo.png" alt="Castillo"><p class="recuerdo-etiqueta">✦ EL TESORO FINAL ✦</p><h1>Nuestra aventura</h1><p>Has encontrado la llave legendaria. Al otro lado de estas puertas te espera el tesoro más importante de esta partida.</p><button onclick="iniciarRecuerdos()">ABRIR EL CASTILLO ♥</button></div>
     <div id="recuerdo-galeria" hidden><p class="recuerdo-etiqueta">✦ RECUERDOS DESBLOQUEADOS ✦</p><h2>El álbum de nuestra aventura</h2><div class="final23-marco"><img id="recuerdo-foto" alt="Recuerdo de nuestra aventura"></div><p id="recuerdo-contador"></p><progress id="final23-progreso" max="10" value="1"></progress><div class="recuerdo-controles"><button onclick="moverRecuerdo(-1)" aria-label="Foto anterior">←</button><button id="recuerdo-pausa" onclick="pausarRecuerdos()">PAUSA</button><button onclick="moverRecuerdo(1)" aria-label="Foto siguiente">→</button></div><button onclick="cerrarRecuerdos()">VER MENSAJE FINAL</button></div>
     <div id="recuerdo-cierre" hidden><div class="recuerdo-castillo">🏆</div><p class="recuerdo-etiqueta">✦ FINAL LEGENDARIO ✦</p><h1>NIVEL 23 COMPLETADO</h1><div class="final23-carta"><p class="recuerdo-mensaje">Mi aventura favorita eres tú. Gracias por ser mi compañero de partida, dentro y fuera del juego.</p><p>Feliz cumpleaños, mi amor. Por todos los niveles que nos quedan por descubrir juntos. ♥</p></div><div class="final23-logro">🏆 LOGRO LEGENDARIO DESBLOQUEADO<br><strong>MI COMPAÑERO DE AVENTURAS</strong></div><div id="final23-estadisticas"></div><h2>AIMAR ♡ ISA</h2><div class="final23-creditos"><p>PROTAGONISTA · AIMAR</p><p>PLAYER 2 · ISA</p><p>ALIADOS · JORGE, OSSAMA, ÁLVARO Y MANU</p><p>Una aventura hecha con amor.</p></div><div class="final23-proximo">🔒 NIVEL 24<br><small>Continuará…</small></div><button onclick="iniciarRecuerdos()">VOLVER A VER LOS RECUERDOS</button></div>
-    <button class="final23-volver" onclick="volverDelCastillo()"><svg class="final23-flecha" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg> <span>VOLVER AL MAPA</span></button>
+    <button class="final23-volver" onclick="volverDelCastillo()"><img class="final23-flecha-icono" src="assets/iconos/volver.png" alt="" aria-hidden="true"> <span>VOLVER AL MAPA</span></button>
   </div>
 </div>
 
@@ -4659,14 +4659,6 @@ html body #pantalla-final .boton-final-volver svg,html body #pantalla-final .bot
 
     <div class="panel-final-rpg">
 
-        <button
-            class="boton-atras-rpg"
-            onclick="volverDelCastillo()"
-            aria-label="Volver al mapa"
-        >
-            <svg class="final23-flecha" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg>
-        </button>
-
 
         <div class="icono-castillo-final">
             <img class="final23-castillo" src="assets/iconos/castillo.png" alt="Castillo">
@@ -4778,7 +4770,7 @@ html body #pantalla-final .boton-final-volver svg,html body #pantalla-final .bot
 
 
         <p class="mensaje-final-aventura">
-            — AVENTURA COMPLETADA — <small style="display:block;font-size:9px;letter-spacing:0;opacity:.55;margin-top:6px">V11</small>
+            — AVENTURA COMPLETADA — <small style="display:block;font-size:9px;letter-spacing:0;opacity:.55;margin-top:6px">V13</small>
         </p>
 
 
@@ -4786,7 +4778,7 @@ html body #pantalla-final .boton-final-volver svg,html body #pantalla-final .bot
             class="boton-final-volver"
             onclick="volverDelCastillo()"
         >
-            <svg class="final23-flecha" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg> <span>VOLVER AL MAPA</span>
+            <img class="final23-flecha-icono" src="assets/iconos/volver.png" alt="" aria-hidden="true"> <span>VOLVER AL MAPA</span>
         </button>
 
     </div>
@@ -4816,7 +4808,7 @@ html body #pantalla-final .boton-final-volver svg,html body #pantalla-final .bot
   </div>
 </div>
 
-<script src="script.js?v=20261116-11"></script>
+<script src="script.js?v=20261119-13"></script>
 
 <script>
 /* ==================================================
