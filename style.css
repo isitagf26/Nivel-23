@@ -14253,3 +14253,8 @@ html body #pantalla-final .boton-final-volver svg,html body #pantalla-final .bot
 /* V13: icono original de regreso, solo en el castillo */
 html body #pantalla-final .boton-final-volver .final23-flecha-icono,
 html body #pantalla-archivo-23 .final23-volver .final23-flecha-icono {display:block!important;width:36px!important;height:28px!important;min-width:36px!important;flex:0 0 36px!important;object-fit:contain!important;opacity:1!important;visibility:visible!important;margin:0!important;}
+
+/* V16 · Guardado de partida */
+#boton-continuar-partida[hidden]{display:none!important}
+.boton-continuar-partida,.boton-guardar-partida{width:min(420px,92%);margin:12px auto;padding:14px 16px;border:1px solid #d7b9ff;border-radius:12px;background:linear-gradient(135deg,#55328d,#7c49bb);color:#fff;font-family:var(--fuente-ui,"Silkscreen",monospace);font-size:clamp(.65rem,2vw,.85rem);cursor:pointer}
+.estado-guardado-manual,.estado-guardado-portada{font-family:var(--fuente-ui,"Silkscreen",monospace);font-size:.7rem;color:#bdebd7;text-align:center}

@@ -13,7 +13,7 @@
     <title>Nivel 23</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=20261120-15">
+    <link rel="stylesheet" href="style.css?v=20261120-16">
 
     <!-- ICONO NAVEGADOR -->
     <link
@@ -386,6 +386,9 @@ html body #pantalla-final .boton-final-volver svg,html body #pantalla-final .bot
 
         </button>
 
+
+        <button id="boton-continuar-partida" class="boton-continuar-partida" onclick="continuarPartidaGuardada()" hidden>✦ CONTINUAR AVENTURA</button>
+        <p id="estado-guardado-portada" class="estado-guardado-portada" aria-live="polite"></p>
 
         <!-- TEXTO INFERIOR -->
 
@@ -866,6 +869,9 @@ html body #pantalla-final .boton-final-volver svg,html body #pantalla-final .bot
 
         </nav>
 
+
+        <button class="boton-guardar-partida" onclick="guardarPartidaManual()">💾 GUARDAR PARTIDA</button>
+        <p id="estado-guardado-manual" class="estado-guardado-manual" aria-live="polite"></p>
 
         <!-- REINICIAR -->
 
@@ -4808,7 +4814,7 @@ html body #pantalla-final .boton-final-volver svg,html body #pantalla-final .bot
   </div>
 </div>
 
-<script src="script.js?v=20261120-15"></script>
+<script src="script.js?v=20261120-16"></script>
 
 <script>
 /* ==================================================

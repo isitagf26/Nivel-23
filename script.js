@@ -7576,6 +7576,8 @@ mensajeSecretoComprado,
 
         llave23Comprada,
         castilloFinalDescubierto,
+        intentosRasca,
+        rascaActivo,
 
         retos,
 
@@ -7583,10 +7585,13 @@ mensajeSecretoComprado,
     };
 
 
-    localStorage.setItem(
-        "nivel23Partida",
-        JSON.stringify(partida)
-    );
+    try {
+        localStorage.setItem("nivel23Partida", JSON.stringify(partida));
+        return true;
+    } catch (error) {
+        console.error("No se pudo guardar la partida:", error);
+        return false;
+    }
 }
 
 
@@ -7705,6 +7710,8 @@ function cargarPartida() {
             partida.llave23Comprada ??
             false;
         castilloFinalDescubierto = partida.castilloFinalDescubierto ?? false;
+        intentosRasca = partida.intentosRasca ?? 0;
+        rascaActivo = partida.rascaActivo ?? null;
 
 
         if (
@@ -7760,14 +7767,6 @@ function cargarPartida() {
             error
         );
     }
-    if (typeof datos !== "undefined") {
-        if (typeof datos.intentosRasca === "number") {
-            intentosRasca = datos.intentosRasca;
-        }
-        if (datos.rascaActivo) {
-            rascaActivo = datos.rascaActivo;
-        }
-    }
 
 }
 
@@ -7789,6 +7788,7 @@ function reiniciarPartida() {
     }
 
 
+    window.nivel23Reiniciando = true;
     localStorage.removeItem(
         "nivel23Partida"
     );
@@ -7861,7 +7861,37 @@ function abrirDesdeMenuMas(seccion) {
 // INICIAR
 // ==================================================
 
+let nivel23PartidaDisponible = false;
+try {
+    const partidaAnterior = localStorage.getItem("nivel23Partida");
+    if (partidaAnterior) {
+        const datosPartida = JSON.parse(partidaAnterior);
+        nivel23PartidaDisponible = datosPartida && typeof datosPartida === "object";
+    }
+} catch (error) {
+    console.error("No se pudo leer la partida guardada:", error);
+}
 cargarPartida();
+
+function actualizarBotonesGuardado() {
+    const boton = document.getElementById("boton-continuar-partida");
+    if (boton) boton.hidden = !nivel23PartidaDisponible;
+    const iniciar = document.querySelector("#pantalla-inicio .boton-comenzar-aventura span:last-child");
+    if (iniciar && nivel23PartidaDisponible) iniciar.textContent = "ENTRAR AL JUEGO";
+}
+function continuarPartidaGuardada() {
+    cargarPartida();
+    actualizarTodo();
+    mostrarPantalla("pantalla-juego");
+}
+function guardarPartidaManual() {
+    const guardada = guardarPartida();
+    if (guardada) nivel23PartidaDisponible = true;
+    const mensaje = document.getElementById("estado-guardado-manual");
+    if (mensaje) mensaje.textContent = guardada ? "✓ PARTIDA GUARDADA" : "⚠ NO SE HA PODIDO GUARDAR. REVISA EL ESPACIO DEL NAVEGADOR";
+    actualizarBotonesGuardado();
+}
+actualizarBotonesGuardado();
 
 /*
     Al abrir o recargar la aplicación
@@ -7878,9 +7908,10 @@ mostrarPantalla("pantalla-inicio");
 // AUTOGUARDADO DE LA PARTIDA
 // ==================================================
 function autoguardarPartida() {
+    if (window.nivel23Reiniciando) return;
     try {
-        guardarPartida();
-        console.log("Partida guardada automáticamente");
+        const guardada = guardarPartida();
+        if (guardada) nivel23PartidaDisponible = true;
     } catch (error) {
         console.error("Error al guardar automáticamente:", error);
     }
