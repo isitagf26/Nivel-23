@@ -12195,7 +12195,8 @@ body {
     transform: none !important;
 }
 .icono-volver-rpg {
-    opacity: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 /* =========================================
    ICONOS · ESTADO DE MISIÓN

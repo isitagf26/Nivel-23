@@ -54,6 +54,7 @@ let llaveCenaComprada = false;
 let llaveCenaUsada = false;
 
 let llave23Comprada = false;
+let castilloFinalDescubierto = false;
 
 
 // ==================================================
@@ -1479,7 +1480,27 @@ function actualizarMisiones() {
         abrirCenaMapa
     );
 
+    actualizarTarjetaCastillo();
 }
+
+function actualizarTarjetaCastillo() {
+    const tarjeta = document.getElementById("tarjeta-mision-castillo");
+    if (!tarjeta) return;
+    const completada = llave23Comprada && castilloFinalDescubierto;
+    tarjeta.classList.toggle("bloqueada", !completada);
+    tarjeta.classList.toggle("completada", completada);
+    const icono = document.getElementById("icono-mision-castillo");
+    if (icono) icono.src = completada ? "assets/iconos/castillo.png" : "assets/iconos/mision bloqueada.png";
+    const real = document.getElementById("icono-real-castillo");
+    if (real) real.classList.add("zona-oculta");
+    const tipo = document.getElementById("tipo-mision-castillo");
+    const nombre = document.getElementById("nombre-mision-castillo");
+    const estado = document.getElementById("estado-texto-castillo");
+    if (tipo) tipo.textContent = completada ? "DESTINO FINAL" : "???";
+    if (nombre) nombre.textContent = completada ? "CASTILLO FINAL" : "???";
+    if (estado) estado.textContent = completada ? "MISIÓN COMPLETADA" : "MISIÓN BLOQUEADA";
+}
+
 function actualizarTarjetaMision(
     id,
     estado,
@@ -7554,6 +7575,7 @@ mensajeSecretoComprado,
         llaveCenaUsada,
 
         llave23Comprada,
+        castilloFinalDescubierto,
 
         retos,
 
@@ -7682,6 +7704,7 @@ function cargarPartida() {
         llave23Comprada =
             partida.llave23Comprada ??
             false;
+        castilloFinalDescubierto = partida.castilloFinalDescubierto ?? false;
 
 
         if (
@@ -7884,5 +7907,5 @@ function volverDelCastillo(){detenerRecuerdos();abrirMapa();}
 const final23MostrarOriginal=mostrarRecuerdo;
 mostrarRecuerdo=function(){final23MostrarOriginal();document.getElementById('final23-progreso').value=recuerdoIndice+1;};
 const final23CerrarOriginal=cerrarRecuerdos;
-cerrarRecuerdos=function(){final23CerrarOriginal();const total=Object.values(retos).filter(r=>r.completado).length;document.getElementById('final23-estadisticas').innerHTML=`<p class="recuerdo-etiqueta">RESUMEN DE LA PARTIDA</p><div class="final23-estadisticas-grid"><div><span>${experiencia}</span><small>EXPERIENCIA</small></div><div><span>${total}/${Object.keys(retos).length}</span><small>RETOS</small></div><div><span>${contarLogros()}/${Object.keys(logros).length}</span><small>LOGROS</small></div><div><span>${monedasConseguidas}</span><small>MONEDAS</small></div></div>`;};
+cerrarRecuerdos=function(){final23CerrarOriginal();if(llave23Comprada){castilloFinalDescubierto=true;guardarPartida();actualizarTarjetaCastillo();}const total=Object.values(retos).filter(r=>r.completado).length;document.getElementById('final23-estadisticas').innerHTML=`<p class="recuerdo-etiqueta">RESUMEN DE LA PARTIDA</p><div class="final23-estadisticas-grid"><div><span>${experiencia}</span><small>EXPERIENCIA</small></div><div><span>${total}/${Object.keys(retos).length}</span><small>RETOS</small></div><div><span>${contarLogros()}/${Object.keys(logros).length}</span><small>LOGROS</small></div><div><span>${monedasConseguidas}</span><small>MONEDAS</small></div></div>`;};
 
